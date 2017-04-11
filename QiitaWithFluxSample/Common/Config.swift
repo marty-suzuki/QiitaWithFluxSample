@@ -10,5 +10,5 @@ import Foundation
 
 struct Config {
     static let baseUrl = "https://qiita.com/api/v2"
-    static let clientId = ""
+    static let clientId = "f97283ff0ab6969790f651cfdcc47dbd9a046123"
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login Top View Controller-->
+        <scene sceneID="k5b-Hp-F26">
+            <objects>
+                <viewController storyboardIdentifier="LoginTopViewController" id="53h-Ol-PYj" customClass="LoginTopViewController" customModule="QiitaWithFluxSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Bo-6J-nE4"/>
+                        <viewControllerLayoutGuide type="bottom" id="OyN-9t-6vm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tMg-RX-aYW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3Z-5v-JCk">
+                                <rect key="frame" x="168" y="318" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B3Z-5v-JCk" firstAttribute="centerX" secondItem="tMg-RX-aYW" secondAttribute="centerX" id="WIl-Jb-c96"/>
+                            <constraint firstItem="B3Z-5v-JCk" firstAttribute="centerY" secondItem="tMg-RX-aYW" secondAttribute="centerY" id="Y6h-TP-u5q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="B3Z-5v-JCk" id="Orc-4A-dXY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29C-sy-Yh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="157"/>
+        </scene>
+    </scenes>
+</document>

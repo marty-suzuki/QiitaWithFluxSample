@@ -8,24 +8,23 @@
 
 import UIKit
 import RxSwift
-import SafariServices
+import WebKit
 
 class LoginViewController: UIViewController, Storyboardable {
 
+    let webView: WKWebView = WKWebView(frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        let url = OauthAuthorizeRequest(clientId: Config.clientId, scope: [.read, .write], state: "abcd").createURL()
-//        
-//        print(url)
-//        
-//        let viewController = SFSafariViewController(url: url)
-//        present(viewController, animated: true, completion: nil)
+        view.addSubview(webView, toEdges: .zero)
+        
+        let url = OauthAuthorizeRequest(clientId: Config.clientId, scope: [.read, .write], state: "abcd").createURL()
+        print("LoginViewController")
+        
+        
+        webView.load(URLRequest(url: url))
     }
 
     override func didReceiveMemoryWarning() {

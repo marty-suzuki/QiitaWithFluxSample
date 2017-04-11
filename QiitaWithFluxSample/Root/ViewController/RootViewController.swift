@@ -26,10 +26,15 @@ class RootViewController: UIViewController {
         }
     }
     
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
-        currentViewController = LoginViewController.instantiate()
+        observeRoute()
+        
+        RouteAction.shared.show(loginDisplayType: .root)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +42,31 @@ class RootViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    private func observeRoute() {
+        RouteStore.shared.login
+            .observeOn(ConcurrentMainScheduler.instance)
+            .subscribe(onNext: { [unowned self] displayType in
+                let loginNC: LoginNavigationController
+                if let nc = self.currentViewController as? LoginNavigationController {
+                    loginNC = nc
+                } else {
+                    loginNC = LoginNavigationController()
+                    self.currentViewController = loginNC
+                }
+                switch displayType {
+                case .root:
+                    if loginNC.topViewController is LoginViewController {
+                        return
+                    }
+                    loginNC.popToRootViewController(animated: true)
+                case .webView:
+                    if loginNC.topViewController is LoginViewController {
+                        return
+                    }
+                    loginNC.pushViewController(LoginViewController.instantiate(), animated: true)
+                }
+            })
+            .addDisposableTo(disposeBag)
+    }
 }
 

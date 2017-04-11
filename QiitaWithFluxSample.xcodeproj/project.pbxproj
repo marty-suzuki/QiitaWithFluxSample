@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37C6817E1E9D23E200DABE71 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6817D1E9D23E200DABE71 /* LoginViewController.swift */; };
-		37C681801E9D23F800DABE71 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C6817F1E9D23F800DABE71 /* LoginViewController.storyboard */; };
+		37C681801E9D23F800DABE71 /* LoginTopViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C6817F1E9D23F800DABE71 /* LoginTopViewController.storyboard */; };
 		37C681851E9D24D900DABE71 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C681831E9D24D900DABE71 /* RootViewController.storyboard */; };
 		37C681861E9D24D900DABE71 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681841E9D24D900DABE71 /* RootViewController.swift */; };
 		37C6818B1E9D2AAF00DABE71 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6818A1E9D2AAF00DABE71 /* Config.swift */; };
@@ -16,6 +16,13 @@
 		37C681911E9D31F400DABE71 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681901E9D31F400DABE71 /* Storyboardable.swift */; };
 		37C681931E9D32C200DABE71 /* NSObjectProtocol.className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681921E9D32C200DABE71 /* NSObjectProtocol.className.swift */; };
 		37C681951E9D331800DABE71 /* UIView.edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681941E9D331800DABE71 /* UIView.edges.swift */; };
+		37C681971E9D352700DABE71 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681961E9D352700DABE71 /* LoginNavigationController.swift */; };
+		37C6819A1E9D36EC00DABE71 /* RouteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681991E9D36EC00DABE71 /* RouteAction.swift */; };
+		37C6819C1E9D371200DABE71 /* RouteDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6819B1E9D371200DABE71 /* RouteDispatcher.swift */; };
+		37C6819E1E9D371C00DABE71 /* RouteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6819D1E9D371C00DABE71 /* RouteStore.swift */; };
+		37C681A01E9D3EB900DABE71 /* LoginTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6819F1E9D3EB900DABE71 /* LoginTopViewController.swift */; };
+		37C681A21E9D4B9F00DABE71 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C681A11E9D4B9F00DABE71 /* LoginViewController.storyboard */; };
+		37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C681A31E9D4BF900DABE71 /* WebKit.framework */; };
 		37FBF8061E91404300AE52C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FBF8051E91404300AE52C3 /* AppDelegate.swift */; };
 		37FBF80D1E91404300AE52C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37FBF80C1E91404300AE52C3 /* Assets.xcassets */; };
 		37FBF8101E91404300AE52C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FBF80E1E91404300AE52C3 /* LaunchScreen.storyboard */; };
@@ -38,7 +45,7 @@
 
 /* Begin PBXFileReference section */
 		37C6817D1E9D23E200DABE71 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		37C6817F1E9D23F800DABE71 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		37C6817F1E9D23F800DABE71 /* LoginTopViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginTopViewController.storyboard; sourceTree = "<group>"; };
 		37C681831E9D24D900DABE71 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		37C681841E9D24D900DABE71 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		37C6818A1E9D2AAF00DABE71 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -46,6 +53,13 @@
 		37C681901E9D31F400DABE71 /* Storyboardable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 		37C681921E9D32C200DABE71 /* NSObjectProtocol.className.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.className.swift; sourceTree = "<group>"; };
 		37C681941E9D331800DABE71 /* UIView.edges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.edges.swift; sourceTree = "<group>"; };
+		37C681961E9D352700DABE71 /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
+		37C681991E9D36EC00DABE71 /* RouteAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteAction.swift; sourceTree = "<group>"; };
+		37C6819B1E9D371200DABE71 /* RouteDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDispatcher.swift; sourceTree = "<group>"; };
+		37C6819D1E9D371C00DABE71 /* RouteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStore.swift; sourceTree = "<group>"; };
+		37C6819F1E9D3EB900DABE71 /* LoginTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTopViewController.swift; sourceTree = "<group>"; };
+		37C681A11E9D4B9F00DABE71 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		37C681A31E9D4BF900DABE71 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		37FBF8021E91404300AE52C3 /* QiitaWithFluxSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaWithFluxSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37FBF8051E91404300AE52C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37FBF80C1E91404300AE52C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */,
 				DE51B9E61FA5A03B1F62DB5A /* Pods_QiitaWithFluxSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +100,7 @@
 		3354F5D5EE9EB6E842107602 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37C681A31E9D4BF900DABE71 /* WebKit.framework */,
 				5E7C2F293EB254FEA6E98F45 /* Pods_QiitaWithFluxSample.framework */,
 			);
 			name = Frameworks;
@@ -102,8 +118,11 @@
 		37C6817C1E9D23CD00DABE71 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				37C681961E9D352700DABE71 /* LoginNavigationController.swift */,
+				37C6819F1E9D3EB900DABE71 /* LoginTopViewController.swift */,
+				37C6817F1E9D23F800DABE71 /* LoginTopViewController.storyboard */,
 				37C6817D1E9D23E200DABE71 /* LoginViewController.swift */,
-				37C6817F1E9D23F800DABE71 /* LoginViewController.storyboard */,
+				37C681A11E9D4B9F00DABE71 /* LoginViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -112,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				37C681821E9D24D900DABE71 /* ViewController */,
+				37C681981E9D36DB00DABE71 /* Flux */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -149,6 +169,16 @@
 				37C681941E9D331800DABE71 /* UIView.edges.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		37C681981E9D36DB00DABE71 /* Flux */ = {
+			isa = PBXGroup;
+			children = (
+				37C681991E9D36EC00DABE71 /* RouteAction.swift */,
+				37C6819B1E9D371200DABE71 /* RouteDispatcher.swift */,
+				37C6819D1E9D371C00DABE71 /* RouteStore.swift */,
+			);
+			path = Flux;
 			sourceTree = "<group>";
 		};
 		37FBF7F91E91404300AE52C3 = {
@@ -335,7 +365,8 @@
 			files = (
 				37FBF8101E91404300AE52C3 /* LaunchScreen.storyboard in Resources */,
 				37FBF80D1E91404300AE52C3 /* Assets.xcassets in Resources */,
-				37C681801E9D23F800DABE71 /* LoginViewController.storyboard in Resources */,
+				37C681801E9D23F800DABE71 /* LoginTopViewController.storyboard in Resources */,
+				37C681A21E9D4B9F00DABE71 /* LoginViewController.storyboard in Resources */,
 				37C681851E9D24D900DABE71 /* RootViewController.storyboard in Resources */,
 				37FBF81E1E9145A800AE52C3 /* SearchViewController.storyboard in Resources */,
 			);
@@ -398,11 +429,16 @@
 			files = (
 				37FBF83A1E9158D200AE52C3 /* SearchDispatcher.swift in Sources */,
 				37C681861E9D24D900DABE71 /* RootViewController.swift in Sources */,
+				37C6819A1E9D36EC00DABE71 /* RouteAction.swift in Sources */,
 				37FBF81C1E91459800AE52C3 /* SearchViewController.swift in Sources */,
 				37C681911E9D31F400DABE71 /* Storyboardable.swift in Sources */,
+				37C6819E1E9D371C00DABE71 /* RouteStore.swift in Sources */,
 				37C681931E9D32C200DABE71 /* NSObjectProtocol.className.swift in Sources */,
+				37C6819C1E9D371200DABE71 /* RouteDispatcher.swift in Sources */,
 				37FBF8351E91571100AE52C3 /* AnyDispatcher.swift in Sources */,
 				37FBF8211E9145F200AE52C3 /* QiitaSession.swift in Sources */,
+				37C681A01E9D3EB900DABE71 /* LoginTopViewController.swift in Sources */,
+				37C681971E9D352700DABE71 /* LoginNavigationController.swift in Sources */,
 				37FBF8381E9158A400AE52C3 /* SearchAction.swift in Sources */,
 				37FBF8251E91469A00AE52C3 /* QiitaRequest.swift in Sources */,
 				37FBF8291E9147E700AE52C3 /* Item.swift in Sources */,
