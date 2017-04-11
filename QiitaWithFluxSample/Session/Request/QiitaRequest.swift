@@ -12,6 +12,6 @@ protocol QiitaRequest: Request {}
 
 extension QiitaRequest {
     var baseURL: URL {
-        return URL(string: "https://qiita.com/api/v2")!
+        return URL(string: Config.baseUrl)!
     }
 }

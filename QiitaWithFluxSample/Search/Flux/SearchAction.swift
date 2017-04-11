@@ -41,14 +41,15 @@ final class SearchAction {
             return
         }
         let request = ItemsRequest(page: nextPage, perPage: perPage, query: nextQuery)
-        searchDispatcher.state.onNext(.lastItemsRequest(request))
+        searchDispatcher.lastItemsRequest.onNext(request)
         session.send(request)
+            .map { $0.items }
             .subscribe(
-                onNext: { [unowned self] result in
-                    self.searchDispatcher.state.onNext(.items(result.items))
+                onNext: { [unowned self] in
+                    self.searchDispatcher.items.onNext($0)
                 },
-                onError: { [unowned self] error in
-                    self.searchDispatcher.state.onNext(.error(error))
+                onError: { [unowned self] in
+                    self.searchDispatcher.error.onNext($0)
                 }
             )
             .addDisposableTo(disposeBag)

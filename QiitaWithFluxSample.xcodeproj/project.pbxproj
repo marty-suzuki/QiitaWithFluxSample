@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37C6817E1E9D23E200DABE71 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6817D1E9D23E200DABE71 /* LoginViewController.swift */; };
+		37C681801E9D23F800DABE71 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C6817F1E9D23F800DABE71 /* LoginViewController.storyboard */; };
+		37C681851E9D24D900DABE71 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C681831E9D24D900DABE71 /* RootViewController.storyboard */; };
+		37C681861E9D24D900DABE71 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681841E9D24D900DABE71 /* RootViewController.swift */; };
+		37C6818B1E9D2AAF00DABE71 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6818A1E9D2AAF00DABE71 /* Config.swift */; };
+		37C6818E1E9D311C00DABE71 /* OauthAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6818D1E9D311C00DABE71 /* OauthAuthorizeRequest.swift */; };
+		37C681911E9D31F400DABE71 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681901E9D31F400DABE71 /* Storyboardable.swift */; };
+		37C681931E9D32C200DABE71 /* NSObjectProtocol.className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681921E9D32C200DABE71 /* NSObjectProtocol.className.swift */; };
+		37C681951E9D331800DABE71 /* UIView.edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681941E9D331800DABE71 /* UIView.edges.swift */; };
 		37FBF8061E91404300AE52C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FBF8051E91404300AE52C3 /* AppDelegate.swift */; };
-		37FBF8081E91404300AE52C3 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FBF8071E91404300AE52C3 /* RootViewController.swift */; };
-		37FBF80B1E91404300AE52C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FBF8091E91404300AE52C3 /* Main.storyboard */; };
 		37FBF80D1E91404300AE52C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37FBF80C1E91404300AE52C3 /* Assets.xcassets */; };
 		37FBF8101E91404300AE52C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FBF80E1E91404300AE52C3 /* LaunchScreen.storyboard */; };
 		37FBF81C1E91459800AE52C3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FBF81B1E91459800AE52C3 /* SearchViewController.swift */; };
@@ -30,10 +37,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37C6817D1E9D23E200DABE71 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		37C6817F1E9D23F800DABE71 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		37C681831E9D24D900DABE71 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
+		37C681841E9D24D900DABE71 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		37C6818A1E9D2AAF00DABE71 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		37C6818D1E9D311C00DABE71 /* OauthAuthorizeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthAuthorizeRequest.swift; sourceTree = "<group>"; };
+		37C681901E9D31F400DABE71 /* Storyboardable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
+		37C681921E9D32C200DABE71 /* NSObjectProtocol.className.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.className.swift; sourceTree = "<group>"; };
+		37C681941E9D331800DABE71 /* UIView.edges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.edges.swift; sourceTree = "<group>"; };
 		37FBF8021E91404300AE52C3 /* QiitaWithFluxSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaWithFluxSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37FBF8051E91404300AE52C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		37FBF8071E91404300AE52C3 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		37FBF80A1E91404300AE52C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37FBF80C1E91404300AE52C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37FBF80F1E91404300AE52C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37FBF8111E91404300AE52C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +90,67 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		37C6817B1E9D23B400DABE71 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				37C6818C1E9D30FA00DABE71 /* Model */,
+				37C6817C1E9D23CD00DABE71 /* ViewController */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		37C6817C1E9D23CD00DABE71 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				37C6817D1E9D23E200DABE71 /* LoginViewController.swift */,
+				37C6817F1E9D23F800DABE71 /* LoginViewController.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		37C681811E9D24D900DABE71 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				37C681821E9D24D900DABE71 /* ViewController */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		37C681821E9D24D900DABE71 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				37C681831E9D24D900DABE71 /* RootViewController.storyboard */,
+				37C681841E9D24D900DABE71 /* RootViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		37C681891E9D2AA500DABE71 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				37C6818A1E9D2AAF00DABE71 /* Config.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		37C6818C1E9D30FA00DABE71 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				37C6818D1E9D311C00DABE71 /* OauthAuthorizeRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		37C6818F1E9D31E300DABE71 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				37C681901E9D31F400DABE71 /* Storyboardable.swift */,
+				37C681921E9D32C200DABE71 /* NSObjectProtocol.className.swift */,
+				37C681941E9D331800DABE71 /* UIView.edges.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		37FBF7F91E91404300AE52C3 = {
 			isa = PBXGroup;
 			children = (
@@ -98,12 +173,14 @@
 			isa = PBXGroup;
 			children = (
 				37FBF8051E91404300AE52C3 /* AppDelegate.swift */,
-				37FBF8071E91404300AE52C3 /* RootViewController.swift */,
-				37FBF8091E91404300AE52C3 /* Main.storyboard */,
+				37C681891E9D2AA500DABE71 /* Common */,
+				37C681811E9D24D900DABE71 /* Root */,
+				37C6817B1E9D23B400DABE71 /* Login */,
 				37FBF8171E91455400AE52C3 /* Search */,
 				37FBF81F1E9145DF00AE52C3 /* Session */,
 				37FBF8221E91462100AE52C3 /* Model */,
 				37FBF8321E9156AF00AE52C3 /* RxExtension */,
+				37C6818F1E9D31E300DABE71 /* Extension */,
 				37FBF80C1E91404300AE52C3 /* Assets.xcassets */,
 				37FBF80E1E91404300AE52C3 /* LaunchScreen.storyboard */,
 				37FBF8111E91404300AE52C3 /* Info.plist */,
@@ -258,7 +335,8 @@
 			files = (
 				37FBF8101E91404300AE52C3 /* LaunchScreen.storyboard in Resources */,
 				37FBF80D1E91404300AE52C3 /* Assets.xcassets in Resources */,
-				37FBF80B1E91404300AE52C3 /* Main.storyboard in Resources */,
+				37C681801E9D23F800DABE71 /* LoginViewController.storyboard in Resources */,
+				37C681851E9D24D900DABE71 /* RootViewController.storyboard in Resources */,
 				37FBF81E1E9145A800AE52C3 /* SearchViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,17 +397,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				37FBF83A1E9158D200AE52C3 /* SearchDispatcher.swift in Sources */,
+				37C681861E9D24D900DABE71 /* RootViewController.swift in Sources */,
 				37FBF81C1E91459800AE52C3 /* SearchViewController.swift in Sources */,
+				37C681911E9D31F400DABE71 /* Storyboardable.swift in Sources */,
+				37C681931E9D32C200DABE71 /* NSObjectProtocol.className.swift in Sources */,
 				37FBF8351E91571100AE52C3 /* AnyDispatcher.swift in Sources */,
 				37FBF8211E9145F200AE52C3 /* QiitaSession.swift in Sources */,
 				37FBF8381E9158A400AE52C3 /* SearchAction.swift in Sources */,
-				37FBF8081E91404300AE52C3 /* RootViewController.swift in Sources */,
 				37FBF8251E91469A00AE52C3 /* QiitaRequest.swift in Sources */,
 				37FBF8291E9147E700AE52C3 /* Item.swift in Sources */,
 				37FBF8271E91477700AE52C3 /* ItemsRequest.swift in Sources */,
+				37C6818E1E9D311C00DABE71 /* OauthAuthorizeRequest.swift in Sources */,
+				37C681951E9D331800DABE71 /* UIView.edges.swift in Sources */,
 				37FBF82E1E91548E00AE52C3 /* Tag.swift in Sources */,
 				37FBF8061E91404300AE52C3 /* AppDelegate.swift in Sources */,
+				37C6818B1E9D2AAF00DABE71 /* Config.swift in Sources */,
 				37FBF8301E91558B00AE52C3 /* User.swift in Sources */,
+				37C6817E1E9D23E200DABE71 /* LoginViewController.swift in Sources */,
 				37FBF8361E91571100AE52C3 /* RxProperty.swift in Sources */,
 				37FBF82C1E914B8B00AE52C3 /* ItemsResponse.swift in Sources */,
 				37FBF83C1E91599D00AE52C3 /* SearchStore.swift in Sources */,
@@ -339,14 +423,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		37FBF8091E91404300AE52C3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				37FBF80A1E91404300AE52C3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		37FBF80E1E91404300AE52C3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

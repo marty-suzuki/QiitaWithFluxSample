@@ -27,22 +27,14 @@ final class SearchStore {
         self.error = Property(_error)
         self.lastItemsRequest = Property(_lastItemsRequest)
         
-        searchDispatcher.state
-            .subscribe(onNext: { [unowned self] state in
-                switch state {
-                case .items(let value):
-                    if value.isEmpty {
-                        self._items.value.removeAll()
-                    } else {
-                        self._items.value.append(contentsOf: value)
-                    }
-                case .error(let value):
-                    self._error.value = value
-                    
-                case .lastItemsRequest(let value):
-                    self._lastItemsRequest.value = value
-                }
-            })
+        searchDispatcher.items
+            .bindTo(_items)
+            .addDisposableTo(disposeBag)
+        searchDispatcher.error
+            .bindTo(_error)
+            .addDisposableTo(disposeBag)
+        searchDispatcher.lastItemsRequest
+            .bindTo(_lastItemsRequest)
             .addDisposableTo(disposeBag)
     }
 }

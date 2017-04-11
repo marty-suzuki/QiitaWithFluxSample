@@ -8,19 +8,36 @@
 
 import RxSwift
 
-final class SearchDispatcher: Dispatchable {
-    enum State {
-        case items([Item])
-        case error(Error)
-        case lastItemsRequest(ItemsRequest)
-    }
-    
+final class SearchDispatcher: DispatcherType {
     static let shared = SearchDispatcher()
     
-    let observerState: AnyObserver<State>
-    let observableState: Observable<State>
+    fileprivate let items = PublishSubject<[Item]>()
+    fileprivate let error = PublishSubject<Error>()
+    fileprivate let lastItemsRequest = PublishSubject<ItemsRequest>()
     
-    required init() {
-        (self.observerState, self.observableState) = SearchDispatcher.properties()
+    private init() {}
+}
+
+extension AnyObservableDispatcher where Dispatcher: SearchDispatcher {
+    var items: Observable<[Item]> {
+        return dispatcher.items.asObservable()
+    }
+    var error: Observable<Error> {
+        return dispatcher.error.asObservable()
+    }
+    var lastItemsRequest: Observable<ItemsRequest> {
+        return dispatcher.lastItemsRequest.asObservable()
+    }
+}
+
+extension AnyObserverDispatcher where Dispatcher: SearchDispatcher {
+    var items: AnyObserver<[Item]> {
+        return dispatcher.items.asObserver()
+    }
+    var error: AnyObserver<Error> {
+        return dispatcher.error.asObserver()
+    }
+    var lastItemsRequest: AnyObserver<ItemsRequest> {
+        return dispatcher.lastItemsRequest.asObserver()
     }
 }

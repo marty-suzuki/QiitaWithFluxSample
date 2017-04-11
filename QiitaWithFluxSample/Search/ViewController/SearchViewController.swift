@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import RxSwift
 
 class SearchViewController: UIViewController {
 
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        SearchAction.shared.search(query: "marty-suzuki")
+        
+        SearchStore.shared.items.changed
+            .subscribe(onNext: {
+                print("items =", $0)
+            })
+            .addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
