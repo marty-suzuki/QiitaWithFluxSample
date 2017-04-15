@@ -19,7 +19,7 @@ struct OauthAuthorizeRequest {
     let state: String
     
     func createURL() -> URL {
-        var component: URLComponents = URLComponents(string: Config.baseUrl + "/oauth/authorize")!
+        var component: URLComponents = URLComponents(string: Config.shared.baseUrl + QiitaApiVersion.v2.rawValue + "/oauth/authorize")!
         component.queryItems = [
             URLQueryItem(name: "client_id", value: clientId),
             URLQueryItem(name: "scope", value: scope.reduce("") { $0 + ($0.isEmpty ? "" : "+") + $1.rawValue }),

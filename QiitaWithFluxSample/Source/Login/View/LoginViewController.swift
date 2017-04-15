@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, Storyboardable {
         // Do any additional setup after loading the view.
         view.addSubview(webView, toEdges: .zero)
         
-        let url = OauthAuthorizeRequest(clientId: Config.clientId, scope: [.read, .write], state: "abcd").createURL()
+        let url = OauthAuthorizeRequest(clientId: Config.shared.clientId, scope: [.read, .write], state: "abcd").createURL()
         print("LoginViewController")
         
         
