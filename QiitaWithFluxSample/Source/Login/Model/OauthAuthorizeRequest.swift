@@ -9,22 +9,26 @@
 import Foundation
 
 struct OauthAuthorizeRequest {
-    enum Scope: String {
-        case read = "read_qiita"
-        case write = "write_qiita"
+    enum Error: Swift.Error {
+        case failedInitializingURLComponents(String)
+        case nilReceived(URLComponents)
     }
     
-    let clientId: String
-    let scope: [Scope]
-    let state: String
+    let state: String = UUID().uuidString
+    let scope: [QiitaScope]
     
-    func createURL() -> URL {
-        var component: URLComponents = URLComponents(string: Config.shared.baseUrl + QiitaApiVersion.v2.rawValue + "/oauth/authorize")!
+    func createURL() throws -> URL {
+        let urlString = Config.shared.baseUrl + QiitaApiVersion.v2.rawValue + "/oauth/authorize"
+        var component = try URLComponents(string: urlString) ?? {
+            throw Error.failedInitializingURLComponents(urlString)
+        }()
         component.queryItems = [
-            URLQueryItem(name: "client_id", value: clientId),
+            URLQueryItem(name: "client_id", value: Config.shared.clientId),
             URLQueryItem(name: "scope", value: scope.reduce("") { $0 + ($0.isEmpty ? "" : "+") + $1.rawValue }),
             URLQueryItem(name: "state", value: state)
         ]
-        return component.url!
+        return try component.url ?? {
+            throw Error.nilReceived(component)
+        }()
     }
 }

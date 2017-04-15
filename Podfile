@@ -6,8 +6,9 @@ target 'QiitaWithFluxSample' do
   use_frameworks!
 
   # Pods for QiitaWithFluxSample
-  pod 'RxSwift',    '~> 3.0'
-  pod 'RxCocoa',    '~> 3.0'
+  pod 'RxSwift', '~> 3.0'
+  pod 'RxCocoa', '~> 3.0'
   pod 'APIKit', '~> 3.0'
   pod 'Himotoki', '~> 3.0'
+  pod 'SwiftyUserDefaults', '~> 3.0'
 end

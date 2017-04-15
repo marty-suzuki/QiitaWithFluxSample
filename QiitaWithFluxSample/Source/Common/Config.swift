@@ -33,12 +33,16 @@ struct Config: Decodable {
     }()
     
     let baseUrl: String
+    let redirectUrl: String
     let clientId: String
+    let clientSecret: String
     
     static func decode(_ e: Extractor) throws -> Config {
         return try Config(
             baseUrl: e <| "baseUrl",
-            clientId: e <| "clientId"
+            redirectUrl: e <| "redirectUrl",
+            clientId: e <| "clientId",
+            clientSecret: e <| "clientSecret"
         )
     }
 }

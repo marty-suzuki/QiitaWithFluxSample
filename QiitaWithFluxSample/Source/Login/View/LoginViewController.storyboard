@@ -20,12 +20,38 @@
                     <view key="view" contentMode="scaleToFill" id="8mm-86-v2F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGb-Vb-YkL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1ni-t6-J7A">
+                                        <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="1ni-t6-J7A" firstAttribute="centerX" secondItem="gGb-Vb-YkL" secondAttribute="centerX" id="8gc-K1-kcS"/>
+                                    <constraint firstItem="1ni-t6-J7A" firstAttribute="centerY" secondItem="gGb-Vb-YkL" secondAttribute="centerY" id="YBn-fl-bMZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vEA-Oy-4oi" firstAttribute="top" secondItem="gGb-Vb-YkL" secondAttribute="bottom" id="RQX-jW-VAn"/>
+                            <constraint firstAttribute="trailing" secondItem="gGb-Vb-YkL" secondAttribute="trailing" id="nsQ-qK-2Sb"/>
+                            <constraint firstItem="gGb-Vb-YkL" firstAttribute="leading" secondItem="8mm-86-v2F" secondAttribute="leading" id="rQ3-WK-Wrw"/>
+                            <constraint firstItem="gGb-Vb-YkL" firstAttribute="top" secondItem="8mm-86-v2F" secondAttribute="top" id="xBe-wg-Ho9"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="indicator" destination="1ni-t6-J7A" id="qpq-xN-ezt"/>
+                        <outlet property="loadingView" destination="gGb-Vb-YkL" id="DFl-IF-hPx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nOr-of-gH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="242"/>
+            <point key="canvasLocation" x="188" y="241.52923538230885"/>
         </scene>
     </scenes>
 </document>

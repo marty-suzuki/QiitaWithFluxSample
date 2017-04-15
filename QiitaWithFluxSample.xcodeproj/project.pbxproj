@@ -38,10 +38,18 @@
 		37C682491EA1F15900DABE71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682261EA1F15900DABE71 /* AppDelegate.swift */; };
 		37C6824A1EA1F15900DABE71 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C682271EA1F15900DABE71 /* RootViewController.storyboard */; };
 		37C6824B1EA1F15900DABE71 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682281EA1F15900DABE71 /* RootViewController.swift */; };
-		37C6824C1EA1F15900DABE71 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C6822C1EA1F15900DABE71 /* SearchViewController.storyboard */; };
-		37C6824D1EA1F15900DABE71 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6822D1EA1F15900DABE71 /* SearchViewController.swift */; };
+		37C6824C1EA1F15900DABE71 /* SearchTopViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C6822C1EA1F15900DABE71 /* SearchTopViewController.storyboard */; };
+		37C6824D1EA1F15900DABE71 /* SearchTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6822D1EA1F15900DABE71 /* SearchTopViewController.swift */; };
 		37C6824F1EA1F19200DABE71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C6824E1EA1F19200DABE71 /* LaunchScreen.storyboard */; };
 		37C682511EA1F1D100DABE71 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37C682501EA1F1D100DABE71 /* Config.plist */; };
+		37C682541EA2508600DABE71 /* ApplicationDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682531EA2508600DABE71 /* ApplicationDispatcher.swift */; };
+		37C682561EA2512F00DABE71 /* ApplicationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682551EA2512E00DABE71 /* ApplicationStore.swift */; };
+		37C682581EA253F800DABE71 /* SearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682571EA253F800DABE71 /* SearchNavigationController.swift */; };
+		37C6825A1EA2549600DABE71 /* ApplicationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682591EA2549600DABE71 /* ApplicationAction.swift */; };
+		37C6825C1EA25C4D00DABE71 /* AccessTokensRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6825B1EA25C4D00DABE71 /* AccessTokensRequest.swift */; };
+		37C6825E1EA25CE700DABE71 /* AccessTokensResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6825D1EA25CE700DABE71 /* AccessTokensResponse.swift */; };
+		37C682601EA25D5400DABE71 /* QiitaScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6825F1EA25D5400DABE71 /* QiitaScope.swift */; };
+		37C682621EA2686700DABE71 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682611EA2686700DABE71 /* DefaultsKeys.swift */; };
 		DE51B9E61FA5A03B1F62DB5A /* Pods_QiitaWithFluxSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7C2F293EB254FEA6E98F45 /* Pods_QiitaWithFluxSample.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,10 +85,18 @@
 		37C682261EA1F15900DABE71 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37C682271EA1F15900DABE71 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		37C682281EA1F15900DABE71 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		37C6822C1EA1F15900DABE71 /* SearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
-		37C6822D1EA1F15900DABE71 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		37C6822C1EA1F15900DABE71 /* SearchTopViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchTopViewController.storyboard; sourceTree = "<group>"; };
+		37C6822D1EA1F15900DABE71 /* SearchTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTopViewController.swift; sourceTree = "<group>"; };
 		37C6824E1EA1F19200DABE71 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37C682501EA1F1D100DABE71 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		37C682531EA2508600DABE71 /* ApplicationDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDispatcher.swift; sourceTree = "<group>"; };
+		37C682551EA2512E00DABE71 /* ApplicationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationStore.swift; sourceTree = "<group>"; };
+		37C682571EA253F800DABE71 /* SearchNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchNavigationController.swift; sourceTree = "<group>"; };
+		37C682591EA2549600DABE71 /* ApplicationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAction.swift; sourceTree = "<group>"; };
+		37C6825B1EA25C4D00DABE71 /* AccessTokensRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokensRequest.swift; sourceTree = "<group>"; };
+		37C6825D1EA25CE700DABE71 /* AccessTokensResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokensResponse.swift; sourceTree = "<group>"; };
+		37C6825F1EA25D5400DABE71 /* QiitaScope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaScope.swift; sourceTree = "<group>"; };
+		37C682611EA2686700DABE71 /* DefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		37FBF8021E91404300AE52C3 /* QiitaWithFluxSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaWithFluxSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4978BDAD27EB3339E8E96A /* Pods-QiitaWithFluxSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaWithFluxSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QiitaWithFluxSample/Pods-QiitaWithFluxSample.debug.xcconfig"; sourceTree = "<group>"; };
 		5E7C2F293EB254FEA6E98F45 /* Pods_QiitaWithFluxSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiitaWithFluxSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				37C681FE1EA1F15800DABE71 /* Config.swift */,
+				37C682611EA2686700DABE71 /* DefaultsKeys.swift */,
 				37C681FF1EA1F15800DABE71 /* Extension */,
 				37C682071EA1F15800DABE71 /* Flux */,
 				37C682101EA1F15800DABE71 /* Model */,
@@ -174,6 +191,7 @@
 		37C682071EA1F15800DABE71 /* Flux */ = {
 			isa = PBXGroup;
 			children = (
+				37C682521EA2507800DABE71 /* Application */,
 				37C682081EA1F15800DABE71 /* Route */,
 				37C6820C1EA1F15800DABE71 /* Search */,
 			);
@@ -206,6 +224,7 @@
 				37C682111EA1F15800DABE71 /* Item.swift */,
 				37C682121EA1F15800DABE71 /* Tag.swift */,
 				37C682131EA1F15800DABE71 /* User.swift */,
+				37C6825F1EA25D5400DABE71 /* QiitaScope.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +244,7 @@
 			children = (
 				37C682171EA1F15800DABE71 /* ItemsRequest.swift */,
 				37C682181EA1F15800DABE71 /* QiitaRequest.swift */,
+				37C6825B1EA25C4D00DABE71 /* AccessTokensRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -233,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				37C6821A1EA1F15800DABE71 /* ItemsResponse.swift */,
+				37C6825D1EA25CE700DABE71 /* AccessTokensResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -287,26 +308,29 @@
 		37C682291EA1F15900DABE71 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				37C6822A1EA1F15900DABE71 /* Flux */,
 				37C6822B1EA1F15900DABE71 /* View */,
 			);
 			path = Search;
 			sourceTree = "<group>";
 		};
-		37C6822A1EA1F15900DABE71 /* Flux */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Flux;
-			sourceTree = "<group>";
-		};
 		37C6822B1EA1F15900DABE71 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				37C6822C1EA1F15900DABE71 /* SearchViewController.storyboard */,
-				37C6822D1EA1F15900DABE71 /* SearchViewController.swift */,
+				37C682571EA253F800DABE71 /* SearchNavigationController.swift */,
+				37C6822C1EA1F15900DABE71 /* SearchTopViewController.storyboard */,
+				37C6822D1EA1F15900DABE71 /* SearchTopViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		37C682521EA2507800DABE71 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				37C682591EA2549600DABE71 /* ApplicationAction.swift */,
+				37C682531EA2508600DABE71 /* ApplicationDispatcher.swift */,
+				37C682551EA2512E00DABE71 /* ApplicationStore.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		37FBF7F91E91404300AE52C3 = {
@@ -414,7 +438,7 @@
 				37C682511EA1F1D100DABE71 /* Config.plist in Resources */,
 				37C6822E1EA1F15900DABE71 /* Assets.xcassets in Resources */,
 				37C682471EA1F15900DABE71 /* LoginViewController.storyboard in Resources */,
-				37C6824C1EA1F15900DABE71 /* SearchViewController.storyboard in Resources */,
+				37C6824C1EA1F15900DABE71 /* SearchTopViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,13 +507,18 @@
 				37C6823F1EA1F15900DABE71 /* QiitaSession.swift in Sources */,
 				37C682441EA1F15900DABE71 /* LoginNavigationController.swift in Sources */,
 				37C6823B1EA1F15900DABE71 /* SearchStore.swift in Sources */,
+				37C6825E1EA25CE700DABE71 /* AccessTokensResponse.swift in Sources */,
 				37C682311EA1F15900DABE71 /* NSObjectProtocol.className.swift in Sources */,
 				37C6823E1EA1F15900DABE71 /* User.swift in Sources */,
 				37C682401EA1F15900DABE71 /* ItemsRequest.swift in Sources */,
 				37C682371EA1F15900DABE71 /* RouteDispatcher.swift in Sources */,
-				37C6824D1EA1F15900DABE71 /* SearchViewController.swift in Sources */,
+				37C682561EA2512F00DABE71 /* ApplicationStore.swift in Sources */,
+				37C6824D1EA1F15900DABE71 /* SearchTopViewController.swift in Sources */,
 				37C682381EA1F15900DABE71 /* RouteStore.swift in Sources */,
 				37C6824B1EA1F15900DABE71 /* RootViewController.swift in Sources */,
+				37C682581EA253F800DABE71 /* SearchNavigationController.swift in Sources */,
+				37C6825C1EA25C4D00DABE71 /* AccessTokensRequest.swift in Sources */,
+				37C682601EA25D5400DABE71 /* QiitaScope.swift in Sources */,
 				37C682461EA1F15900DABE71 /* LoginTopViewController.swift in Sources */,
 				37C682431EA1F15900DABE71 /* OauthAuthorizeRequest.swift in Sources */,
 				37C682491EA1F15900DABE71 /* AppDelegate.swift in Sources */,
@@ -498,7 +527,10 @@
 				37C682351EA1F15900DABE71 /* RxProperty.swift in Sources */,
 				37C6823D1EA1F15900DABE71 /* Tag.swift in Sources */,
 				37C682391EA1F15900DABE71 /* SearchAction.swift in Sources */,
+				37C682541EA2508600DABE71 /* ApplicationDispatcher.swift in Sources */,
+				37C6825A1EA2549600DABE71 /* ApplicationAction.swift in Sources */,
 				37C682361EA1F15900DABE71 /* RouteAction.swift in Sources */,
+				37C682621EA2686700DABE71 /* DefaultsKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

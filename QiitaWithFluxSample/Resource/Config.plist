@@ -4,7 +4,11 @@
 <dict>
 	<key>baseUrl</key>
 	<string>https://qiita.com/api</string>
+	<key>redirectUrl</key>
+	<string>https://qiita.marty-suzuki.jp</string>
 	<key>clientId</key>
 	<string>f97283ff0ab6969790f651cfdcc47dbd9a046123</string>
+	<key>clientSecret</key>
+	<string>b74ed6de084cc7164b7ff01a8b5c339d331d14ba</string>
 </dict>
 </plist>

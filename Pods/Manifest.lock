@@ -6,12 +6,14 @@ PODS:
   - RxCocoa (3.3.1):
     - RxSwift (~> 3.3)
   - RxSwift (3.3.1)
+  - SwiftyUserDefaults (3.0.0)
 
 DEPENDENCIES:
   - APIKit (~> 3.0)
   - Himotoki (~> 3.0)
   - RxCocoa (~> 3.0)
   - RxSwift (~> 3.0)
+  - SwiftyUserDefaults (~> 3.0)
 
 SPEC CHECKSUMS:
   APIKit: 7460983f490d3bde6aaaaa4164d18c9865a6f91d
@@ -19,7 +21,8 @@ SPEC CHECKSUMS:
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
   RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
+  SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
 
-PODFILE CHECKSUM: 9e0ff062b3ba56a6a8fc0c08cd75d3095b8c7089
+PODFILE CHECKSUM: 26e1a9d6e5c6ef48c1e00769cf55b8358b2528f8
 
 COCOAPODS: 1.2.0

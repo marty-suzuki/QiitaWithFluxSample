@@ -17,8 +17,12 @@ final class RouteAction {
         self.dispatcher = dispatcher
     }
     
-    func show(loginDisplayType: RouteStore.LoginDisplayType) {
+    func show(loginDisplayType: LoginDisplayType) {
         dispatcher.login.onNext(loginDisplayType)
+    }
+    
+    func show(searchDisplayType: SearchDisplayType) {
+        dispatcher.search.onNext(searchDisplayType)
     }
 }
 

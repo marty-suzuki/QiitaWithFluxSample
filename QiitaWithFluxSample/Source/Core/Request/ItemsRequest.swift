@@ -25,6 +25,13 @@ struct ItemsRequest: QiitaRequest {
         ]
     }
     
+    var headerFields: [String : String] {
+        guard let token = ApplicationStore.shared.accessToken.value else { return [:] }
+        return [
+            "Authorization" : "Bearer \(token)"
+        ]
+    }
+    
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> ItemsResponse {
         let items: [Item] = try decodeArray(object)
         guard let totalCountStr = urlResponse.allHeaderFields["Total-Count"] as? String,

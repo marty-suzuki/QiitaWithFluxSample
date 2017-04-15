@@ -1,5 +1,5 @@
 //
-//  SearchViewController.swift
+//  SearchTopViewController.swift
 //  QiitaWithFluxSample
 //
 //  Created by marty-suzuki on 2017/04/02.
@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class SearchViewController: UIViewController {
+class SearchTopViewController: UIViewController, Storyboardable {
 
     let disposeBag = DisposeBag()
     

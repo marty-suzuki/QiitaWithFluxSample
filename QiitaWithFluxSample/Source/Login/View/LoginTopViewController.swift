@@ -21,7 +21,7 @@ class LoginTopViewController: UIViewController, Storyboardable {
 
         // Do any additional setup after loading the view.
         loginButton.rx.tap
-            .map { RouteStore.LoginDisplayType.webView }
+            .map { LoginDisplayType.webView }
             .bindNext(RouteAction.shared.show)
             .addDisposableTo(disposeBag)
     }
