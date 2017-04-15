@@ -38,7 +38,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QNs-ax-19a"/>
+                    <navigationItem key="navigationItem" id="QNs-ax-19a">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="kdl-FR-qT6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Ew-Ae-QKr">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Del Token"/>
+                                <connections>
+                                    <action selector="didTapDelToken:" destination="pDl-e0-VHn" eventType="touchUpInside" id="6ex-NB-bGk"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVs-F5-bZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -45,12 +45,8 @@ final class SearchAction {
         session.send(request)
             .map { $0.items }
             .subscribe(
-                onNext: { [unowned self] in
-                    self.searchDispatcher.items.onNext($0)
-                },
-                onError: { [unowned self] in
-                    self.searchDispatcher.error.onNext($0)
-                }
+                onNext: searchDispatcher.items.onNext,
+                onError: searchDispatcher.error.onNext
             )
             .addDisposableTo(disposeBag)
     }

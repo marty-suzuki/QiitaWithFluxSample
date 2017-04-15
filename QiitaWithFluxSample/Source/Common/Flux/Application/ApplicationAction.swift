@@ -32,10 +32,12 @@ final class ApplicationAction {
                                           code: code)
         QiitaSession.shared.send(request)
             .map { Optional.some($0.token) }
-            .do(onError: { [weak self] error in
-                self?.dispatcher.accessTokenError.onNext(error)
-            })
-            .bindTo(dispatcher.accessToken)
+            .do(onError: dispatcher.accessTokenError.onNext)
+            .bindNext(dispatcher.accessToken.onNext)
             .addDisposableTo(disposeBag)
+    }
+    
+    func removeAccessToken() {
+        dispatcher.accessToken.onNext(nil)
     }
 }
