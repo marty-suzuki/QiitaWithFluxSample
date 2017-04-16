@@ -40,6 +40,11 @@ This is a sample project that uses **Flux** and **MVVM** features.
 - Xcode 8.3
 - iOS 10.0
 
+Please register your application to Qiita.  
+After that, fill **redirectUrl**, **clientId** and **clientSecret** in Config.swift!
+
+![config](./Images/config.png)
+
 ## Libraries
 
 - [Action](https://github.com/RxSwiftCommunity/Action) 2.2.2
