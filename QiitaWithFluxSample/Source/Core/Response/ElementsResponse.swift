@@ -8,7 +8,7 @@
 
 import Himotoki
 
-struct ItemsResponse {
+struct ElementsResponse<T> {
     let totalCount: Int
-    let items: [Item]
+    let elements: [T]
 }

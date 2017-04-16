@@ -10,18 +10,43 @@ import UIKit
 import RxSwift
 
 class SearchTopViewController: UIViewController, Storyboardable {
-
+    @IBOutlet weak var tableView: UITableView!
+    
+    let searchBar = UISearchBar(frame: .zero)
+    
+    let viewModel = SearchTopViewModel()
+    private(set) lazy var dataSource: SearchTopDataSource = .init(viewModel: self.viewModel)
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        SearchAction.shared.search(query: "marty-suzuki")
+        configureSearchBar()
+        observeViewModel()
         
-        SearchStore.shared.items.changed
-            .subscribe(onNext: {
-                print("items =", $0)
+        dataSource.configure(with: tableView)
+    }
+    
+    private func configureSearchBar() {
+        searchBar.scopeBarBackgroundImage = UIImage()
+        searchBar.showsCancelButton = true
+        navigationItem.titleView = searchBar
+        
+        searchBar.rx.text.orEmpty
+            .distinctUntilChanged()
+            .debounce(0.3, scheduler: ConcurrentMainScheduler.instance)
+            .subscribe(onNext: { [weak self] text in
+                self?.viewModel.search(query: text)
+            })
+            .addDisposableTo(disposeBag)
+    }
+    
+    private func observeViewModel() {
+        viewModel.items.changed
+            .observeOn(ConcurrentMainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.tableView.reloadData()
             })
             .addDisposableTo(disposeBag)
     }

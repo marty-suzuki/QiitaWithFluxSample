@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import SafariServices
 
 class RootViewController: UIViewController {
     private (set) var currentViewController: UIViewController? {
@@ -93,6 +94,11 @@ class RootViewController: UIViewController {
                         return
                     }
                     searchNC.popToRootViewController(animated: true)
+                case .webView(let url):
+                    if searchNC.topViewController is SFSafariViewController {
+                        return
+                    }
+                    searchNC.pushViewController(SFSafariViewController(url: url), animated:  true)
                 }
             })
             .addDisposableTo(disposeBag)

@@ -21,22 +21,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yb-cV-gT1">
-                                <rect key="frame" x="108" y="262.5" width="160.5" height="143.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yb-cV-gT1">
+                                <rect key="frame" x="117" y="238" width="142.5" height="191"/>
                                 <string key="text">Qiita
-withFlux
+with
+Flux
 Sample</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.34889402985572815" green="0.73736071586608887" blue="0.21562780439853668" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0Yb-cV-gT1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="1CN-vE-UPW"/>
-                            <constraint firstItem="0Yb-cV-gT1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="50" id="kre-QU-Qth"/>
                             <constraint firstItem="0Yb-cV-gT1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="q5X-BF-kjE"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Yb-cV-gT1" secondAttribute="trailing" constant="50" id="qvW-qt-fp2"/>
                         </constraints>
                     </view>
                 </viewController>

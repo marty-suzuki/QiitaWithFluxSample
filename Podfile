@@ -11,4 +11,6 @@ target 'QiitaWithFluxSample' do
   pod 'APIKit', '~> 3.0'
   pod 'Himotoki', '~> 3.0'
   pod 'SwiftyUserDefaults', '~> 3.0'
+  pod 'Action', '~> 2.0'
+  pod 'Kingfisher', '~> 3.0'
 end

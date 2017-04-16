@@ -22,6 +22,11 @@ class LoginViewController: UIViewController, Storyboardable {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        observeApplicationStore()
+        configureWebView()
+    }
+    
+    private func configureWebView() {
         webView.navigationDelegate = self
         view.addSubview(webView, toEdges: .zero)
         view.bringSubview(toFront: webView)
@@ -35,6 +40,19 @@ class LoginViewController: UIViewController, Storyboardable {
         webView.load(URLRequest(url: url))
     }
 
+    private func observeApplicationStore() {
+        Observable.combineLatest(
+                ApplicationStore.shared.accessToken.asObservable()
+                    .shareReplayLatestWhileConnected(),
+                ApplicationStore.shared.accessTokenError
+            )
+            .observeOn(ConcurrentMainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.loadigView(isHidden: true)
+            })
+            .addDisposableTo(disposeBag)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,16 +83,7 @@ extension LoginViewController: WKNavigationDelegate {
             else {
                 fatalError("can not find \"code\" from URL query")
             }
-            Observable.combineLatest(
-                    ApplicationStore.shared.accessToken.asObservable()
-                        .shareReplayLatestWhileConnected(),
-                    ApplicationStore.shared.accessTokenError
-                )
-                .observeOn(ConcurrentMainScheduler.instance)
-                .subscribe(onNext: { [weak self] _ in
-                    self?.loadigView(isHidden: true)
-                })
-                .addDisposableTo(disposeBag)
+            
             DispatchQueue.main.async { [weak self] in
                 self?.loadigView(isHidden: false)
             }

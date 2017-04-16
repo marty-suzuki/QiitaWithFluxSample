@@ -36,7 +36,20 @@
                     <view key="view" contentMode="scaleToFill" id="9uH-nW-Uan">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hlb-pu-Sjm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hlb-pu-Sjm" firstAttribute="top" secondItem="9uH-nW-Uan" secondAttribute="top" id="QCv-yy-8Gt"/>
+                            <constraint firstItem="hlb-pu-Sjm" firstAttribute="leading" secondItem="9uH-nW-Uan" secondAttribute="leading" id="WUP-rn-Va0"/>
+                            <constraint firstItem="QUR-xQ-2Oz" firstAttribute="top" secondItem="hlb-pu-Sjm" secondAttribute="bottom" id="Z3P-Pz-VxG"/>
+                            <constraint firstAttribute="trailing" secondItem="hlb-pu-Sjm" secondAttribute="trailing" id="gke-rQ-fFK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QNs-ax-19a">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="kdl-FR-qT6">
@@ -50,10 +63,13 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="hlb-pu-Sjm" id="yJX-NS-ZT1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVs-F5-bZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="727" y="-213"/>
+            <point key="canvasLocation" x="725.60000000000002" y="-213.64317841079463"/>
         </scene>
     </scenes>
 </document>

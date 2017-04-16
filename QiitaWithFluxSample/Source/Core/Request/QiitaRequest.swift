@@ -24,4 +24,11 @@ extension QiitaRequest {
     var apiVersion: QiitaApiVersion {
         return .v2
     }
+    
+    var headerFields: [String : String] {
+        guard let token = ApplicationStore.shared.accessToken.value else { return [:] }
+        return [
+            "Authorization" : "Bearer \(token)"
+        ]
+    }
 }

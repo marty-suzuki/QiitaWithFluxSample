@@ -15,6 +15,7 @@ enum LoginDisplayType {
 
 enum SearchDisplayType {
     case root
+    case webView(URL)
 }
 
 final class RouteStore {

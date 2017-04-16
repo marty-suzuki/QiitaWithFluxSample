@@ -22,14 +22,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3Z-5v-JCk">
-                                <rect key="frame" x="168" y="318" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
+                                <rect key="frame" x="109" y="581" width="157" height="46"/>
+                                <color key="backgroundColor" red="0.090976305305957794" green="0.74856430292129517" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="5" maxX="40" maxY="5"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3e-Ya-LNF">
+                                <rect key="frame" x="116" y="238" width="142.5" height="191"/>
+                                <string key="text">Qiita
+with
+Flux
+Sample</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <color key="textColor" red="0.34889402990000001" green="0.73736071589999996" blue="0.21562780440000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="B3Z-5v-JCk" firstAttribute="centerX" secondItem="tMg-RX-aYW" secondAttribute="centerX" id="WIl-Jb-c96"/>
-                            <constraint firstItem="B3Z-5v-JCk" firstAttribute="centerY" secondItem="tMg-RX-aYW" secondAttribute="centerY" id="Y6h-TP-u5q"/>
+                            <constraint firstItem="h3e-Ya-LNF" firstAttribute="centerY" secondItem="tMg-RX-aYW" secondAttribute="centerY" id="J15-Ak-9qk"/>
+                            <constraint firstItem="h3e-Ya-LNF" firstAttribute="centerX" secondItem="tMg-RX-aYW" secondAttribute="centerX" id="TzD-yN-gtr"/>
+                            <constraint firstItem="B3Z-5v-JCk" firstAttribute="centerX" secondItem="tMg-RX-aYW" secondAttribute="centerX" id="Ua8-Fs-wXw"/>
+                            <constraint firstItem="OyN-9t-6vm" firstAttribute="top" secondItem="B3Z-5v-JCk" secondAttribute="bottom" constant="40" id="W1S-HI-WTa"/>
                         </constraints>
                     </view>
                     <connections>

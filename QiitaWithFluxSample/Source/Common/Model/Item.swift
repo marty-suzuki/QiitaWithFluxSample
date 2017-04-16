@@ -37,3 +37,17 @@ struct Item: Decodable {
         )
     }
 }
+
+extension Item {
+    var createdDateString: String {
+        guard let date = Date(ISO8601String: createdAt) else {
+            return "----/--/--"
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        return dateFormatter.string(from: date)
+    }
+    var newLineExcludedBody: String {
+        return String(body.characters.filter { !" \n\t\r".characters.contains($0) })
+    }
+}
