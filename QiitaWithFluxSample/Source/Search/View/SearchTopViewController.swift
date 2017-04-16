@@ -15,6 +15,7 @@ class SearchTopViewController: UIViewController, Storyboardable {
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var noResultsLabel: UILabel!
+    @IBOutlet weak var contentViewBottomConstant: NSLayoutConstraint!
     
     let searchBar = UISearchBar(frame: .zero)
     
@@ -64,6 +65,38 @@ class SearchTopViewController: UIViewController, Storyboardable {
             .observeOn(ConcurrentMainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 self?.searchBar.resignFirstResponder()
+            })
+            .addDisposableTo(disposeBag)
+        
+        NotificationCenter.default.rx.notification(.UIKeyboardWillShow)
+            .map { $0.userInfo }
+            .filter { $0 != nil }
+            .map { UIKeyboardInfo(info: $0!) }
+            .observeOn(ConcurrentMainScheduler.instance)
+            .subscribe(onNext: { [weak self] info in
+                guard let info = info else { return }
+                self?.contentViewBottomConstant.constant = info.frame.size.height
+                UIView.animate(withDuration: info.animationDuration,
+                               delay: 0,
+                               options: info.animationCurve,
+                               animations: { self?.view.layoutIfNeeded() },
+                               completion: nil)
+            })
+            .addDisposableTo(disposeBag)
+        
+        NotificationCenter.default.rx.notification(.UIKeyboardWillHide)
+            .map { $0.userInfo }
+            .filter { $0 != nil }
+            .map { UIKeyboardInfo(info: $0!) }
+            .observeOn(ConcurrentMainScheduler.instance)
+            .subscribe(onNext: { [weak self] info in
+                guard let info = info else { return }
+                self?.contentViewBottomConstant.constant = 0
+                UIView.animate(withDuration: info.animationDuration,
+                               delay: 0,
+                               options: info.animationCurve,
+                               animations: { self?.view.layoutIfNeeded() },
+                               completion: nil)
             })
             .addDisposableTo(disposeBag)
     }

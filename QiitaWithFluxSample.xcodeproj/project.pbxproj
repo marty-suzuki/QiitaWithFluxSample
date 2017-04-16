@@ -17,6 +17,7 @@
 		3734DD521EA3AF1700DC30C7 /* UIScrollView.Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD511EA3AF1700DC30C7 /* UIScrollView.Rx.swift */; };
 		3734DD551EA3B79700DC30C7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD541EA3B79700DC30C7 /* LoadingView.swift */; };
 		3734DD571EA3B7A500DC30C7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3734DD561EA3B7A500DC30C7 /* LoadingView.xib */; };
+		3734DD5B1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD5A1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift */; };
 		37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C681A31E9D4BF900DABE71 /* WebKit.framework */; };
 		37C6822E1EA1F15900DABE71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C681FA1EA1F15800DABE71 /* Assets.xcassets */; };
 		37C6822F1EA1F15900DABE71 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37C681FB1EA1F15800DABE71 /* Info.plist */; };
@@ -72,6 +73,7 @@
 		3734DD511EA3AF1700DC30C7 /* UIScrollView.Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollView.Rx.swift; sourceTree = "<group>"; };
 		3734DD541EA3B79700DC30C7 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3734DD561EA3B7A500DC30C7 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		3734DD5A1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKeyboardInfo.swift; sourceTree = "<group>"; };
 		37C681A31E9D4BF900DABE71 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		37C681FA1EA1F15800DABE71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37C681FB1EA1F15800DABE71 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		37C682101EA1F15800DABE71 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3734DD5A1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift */,
 				37C682111EA1F15800DABE71 /* Item.swift */,
 				37C682121EA1F15800DABE71 /* Tag.swift */,
 				37C682131EA1F15800DABE71 /* User.swift */,
@@ -542,6 +545,7 @@
 				37C682441EA1F15900DABE71 /* LoginNavigationController.swift in Sources */,
 				37C6825E1EA25CE700DABE71 /* AccessTokensResponse.swift in Sources */,
 				37C682311EA1F15900DABE71 /* NSObjectProtocol.className.swift in Sources */,
+				3734DD5B1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift in Sources */,
 				3734DD521EA3AF1700DC30C7 /* UIScrollView.Rx.swift in Sources */,
 				37C6823E1EA1F15900DABE71 /* User.swift in Sources */,
 				3734DD551EA3B79700DC30C7 /* LoadingView.swift in Sources */,

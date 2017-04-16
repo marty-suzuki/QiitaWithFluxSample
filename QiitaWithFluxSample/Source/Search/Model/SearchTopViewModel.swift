@@ -10,7 +10,6 @@ import RxSwift
 import Action
 
 final class SearchTopViewModel {
-    
     private let session: QiitaSession
     private let routeAction: RouteAction
     private let applicationAction: ApplicationAction
