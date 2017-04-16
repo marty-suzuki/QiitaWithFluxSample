@@ -13,6 +13,7 @@ final class SearchTopViewModel {
     
     private let session: QiitaSession
     private let routeAction: RouteAction
+    private let applicationAction: ApplicationAction
     
     let lastItemsRequest: Property<ItemsRequest?>
     private let _lastItemsRequest = Variable<ItemsRequest?>(nil)
@@ -20,21 +21,31 @@ final class SearchTopViewModel {
     let items: Property<[Item]>
     private let _items = Variable<[Item]>([])
     
+    let totalCount: Property<Int>
+    private let _totalCount = Variable<Int>(0)
+    
     let error: Property<Error?>
     private let _error = Variable<Error?>(nil)
     
-    private let perPage: Int = 50
-    private let searchAction: Action<ItemsRequest, ElementsResponse<Item>>
+    let hasNext: Property<Bool>
+    private let _hasNext = Variable<Bool>(true)
+    
+    let searchAction: Action<ItemsRequest, ElementsResponse<Item>>
+    private let perPage: Int = 20
     private let disposeBag = DisposeBag()
     
     init(session: QiitaSession = .shared,
-         routeAction: RouteAction = .shared) {
+         routeAction: RouteAction = .shared,
+         applicationAction: ApplicationAction = .shared) {
         self.session = session
         self.routeAction = routeAction
+        self.applicationAction = applicationAction
         
         self.lastItemsRequest = Property(_lastItemsRequest)
         self.items = Property(_items)
         self.error = Property(_error)
+        self.totalCount = Property(_totalCount)
+        self.hasNext = Property(_hasNext)
         
         self.searchAction = Action { [weak session] request in
             guard let session = session else { return .empty() }
@@ -50,6 +61,8 @@ final class SearchTopViewModel {
                 onNext: { [weak self] response in
                     guard let me = self else { return }
                     me._items.value.append(contentsOf: response.elements)
+                    me._totalCount.value = response.totalCount
+                    me._hasNext.value = (me._items.value.count < me._totalCount.value) && !response.elements.isEmpty
                 },
                 onError: { [weak self] error in
                     guard let me = self else { return }
@@ -63,10 +76,15 @@ final class SearchTopViewModel {
         let nextQuery: String
         let nextPage: Int
         if let query = query {
+            _lastItemsRequest.value = nil
+            _items.value.removeAll()
+            _hasNext.value = true
+            if query.isEmpty {
+                return
+            }
             nextQuery = query
             nextPage = 1
-            _items.value.removeAll()
-        } else if let lastItemsRequest = lastItemsRequest.value {
+        } else if hasNext.value, let lastItemsRequest = lastItemsRequest.value {
             nextQuery = lastItemsRequest.query
             nextPage = lastItemsRequest.page + 1
         } else {
@@ -81,5 +99,9 @@ final class SearchTopViewModel {
         let item = items.value[indexPath.row]
         guard let url = URL(string: item.url) else { return }
         routeAction.show(searchDisplayType: .webView(url))
+    }
+    
+    func removeAccessToken() {
+        applicationAction.removeAccessToken()
     }
 }

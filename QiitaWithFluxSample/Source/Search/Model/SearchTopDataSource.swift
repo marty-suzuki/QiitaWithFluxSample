@@ -11,6 +11,10 @@ import UIKit
 class SearchTopDataSource: NSObject {
     let viewModel: SearchTopViewModel
     
+    fileprivate var canShowLoadingView: Bool {
+        return viewModel.hasNext.value && !viewModel.items.value.isEmpty && viewModel.lastItemsRequest.value != nil
+    }
+    
     init(viewModel: SearchTopViewModel) {
         self.viewModel = viewModel
     }
@@ -35,6 +39,15 @@ extension SearchTopDataSource: UITableViewDataSource {
         cell.configure(with: item)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if canShowLoadingView {
+            let view = LoadingView.makeFromNib()
+            view.indicator.startAnimating()
+            return view
+        }
+        return nil
+    }
 }
 
 extension SearchTopDataSource: UITableViewDelegate {
@@ -45,5 +58,16 @@ extension SearchTopDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         viewModel.showItem(rowAt: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if canShowLoadingView {
+            return 44
+        }
+        return .leastNormalMagnitude
     }
 }

@@ -20,4 +20,7 @@ extension Nibable {
     static var reuseIdentifier: String {
         return className
     }
+    static func makeFromNib() -> Self {
+        return nib.instantiate(withOwner: nil, options: nil).first as! Self
+    }
 }

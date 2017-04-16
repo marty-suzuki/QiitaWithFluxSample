@@ -14,6 +14,9 @@
 		3734DD4C1EA345D100DC30C7 /* Nibable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD4B1EA345D100DC30C7 /* Nibable.swift */; };
 		3734DD4E1EA3466000DC30C7 /* UITableView.Nibable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD4D1EA3466000DC30C7 /* UITableView.Nibable.swift */; };
 		3734DD501EA3540D00DC30C7 /* Date.ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD4F1EA3540D00DC30C7 /* Date.ISO8601.swift */; };
+		3734DD521EA3AF1700DC30C7 /* UIScrollView.Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD511EA3AF1700DC30C7 /* UIScrollView.Rx.swift */; };
+		3734DD551EA3B79700DC30C7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD541EA3B79700DC30C7 /* LoadingView.swift */; };
+		3734DD571EA3B7A500DC30C7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3734DD561EA3B7A500DC30C7 /* LoadingView.xib */; };
 		37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C681A31E9D4BF900DABE71 /* WebKit.framework */; };
 		37C6822E1EA1F15900DABE71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C681FA1EA1F15800DABE71 /* Assets.xcassets */; };
 		37C6822F1EA1F15900DABE71 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37C681FB1EA1F15800DABE71 /* Info.plist */; };
@@ -66,6 +69,9 @@
 		3734DD4B1EA345D100DC30C7 /* Nibable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nibable.swift; sourceTree = "<group>"; };
 		3734DD4D1EA3466000DC30C7 /* UITableView.Nibable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.Nibable.swift; sourceTree = "<group>"; };
 		3734DD4F1EA3540D00DC30C7 /* Date.ISO8601.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.ISO8601.swift; sourceTree = "<group>"; };
+		3734DD511EA3AF1700DC30C7 /* UIScrollView.Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollView.Rx.swift; sourceTree = "<group>"; };
+		3734DD541EA3B79700DC30C7 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		3734DD561EA3B7A500DC30C7 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		37C681A31E9D4BF900DABE71 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		37C681FA1EA1F15800DABE71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37C681FB1EA1F15800DABE71 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,6 +150,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3734DD531EA3B6D700DC30C7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3734DD541EA3B79700DC30C7 /* LoadingView.swift */,
+				3734DD561EA3B7A500DC30C7 /* LoadingView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		37C681F91EA1F15800DABE71 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +187,7 @@
 			children = (
 				37C681FE1EA1F15800DABE71 /* Config.swift */,
 				37C682611EA2686700DABE71 /* DefaultsKeys.swift */,
+				3734DD531EA3B6D700DC30C7 /* View */,
 				37C681FF1EA1F15800DABE71 /* Extension */,
 				37C682071EA1F15800DABE71 /* Flux */,
 				37C682101EA1F15800DABE71 /* Model */,
@@ -198,6 +214,7 @@
 				3734DD4B1EA345D100DC30C7 /* Nibable.swift */,
 				3734DD4D1EA3466000DC30C7 /* UITableView.Nibable.swift */,
 				3734DD4F1EA3540D00DC30C7 /* Date.ISO8601.swift */,
+				3734DD511EA3AF1700DC30C7 /* UIScrollView.Rx.swift */,
 			);
 			path = Apple;
 			sourceTree = "<group>";
@@ -455,6 +472,7 @@
 				37C6822E1EA1F15900DABE71 /* Assets.xcassets in Resources */,
 				37C682471EA1F15900DABE71 /* LoginViewController.storyboard in Resources */,
 				37C6824C1EA1F15900DABE71 /* SearchTopViewController.storyboard in Resources */,
+				3734DD571EA3B7A500DC30C7 /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +542,9 @@
 				37C682441EA1F15900DABE71 /* LoginNavigationController.swift in Sources */,
 				37C6825E1EA25CE700DABE71 /* AccessTokensResponse.swift in Sources */,
 				37C682311EA1F15900DABE71 /* NSObjectProtocol.className.swift in Sources */,
+				3734DD521EA3AF1700DC30C7 /* UIScrollView.Rx.swift in Sources */,
 				37C6823E1EA1F15900DABE71 /* User.swift in Sources */,
+				3734DD551EA3B79700DC30C7 /* LoadingView.swift in Sources */,
 				37C682401EA1F15900DABE71 /* ItemsRequest.swift in Sources */,
 				37C682371EA1F15900DABE71 /* RouteDispatcher.swift in Sources */,
 				3734DD4C1EA345D100DC30C7 /* Nibable.swift in Sources */,
