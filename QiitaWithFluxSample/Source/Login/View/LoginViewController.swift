@@ -15,47 +15,37 @@ class LoginViewController: UIViewController, Storyboardable {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
 
     let webView: WKWebView = WKWebView(frame: .zero)
-    private let request = OauthAuthorizeRequest(scope: [.read, .write])
-    fileprivate let disposeBag = DisposeBag()
+    
+    private let viewModel = LoginViewModel()
+    private(set) lazy var dataSource: LoginViewDataSource = .init(viewModel: self.viewModel)
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        observeApplicationStore()
+        observeViewModel()
         configureWebView()
     }
     
     private func configureWebView() {
-        webView.navigationDelegate = self
+        webView.navigationDelegate = dataSource
         view.addSubview(webView, toEdges: .zero)
         view.bringSubview(toFront: webView)
-        
-        let url: URL
-        do {
-            url = try request.createURL()
-        } catch let e {
-            fatalError("\(e)")
-        }
-        webView.load(URLRequest(url: url))
+        webView.load(URLRequest(url: viewModel.authorizeUrl))
     }
 
-    private func observeApplicationStore() {
-        Observable.combineLatest(
-                ApplicationStore.shared.accessToken.asObservable()
-                    .shareReplayLatestWhileConnected(),
-                ApplicationStore.shared.accessTokenError
-            )
+    private func observeViewModel() {
+        viewModel.isLoadgin.asObservable()
+            .shareReplayLatestWhileConnected()
             .observeOn(ConcurrentMainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.loadigView(isHidden: true)
+            .subscribe(onNext: { [weak self] in
+                self?.loadigView(isHidden: $0)
             })
             .addDisposableTo(disposeBag)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     fileprivate func loadigView(isHidden: Bool) {
@@ -65,32 +55,5 @@ class LoginViewController: UIViewController, Storyboardable {
         } else {
             indicator.startAnimating()
         }
-    }
-}
-
-extension LoginViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
-        guard let url = navigationAction.request.url else {
-            decisionHandler(.cancel)
-            return
-        }
-        if url.absoluteString.hasPrefix(Config.shared.redirectUrl) {
-            guard
-                let URLComponents = URLComponents(string: url.absoluteString),
-                let items = URLComponents.queryItems,
-                let codeItem = items.filter({ $0.name == "code"}).first,
-                let code = codeItem.value
-            else {
-                fatalError("can not find \"code\" from URL query")
-            }
-            
-            DispatchQueue.main.async { [weak self] in
-                self?.loadigView(isHidden: false)
-            }
-            ApplicationAction.shared.requestAccessToken(withCode: code)
-            decisionHandler(.cancel)
-            return
-        }
-        decisionHandler(.allow)
     }
 }

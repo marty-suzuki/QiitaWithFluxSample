@@ -14,20 +14,15 @@ class LoginTopViewController: UIViewController, Storyboardable {
 
     @IBOutlet weak var loginButton: UIButton!
     
-    private let disposeBag = DisposeBag()
+    private(set) lazy var viewModel: LoginTopViewModel = .init(loginButtonTap: self.loginButton.rx.tap)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        loginButton.rx.tap
-            .map { LoginDisplayType.webView }
-            .bindNext(RouteAction.shared.show)
-            .addDisposableTo(disposeBag)
+        
+        _ = viewModel
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

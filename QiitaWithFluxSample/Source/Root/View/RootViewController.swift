@@ -33,26 +33,24 @@ class RootViewController: UIViewController {
         }
     }
     
+    private let viewModel = RootViewModel()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
-        observeRoute()
-        observeApplication()
+        observeViewModel()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    private func observeRoute() {
-        let routeStore = RouteStore.shared
-        
-        routeStore.login
+    private func observeViewModel() {
+        viewModel.login
             .observeOn(ConcurrentMainScheduler.instance)
+            .filter { $0 != nil }
+            .map { $0! }
             .subscribe(onNext: { [weak self] displayType in
                 guard let me = self else { return }
                 let loginNC: LoginNavigationController
@@ -77,8 +75,10 @@ class RootViewController: UIViewController {
             })
             .addDisposableTo(disposeBag)
         
-        routeStore.search
+        viewModel.search
             .observeOn(ConcurrentMainScheduler.instance)
+            .filter { $0 != nil }
+            .map { $0! }
             .subscribe(onNext: { [weak self] displayType in
                 guard let me = self else { return }
                 let searchNC: SearchNavigationController
@@ -101,25 +101,6 @@ class RootViewController: UIViewController {
                     searchNC.pushViewController(SFSafariViewController(url: url), animated:  true)
                 }
             })
-            .addDisposableTo(disposeBag)
-    }
-
-    private func observeApplication() {
-        let applicationStore = ApplicationStore.shared
-        
-        let accessTokenObservable = applicationStore.accessToken.asObservable()
-            .shareReplayLatestWhileConnected()
-        
-        accessTokenObservable
-            .filter { $0 != nil }
-            .map { _ in SearchDisplayType.root }
-            .bindNext(RouteAction.shared.show)
-            .addDisposableTo(disposeBag)
-        
-        accessTokenObservable
-            .filter { $0 == nil }
-            .map { _ in LoginDisplayType.root }
-            .bindNext(RouteAction.shared.show)
             .addDisposableTo(disposeBag)
     }
 }

@@ -21,11 +21,11 @@ enum SearchDisplayType {
 final class RouteStore {
     static let shared = RouteStore()
     
-    let login: Observable<LoginDisplayType>
-    private let _login = PublishSubject<LoginDisplayType>()
+    let login: Observable<LoginDisplayType?>
+    private let _login = BehaviorSubject<LoginDisplayType?>(value: nil)
     
-    let search: Observable<SearchDisplayType>
-    private let _search = PublishSubject<SearchDisplayType>()
+    let search: Observable<SearchDisplayType?>
+    private let _search = BehaviorSubject<SearchDisplayType?>(value: nil)
     
     private let disposeBag = DisposeBag()
     

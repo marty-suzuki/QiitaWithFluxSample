@@ -26,7 +26,6 @@ class SearchTopViewController: UIViewController, Storyboardable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         dataSource.configure(with: tableView)
         
         configureSearchBar()
@@ -142,6 +141,5 @@ class SearchTopViewController: UIViewController, Storyboardable {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchTopDataSource: NSObject {
+final class SearchTopDataSource: NSObject {
     let viewModel: SearchTopViewModel
     
     fileprivate var canShowLoadingView: Bool {

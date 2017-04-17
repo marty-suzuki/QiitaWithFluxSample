@@ -24,13 +24,17 @@ This is a sample project that uses **Flux** and **MVVM** features.
 ## Structures
 
 - RootViewController (switching currentViewController based on RouteStore's value)
+  - RootViewModel
   - LoginNavigationController
     - LoginTopViewController
+      - LoginTopViewModel
     - LoginViewController (loading Qiita web site and authorizing user via ApplicationAction)
+      - LoginViewModel
+      - LoginViewDataSource
   - SearchNavigationController
     - SearchTopViewController (searching items from Qiita)
-      - SearchTopDataSource
       - SearchTopViewModel
+      - SearchTopDataSource
 
 ![structure](./Images/structure.jpeg)
 
