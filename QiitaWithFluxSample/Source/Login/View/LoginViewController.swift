@@ -35,8 +35,7 @@ class LoginViewController: UIViewController, Storyboardable {
     }
 
     private func observeViewModel() {
-        viewModel.isLoadgin.asObservable()
-            .shareReplayLatestWhileConnected()
+        viewModel.isLoading.asObservable()
             .observeOn(ConcurrentMainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 self?.loadigView(isHidden: $0)

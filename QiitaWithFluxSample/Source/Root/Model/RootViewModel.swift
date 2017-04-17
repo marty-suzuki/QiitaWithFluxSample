@@ -19,7 +19,6 @@ final class RootViewModel {
          routeStore: RouteStore = .shared) {
         
         let accessTokenObservable = applicationStore.accessToken.asObservable()
-            .shareReplayLatestWhileConnected()
         
         accessTokenObservable
             .filter { $0 != nil }

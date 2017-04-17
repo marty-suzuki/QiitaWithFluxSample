@@ -30,10 +30,8 @@ final class RouteStore {
     private let disposeBag = DisposeBag()
     
     init(dispatcher: AnyObservableDispatcher<RouteDispatcher> = .init(.shared)) {
-        self.login = _login.asObservable()
-                        .shareReplayLatestWhileConnected()
-        self.search = _search.asObservable()
-                        .shareReplayLatestWhileConnected()
+        self.login = _login
+        self.search = _search
         
         dispatcher.login
             .bindTo(_login)

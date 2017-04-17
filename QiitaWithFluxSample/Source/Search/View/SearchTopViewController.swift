@@ -101,7 +101,7 @@ class SearchTopViewController: UIViewController, Storyboardable {
     }
     
     private func observeViewModel() {
-        let itemsObservable = viewModel.items.changed.shareReplayLatestWhileConnected()
+        let itemsObservable = viewModel.items.changed
         Observable.combineLatest(
                 itemsObservable,
                 viewModel.searchAction.executing
@@ -110,7 +110,7 @@ class SearchTopViewController: UIViewController, Storyboardable {
             .bindTo(noResultsLabel.rx.isHidden)
             .addDisposableTo(disposeBag)
         
-        let hasNextObservable = viewModel.hasNext.changed.shareReplayLatestWhileConnected()
+        let hasNextObservable = viewModel.hasNext.changed
         Observable.combineLatest(
                 itemsObservable,
                 hasNextObservable
@@ -124,7 +124,7 @@ class SearchTopViewController: UIViewController, Storyboardable {
         Observable.combineLatest(
                 itemsObservable,
                 hasNextObservable,
-                viewModel.lastItemsRequest.changed.shareReplayLatestWhileConnected()
+                viewModel.lastItemsRequest.changed
             ) { $0 }
             .observeOn(ConcurrentMainScheduler.instance)
             .map { !($0.0.isEmpty && $0.1 && $0.2 != nil) }

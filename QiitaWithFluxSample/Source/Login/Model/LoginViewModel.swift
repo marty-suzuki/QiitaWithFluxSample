@@ -9,7 +9,7 @@
 import RxSwift
 
 final class LoginViewModel {
-    let isLoadgin: Property<Bool>
+    let isLoading: Property<Bool>
     private let _isLoading = Variable<Bool>(false)
     
     let authorizeRequest = OauthAuthorizeRequest(scope: [.read, .write])
@@ -21,7 +21,7 @@ final class LoginViewModel {
     init(applicationStore: ApplicationStore = .shared,
          applicationAction: ApplicationAction = .shared) {
         self.applicationAction = applicationAction
-        self.isLoadgin = Property(_isLoading)
+        self.isLoading = Property(_isLoading)
         
         do {
             self.authorizeUrl = try authorizeRequest.createURL()
@@ -30,8 +30,7 @@ final class LoginViewModel {
         }
         
         Observable.combineLatest(
-                applicationStore.accessToken.asObservable()
-                    .shareReplayLatestWhileConnected(),
+                applicationStore.accessToken.asObservable(),
                 applicationStore.accessTokenError
             )
             .map { _ in false }

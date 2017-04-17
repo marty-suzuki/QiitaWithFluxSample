@@ -26,8 +26,7 @@ final class ApplicationStore {
         }
         
         self.accessToken = Property(_accessToken)
-        self.accessTokenError = _accessTokenError.asObservable()
-                .shareReplayLatestWhileConnected()
+        self.accessTokenError = _accessTokenError
         
         dispatcher.accessToken
             .do(onNext: { Defaults[.accessToken] = $0 })

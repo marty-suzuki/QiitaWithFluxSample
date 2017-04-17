@@ -16,6 +16,7 @@ final class LoginTopViewModel {
          routeAction: RouteAction = .shared) {
         
         loginButtonTap
+            .shareReplayLatestWhileConnected()
             .map { LoginDisplayType.webView }
             .bindNext(routeAction.show)
             .addDisposableTo(disposeBag)
