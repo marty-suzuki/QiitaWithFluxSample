@@ -30,10 +30,10 @@ extension AnyObserverDispatcher where Dispatcher: RouteDispatcher {
 
 extension AnyObservableDispatcher where Dispatcher: RouteDispatcher {
     var login: Observable<LoginDisplayType> {
-        return dispatcher.login.asObservable()
+        return dispatcher.login
     }
     
     var search: Observable<SearchDisplayType> {
-        return dispatcher.search.asObservable()
+        return dispatcher.search
     }
 }

@@ -55,7 +55,7 @@ final class SearchTopViewModel {
     }
     
     private func observeAction() {
-        searchAction.elements.asObservable()
+        searchAction.elements
             .subscribe(
                 onNext: { [weak self] response in
                     guard let me = self else { return }

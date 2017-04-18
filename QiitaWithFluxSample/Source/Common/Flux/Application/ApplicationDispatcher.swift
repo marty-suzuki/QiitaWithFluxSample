@@ -28,9 +28,9 @@ extension AnyObserverDispatcher where Dispatcher: ApplicationDispatcher {
 
 extension AnyObservableDispatcher where Dispatcher: ApplicationDispatcher {
     var accessToken: Observable<String?> {
-        return dispatcher.accessToken.asObservable()
+        return dispatcher.accessToken
     }
     var accessTokenError: Observable<Error> {
-        return dispatcher.accessTokenError.asObservable()
+        return dispatcher.accessTokenError
     }
 }

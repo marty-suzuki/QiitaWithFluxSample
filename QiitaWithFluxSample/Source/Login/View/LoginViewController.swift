@@ -11,9 +11,7 @@ import RxSwift
 import WebKit
 
 class LoginViewController: UIViewController, Storyboardable {
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
-
+    let loadingView = LoadingView(indicatorStyle: .whiteLarge)
     let webView: WKWebView = WKWebView(frame: .zero)
     
     private let viewModel = LoginViewModel()
@@ -23,8 +21,9 @@ class LoginViewController: UIViewController, Storyboardable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        observeViewModel()
         configureWebView()
+        configureLoadingView()
+        observeViewModel()
     }
     
     private func configureWebView() {
@@ -33,26 +32,20 @@ class LoginViewController: UIViewController, Storyboardable {
         view.bringSubview(toFront: webView)
         webView.load(URLRequest(url: viewModel.authorizeUrl))
     }
+    
+    private func configureLoadingView() {
+        view.addSubview(loadingView, toEdges: .zero)
+        loadingView.isHidden = true
+    }
 
     private func observeViewModel() {
-        viewModel.isLoading.asObservable()
+        viewModel.isLoading.changed
             .observeOn(ConcurrentMainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-                self?.loadigView(isHidden: $0)
-            })
+            .bindTo(loadingView.rx.isHiddenAndAnimating)
             .addDisposableTo(disposeBag)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    fileprivate func loadigView(isHidden: Bool) {
-        loadingView.isHidden = isHidden
-        if isHidden {
-            indicator.stopAnimating()
-        } else {
-            indicator.startAnimating()
-        }
     }
 }

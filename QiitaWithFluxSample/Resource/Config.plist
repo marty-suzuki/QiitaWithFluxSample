@@ -5,10 +5,10 @@
 	<key>baseUrl</key>
 	<string>https://qiita.com/api</string>
 	<key>redirectUrl</key>
-	<string>https://qiita.api.client.sample</string>
+	<string></string>
 	<key>clientId</key>
-	<string>131cbae5ffc547ac8aea7419903404a4ce3b5cfd</string>
+	<string></string>
 	<key>clientSecret</key>
-	<string>e776cca59321d293542acf70dafd5ba1725398d0</string>
+	<string></string>
 </dict>
 </plist>

@@ -42,8 +42,8 @@ extension SearchTopDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if canShowLoadingView {
-            let view = LoadingView.makeFromNib()
-            view.indicator.startAnimating()
+            let view = LoadingView(indicatorStyle: .gray)
+            view.isHidden = false
             return view
         }
         return nil
