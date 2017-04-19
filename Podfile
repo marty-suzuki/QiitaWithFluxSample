@@ -13,4 +13,9 @@ target 'QiitaWithFluxSample' do
   pod 'SwiftyUserDefaults', '~> 3.0'
   pod 'Action', '~> 2.0'
   pod 'Kingfisher', '~> 3.0'
+
+  target 'QiitaWithFluxSampleTests' do
+    inherit! :search_paths
+  end
+
 end

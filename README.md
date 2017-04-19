@@ -52,7 +52,7 @@ After that, fill **redirectUrl**, **clientId** and **clientSecret** in Config.sw
 ## Libraries
 
 - [Action](https://github.com/RxSwiftCommunity/Action) 2.2.2
-- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.3.1
+- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.4.0
 - [APIKit](https://github.com/ishkawa/APIKit) 3.1.1
 - [Himotoki](https://github.com/ikesyo/Himotoki) 3.0.1
 - [Kingfisher](https://github.com/onevcat/Kingfisher) 3.6.2

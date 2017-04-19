@@ -7,9 +7,9 @@ PODS:
   - Himotoki (3.0.1)
   - Kingfisher (3.6.2)
   - Result (3.2.1)
-  - RxCocoa (3.3.1):
-    - RxSwift (~> 3.3)
-  - RxSwift (3.3.1)
+  - RxCocoa (3.4.0):
+    - RxSwift (~> 3.4)
+  - RxSwift (3.4.0)
   - SwiftyUserDefaults (3.0.0)
 
 DEPENDENCIES:
@@ -27,10 +27,10 @@ SPEC CHECKSUMS:
   Himotoki: 85fda41d4d0e14f7228317a3b474175cdfb8f515
   Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
-  RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
-  RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
+  RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
+  RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
 
-PODFILE CHECKSUM: 786eac7f5ea33d4e96c9b5c4574566f645d3a151
+PODFILE CHECKSUM: 4b1a525d1d6cb26db7df591e8dd956770fef0777
 
 COCOAPODS: 1.2.0

@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import RxCocoa
 import SwiftyUserDefaults
 
 final class ApplicationStore {

@@ -87,37 +87,6 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/APIKit/APIKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Action/Action.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Himotoki/Himotoki.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Result/Result.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyUserDefaults/SwiftyUserDefaults.framework"
-fi
-if [[ "$CONFIGURATION" == "Test" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/APIKit/APIKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Action/Action.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Himotoki/Himotoki.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Result/Result.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyUserDefaults/SwiftyUserDefaults.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/APIKit/APIKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Action/Action.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Himotoki/Himotoki.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Result/Result.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyUserDefaults/SwiftyUserDefaults.framework"
-fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
 fi

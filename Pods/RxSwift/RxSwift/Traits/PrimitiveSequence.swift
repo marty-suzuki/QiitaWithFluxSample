@@ -124,7 +124,25 @@ extension PrimitiveSequenceType where TraitType == SingleTrait {
             case .error(let error):
                 observer(.error(error))
             case .completed:
-                rxFatalError("SingleProtocol")
+                rxFatalError("Singles can't emit a completion event")
+            }
+        }
+    }
+
+    /**
+     Subscribes a success handler, and an error handler for this sequence.
+
+     - parameter onSuccess: Action to invoke for each element in the observable sequence.
+     - parameter onError: Action to invoke upon errored termination of the observable sequence.
+     - returns: Subscription object used to unsubscribe from the observable sequence.
+     */
+    public func subscribe(onSuccess: ((ElementType) -> Void)? = nil, onError: ((Swift.Error) -> Void)? = nil) -> Disposable {
+        return self.primitiveSequence.subscribe { event in
+            switch event {
+            case .success(let element):
+                onSuccess?(element)
+            case .error(let error):
+                onError?(error)
             }
         }
     }
@@ -195,6 +213,27 @@ public extension PrimitiveSequenceType where TraitType == MaybeTrait {
             }
         }
     }
+
+    /**
+     Subscribes a success handler, an error handler, and a completion handler for this sequence.
+
+     - parameter onSuccess: Action to invoke for each element in the observable sequence.
+     - parameter onError: Action to invoke upon errored termination of the observable sequence.
+     - parameter onCompleted: Action to invoke upon graceful termination of the observable sequence.
+     - returns: Subscription object used to unsubscribe from the observable sequence.
+     */
+    public func subscribe(onSuccess: ((ElementType) -> Void)? = nil, onError: ((Swift.Error) -> Void)? = nil, onCompleted: (() -> Void)? = nil) -> Disposable {
+        return self.primitiveSequence.subscribe { event in
+            switch event {
+            case .success(let element):
+                onSuccess?(element)
+            case .error(let error):
+                onError?(error)
+            case .completed:
+                onCompleted?()
+            }
+        }
+    }
 }
 
 // </Maybe>
@@ -248,11 +287,29 @@ public extension PrimitiveSequenceType where TraitType == CompletableTrait, Elem
 
             switch event {
             case .next:
-                rxFatalError("SingleProtocol")
+                rxFatalError("Completables can't emit values")
             case .error(let error):
                 observer(.error(error))
             case .completed:
                 observer(.completed)
+            }
+        }
+    }
+
+    /**
+     Subscribes a completion handler and an error handler for this sequence.
+
+     - parameter onCompleted: Action to invoke upon graceful termination of the observable sequence.
+     - parameter onError: Action to invoke upon errored termination of the observable sequence.
+     - returns: Subscription object used to unsubscribe from the observable sequence.
+     */
+    public func subscribe(onCompleted: (() -> Void)? = nil, onError: ((Swift.Error) -> Void)? = nil) -> Disposable {
+        return self.primitiveSequence.subscribe { event in
+            switch event {
+            case .error(let error):
+                onError?(error)
+            case .completed:
+                onCompleted?()
             }
         }
     }
@@ -507,6 +564,20 @@ extension PrimitiveSequence {
     public func retryWhen<TriggerObservable: ObservableType>(_ notificationHandler: @escaping (Observable<Swift.Error>) -> TriggerObservable)
         -> PrimitiveSequence<Trait, Element> {
         return PrimitiveSequence(raw: source.retryWhen(notificationHandler))
+    }
+
+    /**
+     Prints received events for all observers on standard output.
+
+     - seealso: [do operator on reactivex.io](http://reactivex.io/documentation/operators/do.html)
+
+     - parameter identifier: Identifier that is printed together with event description to standard output.
+     - parameter trimOutput: Should output be trimmed to max 40 characters.
+     - returns: An observable sequence whose events are printed to standard output.
+     */
+    public func debug(_ identifier: String? = nil, trimOutput: Bool = false, file: String = #file, line: UInt = #line, function: String = #function)
+        -> PrimitiveSequence<Trait, Element> {
+            return PrimitiveSequence(raw: source.debug(identifier, trimOutput: trimOutput, file: file, line: line, function: function))
     }
 }
 

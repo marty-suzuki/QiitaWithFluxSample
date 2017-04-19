@@ -7,9 +7,14 @@
 //
 
 import APIKit
+import Result
 import RxSwift
 
-class QiitaSession {
+protocol SessionType {
+    func send<T: QiitaRequest>(_ request: T) -> Observable<T.Response>
+}
+
+final class QiitaSession: SessionType {
     
     static let shared = QiitaSession()
     

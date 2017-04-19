@@ -14,7 +14,11 @@ final class ApplicationDispatcher: DispatcherType {
     fileprivate let accessToken = PublishSubject<String?>()
     fileprivate let accessTokenError = PublishSubject<Error>()
     
+    #if TEST
+    init() {}
+    #else
     private init() {}
+    #endif
 }
 
 extension AnyObserverDispatcher where Dispatcher: ApplicationDispatcher {
