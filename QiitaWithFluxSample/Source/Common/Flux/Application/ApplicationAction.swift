@@ -36,7 +36,7 @@ final class ApplicationAction {
         session.send(request)
             .map { Optional.some($0.token) }
             .do(onError: dispatcher.accessTokenError.onNext)
-            .bindNext(dispatcher.accessToken.onNext)
+            .subscribe(onNext: dispatcher.accessToken.onNext)
             .addDisposableTo(disposeBag)
     }
     

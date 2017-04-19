@@ -41,7 +41,7 @@ class LoginViewController: UIViewController, Storyboardable {
     private func observeViewModel() {
         viewModel.isLoading.changed
             .observeOn(ConcurrentMainScheduler.instance)
-            .bindTo(loadingView.rx.isHiddenAndAnimating)
+            .bind(to: loadingView.rx.isHiddenAndAnimating)
             .addDisposableTo(disposeBag)
     }
     

@@ -34,11 +34,12 @@ class RouteStoreCase: XCTestCase {
         let loginDisplayTypeExpectation = expectation(description: "loginDisplayType is .root")
         
         let disposeBag = DisposeBag()
-        routeStore.login.skip(1).subscribe(onNext: {
-            XCTAssertEqual($0, LoginDisplayType.root)
-            loginDisplayTypeExpectation.fulfill()
-        })
-        .addDisposableTo(disposeBag)
+        routeStore.login.skip(1)
+            .subscribe(onNext: {
+                XCTAssertEqual($0, LoginDisplayType.root)
+                loginDisplayTypeExpectation.fulfill()
+            })
+            .addDisposableTo(disposeBag)
         routeDispatcher.login.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -54,18 +55,19 @@ class RouteStoreCase: XCTestCase {
         let searchDisplayTypeExpectation = expectation(description: "searchDisplayType is .webView")
         
         let disposeBag = DisposeBag()
-        routeStore.search.skip(1).subscribe(onNext: {
-            let url: URL?
-            if case .webView(let value)? = $0 {
-                url = value
-            } else {
-                url = nil
-            }
-            XCTAssertNotNil(url)
-            XCTAssertEqual(url?.absoluteString, "https://github.com")
-            searchDisplayTypeExpectation.fulfill()
-        })
-        .addDisposableTo(disposeBag)
+        routeStore.search.skip(1)
+            .subscribe(onNext: {
+                let url: URL?
+                if case .webView(let value)? = $0 {
+                    url = value
+                } else {
+                    url = nil
+                }
+                XCTAssertNotNil(url)
+                XCTAssertEqual(url?.absoluteString, "https://github.com")
+                searchDisplayTypeExpectation.fulfill()
+            })
+            .addDisposableTo(disposeBag)
         routeDispatcher.search.onNext(.webView(url))
         waitForExpectations(timeout: 0.1, handler: nil)
     }

@@ -10,7 +10,7 @@ import APIKit
 import Result
 import RxSwift
 
-protocol SessionType {
+protocol SessionType: class {
     func send<T: QiitaRequest>(_ request: T) -> Observable<T.Response>
 }
 

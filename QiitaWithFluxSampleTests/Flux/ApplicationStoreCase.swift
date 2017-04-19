@@ -34,11 +34,12 @@ class ApplicationStoreCase: XCTestCase {
         let nonNilAccessTokenExpectation = expectation(description: "accessToken is non-nil")
         
         let disposeBag = DisposeBag()
-        applicationStore.accessToken.asObservable().skip(1).subscribe(onNext: {
-            XCTAssertEqual($0, "accessToken")
-            nonNilAccessTokenExpectation.fulfill()
-        })
-        .addDisposableTo(disposeBag)
+        applicationStore.accessToken.asObservable().skip(1)
+            .subscribe(onNext: {
+                XCTAssertEqual($0, "accessToken")
+                nonNilAccessTokenExpectation.fulfill()
+            })
+            .addDisposableTo(disposeBag)
         applicationDispatcher.accessToken.onNext("accessToken")
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -49,11 +50,12 @@ class ApplicationStoreCase: XCTestCase {
         let nilAccessTokenExpectation = expectation(description: "accessToken is nil")
         
         let disposeBag = DisposeBag()
-        applicationStore.accessToken.asObservable().skip(1).subscribe(onNext: {
-            XCTAssertNil($0)
-            nilAccessTokenExpectation.fulfill()
-        })
-        .addDisposableTo(disposeBag)
+        applicationStore.accessToken.asObservable().skip(1)
+            .subscribe(onNext: {
+                XCTAssertNil($0)
+                nilAccessTokenExpectation.fulfill()
+            })
+            .addDisposableTo(disposeBag)
         applicationDispatcher.accessToken.onNext(nil)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -64,11 +66,12 @@ class ApplicationStoreCase: XCTestCase {
         let errorExpectation = expectation(description: "error is NSCocoaErrorDomain")
         
         let disposeBag = DisposeBag()
-        applicationStore.accessTokenError.subscribe(onNext: {
-            XCTAssertEqual(($0 as NSError).domain, NSCocoaErrorDomain)
-            errorExpectation.fulfill()
-        })
-        .addDisposableTo(disposeBag)
+        applicationStore.accessTokenError
+            .subscribe(onNext: {
+                XCTAssertEqual(($0 as NSError).domain, NSCocoaErrorDomain)
+                errorExpectation.fulfill()
+            })
+            .addDisposableTo(disposeBag)
         applicationDispatcher.accessTokenError.onNext(NSError(domain: NSCocoaErrorDomain, code: -9999, userInfo: nil))
         waitForExpectations(timeout: 0.1, handler: nil)
     }

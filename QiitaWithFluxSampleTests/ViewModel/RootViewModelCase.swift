@@ -6,8 +6,6 @@
 //  Copyright © 2017年 marty-suzuki. All rights reserved.
 //
 
-import Foundation
-
 import XCTest
 import RxSwift
 
@@ -68,10 +66,11 @@ class RootViewModelCase: XCTestCase {
         let loginDisplayTypeExpectation = expectation(description: "loginDisplayType is .root")
         
         let disposeBag = DisposeBag()
-        routeObservableDispatcher.login.subscribe(onNext: {
-            XCTAssertEqual($0, LoginDisplayType.root)
-            loginDisplayTypeExpectation.fulfill()
-        })
+        routeObservableDispatcher.login
+            .subscribe(onNext: {
+                XCTAssertEqual($0, LoginDisplayType.root)
+                loginDisplayTypeExpectation.fulfill()
+            })
             .addDisposableTo(disposeBag)
         applicationDispatcher.accessToken.onNext(nil)
         waitForExpectations(timeout: 0.1, handler: nil)
@@ -105,16 +104,17 @@ class RootViewModelCase: XCTestCase {
         let searchDisplayTypeExpectation = expectation(description: "searchDisplayType is .root")
         
         let disposeBag = DisposeBag()
-        routeObservableDispatcher.search.subscribe(onNext: {
-            let isSearchRoot: Bool
-            if case .root = $0 {
-                isSearchRoot = true
-            } else {
-                isSearchRoot = false
-            }
-            XCTAssertTrue(isSearchRoot)
-            searchDisplayTypeExpectation.fulfill()
-        })
+        routeObservableDispatcher.search
+            .subscribe(onNext: {
+                let isSearchRoot: Bool
+                if case .root = $0 {
+                    isSearchRoot = true
+                } else {
+                    isSearchRoot = false
+                }
+                XCTAssertTrue(isSearchRoot)
+                searchDisplayTypeExpectation.fulfill()
+            })
             .addDisposableTo(disposeBag)
         applicationDispatcher.accessToken.onNext("accessToken")
         waitForExpectations(timeout: 0.1, handler: nil)

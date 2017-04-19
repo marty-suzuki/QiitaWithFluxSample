@@ -16,14 +16,15 @@ struct OauthAuthorizeRequest {
     
     let state: String = UUID().uuidString
     let scope: [QiitaScope]
+    let config: Config
     
     func createURL() throws -> URL {
-        let urlString = Config.shared.baseUrl + QiitaApiVersion.v2.rawValue + "/oauth/authorize"
+        let urlString = config.baseUrl + QiitaApiVersion.v2.rawValue + "/oauth/authorize"
         var component = try URLComponents(string: urlString) ?? {
             throw Error.failedInitializingURLComponents(urlString)
         }()
         component.queryItems = [
-            URLQueryItem(name: "client_id", value: Config.shared.clientId),
+            URLQueryItem(name: "client_id", value: config.clientId),
             URLQueryItem(name: "scope", value: scope.reduce("") { $0 + ($0.isEmpty ? "" : "+") + $1.rawValue }),
             URLQueryItem(name: "state", value: state)
         ]

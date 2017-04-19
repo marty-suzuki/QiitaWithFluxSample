@@ -12,16 +12,18 @@ final class LoginViewModel {
     let isLoading: Property<Bool>
     private let _isLoading = Variable<Bool>(false)
     
-    let authorizeRequest = OauthAuthorizeRequest(scope: [.read, .write])
+    let authorizeRequest: OauthAuthorizeRequest
     let authorizeUrl: URL
     
     private let applicationAction: ApplicationAction
     private let disposeBag = DisposeBag()
     
     init(applicationStore: ApplicationStore = .shared,
-         applicationAction: ApplicationAction = .shared) {
+         applicationAction: ApplicationAction = .shared,
+         config: Config = .shared) {
         self.applicationAction = applicationAction
         self.isLoading = Property(_isLoading)
+        self.authorizeRequest = OauthAuthorizeRequest(scope: [.read, .write], config: config)
         
         do {
             self.authorizeUrl = try authorizeRequest.createURL()
@@ -29,12 +31,13 @@ final class LoginViewModel {
             fatalError("\(e)")
         }
         
-        Observable.combineLatest(
-                applicationStore.accessToken.asObservable(),
-                applicationStore.accessTokenError
-            )
+        applicationStore.accessToken.asObservable()
             .map { _ in false }
-            .bindTo(_isLoading)
+            .bind(to: _isLoading)
+            .addDisposableTo(disposeBag)
+        applicationStore.accessTokenError
+            .map { _ in false }
+            .bind(to: _isLoading)
             .addDisposableTo(disposeBag)
     }
     

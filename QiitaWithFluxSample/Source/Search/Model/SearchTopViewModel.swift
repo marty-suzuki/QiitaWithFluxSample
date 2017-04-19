@@ -10,7 +10,7 @@ import RxSwift
 import Action
 
 final class SearchTopViewModel {
-    private let session: QiitaSession
+    private let session: SessionType
     private let routeAction: RouteAction
     private let applicationAction: ApplicationAction
     
@@ -33,7 +33,7 @@ final class SearchTopViewModel {
     private let perPage: Int = 20
     private let disposeBag = DisposeBag()
     
-    init(session: QiitaSession = .shared,
+    init(session: SessionType = QiitaSession.shared,
          routeAction: RouteAction = .shared,
          applicationAction: ApplicationAction = .shared) {
         self.session = session

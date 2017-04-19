@@ -35,11 +35,11 @@ final class RouteStore {
         self.search = _search
         
         dispatcher.login
-            .bindTo(_login)
+            .bind(to: _login)
             .addDisposableTo(disposeBag)
         
         dispatcher.search
-            .bindTo(_search)
+            .bind(to: _search)
             .addDisposableTo(disposeBag)
     }
 }

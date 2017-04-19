@@ -72,7 +72,7 @@ public final class Property<Element> {
         _variable = Variable(initial_)
 
         observable
-            .bindTo(_variable)
+            .bind(to: _variable)
             .addDisposableTo(disposeBag)
     }
 
