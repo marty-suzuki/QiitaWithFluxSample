@@ -68,6 +68,8 @@
 		9D39E8DD1EA73477009785E0 /* RxProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682061EA1F15800DABE71 /* RxProperty.swift */; };
 		9D39E8DE1EA73496009785E0 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682611EA2686700DABE71 /* DefaultsKeys.swift */; };
 		9D39E8FE1EA74985009785E0 /* ApplicationStoreCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E8FD1EA74985009785E0 /* ApplicationStoreCase.swift */; };
+		9D39E9011EA77074009785E0 /* RootViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E9001EA77074009785E0 /* RootViewModelCase.swift */; };
+		9D39E9021EA770A3009785E0 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40C1EA4858E00E5CC27 /* RootViewModel.swift */; };
 		9D7FB6A01EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */; };
 		9D7FB6A21EA4B4DE0044F8C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A11EA4B4DE0044F8C4 /* AppDelegate.swift */; };
 		9D7FB6AC1EA4B50B0044F8C4 /* QiitaSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A41EA4B50B0044F8C4 /* QiitaSession.swift */; };
@@ -154,6 +156,7 @@
 		9D39E8CB1EA72D71009785E0 /* RouteActionCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteActionCase.swift; sourceTree = "<group>"; };
 		9D39E8CE1EA73067009785E0 /* ApplicationActionCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationActionCase.swift; sourceTree = "<group>"; };
 		9D39E8FD1EA74985009785E0 /* ApplicationStoreCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationStoreCase.swift; sourceTree = "<group>"; };
+		9D39E9001EA77074009785E0 /* RootViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModelCase.swift; sourceTree = "<group>"; };
 		9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthAuthorizeRequest.swift; sourceTree = "<group>"; };
 		9D7FB6A11EA4B4DE0044F8C4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7FB6A41EA4B50B0044F8C4 /* QiitaSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaSession.swift; sourceTree = "<group>"; };
@@ -455,6 +458,14 @@
 			path = Flux;
 			sourceTree = "<group>";
 		};
+		9D39E8FF1EA77063009785E0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9D39E9001EA77074009785E0 /* RootViewModelCase.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9D7FB6A31EA4B50B0044F8C4 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +498,7 @@
 		9DDC50E01EA708B30020BC31 /* QiitaWithFluxSampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				9D39E8FF1EA77063009785E0 /* ViewModel */,
 				9D39E8C81EA7297F009785E0 /* Flux */,
 				9DDC50E11EA708B30020BC31 /* QiitaWithFluxSampleTests.swift */,
 				9DDC50E31EA708B30020BC31 /* Info.plist */,
@@ -786,6 +798,7 @@
 				9DDC50EB1EA70B960020BC31 /* AnyDispatcher.swift in Sources */,
 				9D39E8FE1EA74985009785E0 /* ApplicationStoreCase.swift in Sources */,
 				9D39E8CA1EA72994009785E0 /* RouteStoreCase.swift in Sources */,
+				9D39E9021EA770A3009785E0 /* RootViewModel.swift in Sources */,
 				9D39E8CD1EA72D91009785E0 /* RouteAction.swift in Sources */,
 				9D39E8D41EA730D1009785E0 /* QiitaRequest.swift in Sources */,
 				9D39E8D71EA730E4009785E0 /* AccessTokensResponse.swift in Sources */,
@@ -795,6 +808,7 @@
 				9D39E8D91EA730F7009785E0 /* QiitaScope.swift in Sources */,
 				9D39E8DE1EA73496009785E0 /* DefaultsKeys.swift in Sources */,
 				9DDC50E91EA70B810020BC31 /* RouteStore.swift in Sources */,
+				9D39E9011EA77074009785E0 /* RootViewModelCase.swift in Sources */,
 				9D39E8DC1EA73470009785E0 /* ApplicationStore.swift in Sources */,
 				9D39E8DD1EA73477009785E0 /* RxProperty.swift in Sources */,
 				9D39E8CC1EA72D71009785E0 /* RouteActionCase.swift in Sources */,
