@@ -1,0 +1,10 @@
+{
+  "xcodeVersion" : "Xcode 8.3.2\nBuild version 8E2002",
+  "commitish" : "3.0.1",
+  "iOS" : [
+    {
+      "hash" : "7e5bb9053958f9c713eae9701fddd7647e107b54c82005735d4942d2796c7d93",
+      "name" : "SwiftyUserDefaults"
+    }
+  ]
+}

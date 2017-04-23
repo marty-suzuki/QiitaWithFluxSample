@@ -1,0 +1,10 @@
+{
+  "xcodeVersion" : "Xcode 8.3.2\nBuild version 8E2002",
+  "commitish" : "2.3.0",
+  "iOS" : [
+    {
+      "hash" : "20b7a6a58a8499b16a90347a4234fd75a180ab6519ee8245cf2f27461cdc1d2d",
+      "name" : "Action"
+    }
+  ]
+}

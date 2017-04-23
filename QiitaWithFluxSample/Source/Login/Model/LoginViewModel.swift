@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import Foundation
 
 final class LoginViewModel {
     let isLoading: Property<Bool>

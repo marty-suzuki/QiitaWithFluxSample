@@ -1,0 +1,10 @@
+disabled_rules:
+  - line_length
+  - valid_docs
+included:
+  - Sources
+  - Tests
+
+variable_name:
+  excluded:
+    - e
