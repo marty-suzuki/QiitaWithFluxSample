@@ -56,18 +56,18 @@ final class SearchTopViewModel {
     
     private func observeAction() {
         searchAction.elements
-            .subscribe(
-                onNext: { [weak self] response in
-                    guard let me = self else { return }
-                    me._items.value.append(contentsOf: response.elements)
-                    me._totalCount.value = response.totalCount
-                    me._hasNext.value = (me._items.value.count < me._totalCount.value) && !response.elements.isEmpty
-                },
-                onError: { [weak self] error in
-                    guard let me = self else { return }
-                    me._error.value = error
-                }
-            )
+            .subscribe(onNext: { [weak self] response in
+                guard let me = self else { return }
+                me._items.value.append(contentsOf: response.elements)
+                me._totalCount.value = response.totalCount
+                me._hasNext.value = (me._items.value.count < me._totalCount.value) && !response.elements.isEmpty
+            })
+            .addDisposableTo(disposeBag)
+        
+        searchAction.errors
+            .subscribe(onNext: { [weak self] in
+                self?._error.value = $0
+            })
             .addDisposableTo(disposeBag)
     }
     

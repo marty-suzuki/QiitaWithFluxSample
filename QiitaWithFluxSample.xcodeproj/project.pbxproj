@@ -18,6 +18,14 @@
 		3734DD551EA3B79700DC30C7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD541EA3B79700DC30C7 /* LoadingView.swift */; };
 		3734DD571EA3B7A500DC30C7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3734DD561EA3B7A500DC30C7 /* LoadingView.xib */; };
 		3734DD5B1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD5A1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift */; };
+		374250431EAC776A008F47F4 /* SearchTopViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374250421EAC776A008F47F4 /* SearchTopViewModelCase.swift */; };
+		374250441EAC7E2C008F47F4 /* SearchTopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD431EA33A5900DC30C7 /* SearchTopViewModel.swift */; };
+		374250451EAC7E76008F47F4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682111EA1F15800DABE71 /* Item.swift */; };
+		374250461EAC7E7C008F47F4 /* ItemsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A71EA4B50B0044F8C4 /* ItemsRequest.swift */; };
+		374250471EAC7E84008F47F4 /* ElementsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6AB1EA4B50B0044F8C4 /* ElementsResponse.swift */; };
+		374250481EAC7E93008F47F4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682121EA1F15800DABE71 /* Tag.swift */; };
+		374250491EAC7E99008F47F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682131EA1F15800DABE71 /* User.swift */; };
+		3742504A1EAC7E9F008F47F4 /* Date.ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD4F1EA3540D00DC30C7 /* Date.ISO8601.swift */; };
 		376071A81EA7B1D900C4DA10 /* LoginTopViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376071A71EA7B1D900C4DA10 /* LoginTopViewModelCase.swift */; };
 		376071A91EA7B22100C4DA10 /* LoginTopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40E1EA48BD700E5CC27 /* LoginTopViewModel.swift */; };
 		376071AB1EA7B5C500C4DA10 /* LoginViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */; };
@@ -141,6 +149,7 @@
 		3734DD541EA3B79700DC30C7 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3734DD561EA3B7A500DC30C7 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		3734DD5A1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKeyboardInfo.swift; sourceTree = "<group>"; };
+		374250421EAC776A008F47F4 /* SearchTopViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTopViewModelCase.swift; sourceTree = "<group>"; };
 		376071A71EA7B1D900C4DA10 /* LoginTopViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTopViewModelCase.swift; sourceTree = "<group>"; };
 		376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModelCase.swift; sourceTree = "<group>"; };
 		37C681A31E9D4BF900DABE71 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -480,7 +489,6 @@
 				37FBF8041E91404300AE52C3 /* QiitaWithFluxSample */,
 				9DDC50E01EA708B30020BC31 /* QiitaWithFluxSampleTests */,
 				37FBF8031E91404300AE52C3 /* Products */,
-				C1408C0A83C8D30AF047DEFA /* Pods */,
 				3354F5D5EE9EB6E842107602 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -520,6 +528,7 @@
 				9D39E9001EA77074009785E0 /* RootViewModelCase.swift */,
 				376071A71EA7B1D900C4DA10 /* LoginTopViewModelCase.swift */,
 				376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */,
+				374250421EAC776A008F47F4 /* SearchTopViewModelCase.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -759,16 +768,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374250431EAC776A008F47F4 /* SearchTopViewModelCase.swift in Sources */,
 				9D39E8D51EA730D5009785E0 /* AccessTokensRequest.swift in Sources */,
+				374250461EAC7E7C008F47F4 /* ItemsRequest.swift in Sources */,
 				9D39E8D31EA730C7009785E0 /* QiitaSession.swift in Sources */,
 				9DDC50EA1EA70B830020BC31 /* RouteDispatcher.swift in Sources */,
 				9D39E8DB1EA73458009785E0 /* Config.swift in Sources */,
+				374250481EAC7E93008F47F4 /* Tag.swift in Sources */,
 				9D39E8D11EA73092009785E0 /* ApplicationDispatcher.swift in Sources */,
 				9DDC50EB1EA70B960020BC31 /* AnyDispatcher.swift in Sources */,
 				9D39E8FE1EA74985009785E0 /* ApplicationStoreCase.swift in Sources */,
 				9D39E8CA1EA72994009785E0 /* RouteStoreCase.swift in Sources */,
 				376071AD1EA7B93800C4DA10 /* LoginViewModel.swift in Sources */,
+				374250451EAC7E76008F47F4 /* Item.swift in Sources */,
 				9D39E9021EA770A3009785E0 /* RootViewModel.swift in Sources */,
+				374250441EAC7E2C008F47F4 /* SearchTopViewModel.swift in Sources */,
 				376071AC1EA7B69A00C4DA10 /* OauthAuthorizeRequest.swift in Sources */,
 				9D39E8CD1EA72D91009785E0 /* RouteAction.swift in Sources */,
 				9D39E8D41EA730D1009785E0 /* QiitaRequest.swift in Sources */,
@@ -778,12 +792,15 @@
 				9DDC50E21EA708B30020BC31 /* QiitaWithFluxSampleTests.swift in Sources */,
 				9D39E8D91EA730F7009785E0 /* QiitaScope.swift in Sources */,
 				376071A81EA7B1D900C4DA10 /* LoginTopViewModelCase.swift in Sources */,
+				374250491EAC7E99008F47F4 /* User.swift in Sources */,
 				9D39E8DE1EA73496009785E0 /* DefaultsKeys.swift in Sources */,
 				376071AB1EA7B5C500C4DA10 /* LoginViewModelCase.swift in Sources */,
 				376071A91EA7B22100C4DA10 /* LoginTopViewModel.swift in Sources */,
 				9DDC50E91EA70B810020BC31 /* RouteStore.swift in Sources */,
 				9D39E9011EA77074009785E0 /* RootViewModelCase.swift in Sources */,
 				9D39E8DC1EA73470009785E0 /* ApplicationStore.swift in Sources */,
+				3742504A1EAC7E9F008F47F4 /* Date.ISO8601.swift in Sources */,
+				374250471EAC7E84008F47F4 /* ElementsResponse.swift in Sources */,
 				9D39E8DD1EA73477009785E0 /* RxProperty.swift in Sources */,
 				9D39E8CC1EA72D71009785E0 /* RouteActionCase.swift in Sources */,
 			);
