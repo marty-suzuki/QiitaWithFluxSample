@@ -33,6 +33,12 @@ final class SearchTopViewModel {
     private let perPage: Int = 20
     private let disposeBag = DisposeBag()
     
+    let noResult: Observable<Bool>
+    let reloadData: Observable<Void>
+    let isFirstLoading: Observable<Bool>
+    let keyboardWillShow: Observable<UIKeyboardInfo>
+    let keyboardWillHide: Observable<UIKeyboardInfo>
+    
     init(session: SessionType = QiitaSession.shared,
          routeAction: RouteAction = .shared,
          applicationAction: ApplicationAction = .shared) {
@@ -50,6 +56,39 @@ final class SearchTopViewModel {
             guard let session = session else { return .empty() }
             return session.send(request)
         }
+        
+        let itemsObservable = items.changed
+        self.noResult = Observable.combineLatest(
+                itemsObservable,
+                searchAction.executing
+            ) { $0 }
+            .map { !$0.0.isEmpty || $0.1 }
+        
+        let hasNextObservable = hasNext.changed
+        self.reloadData = Observable.combineLatest(
+                itemsObservable,
+                hasNextObservable
+            ) { $0 }
+            .map { _ in }
+        
+        self.isFirstLoading = Observable.combineLatest(
+                itemsObservable,
+                hasNextObservable,
+                lastItemsRequest.changed
+            ) { $0 }
+            .map { $0.0.isEmpty && $0.1 && $0.2 != nil }
+        
+        self.keyboardWillShow = NotificationCenter.default.rx.notification(.UIKeyboardWillShow)
+            .map { $0.userInfo }
+            .filterNil()
+            .map { UIKeyboardInfo(info: $0) }
+            .filterNil()
+        
+        self.keyboardWillHide = NotificationCenter.default.rx.notification(.UIKeyboardWillHide)
+            .map { $0.userInfo }
+            .filterNil()
+            .map { UIKeyboardInfo(info: $0) }
+            .filterNil()
         
         observeAction()
     }

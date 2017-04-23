@@ -66,14 +66,36 @@ class SearchTopViewController: UIViewController, Storyboardable {
                 self?.searchBar.resignFirstResponder()
             })
             .addDisposableTo(disposeBag)
+    }
+    
+    private func observeViewModel() {
+        viewModel.noResult
+            .bind(to: noResultsLabel.rx.isHidden)
+            .addDisposableTo(disposeBag)
         
-        NotificationCenter.default.rx.notification(.UIKeyboardWillShow)
-            .map { $0.userInfo }
-            .filter { $0 != nil }
-            .map { UIKeyboardInfo(info: $0!) }
+        viewModel.reloadData
+            .observeOn(ConcurrentMainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+            .addDisposableTo(disposeBag)
+        
+        viewModel.isFirstLoading
+            .observeOn(ConcurrentMainScheduler.instance)
+            .map { !$0 }
+            .subscribe(onNext: { [weak self] isHidden in
+                self?.indicatorContainerView.isHidden = isHidden
+                if isHidden {
+                    self?.indicatorView.stopAnimating()
+                } else {
+                    self?.indicatorView.startAnimating()
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
+        viewModel.keyboardWillShow
             .observeOn(ConcurrentMainScheduler.instance)
             .subscribe(onNext: { [weak self] info in
-                guard let info = info else { return }
                 self?.contentViewBottomConstant.constant = info.frame.size.height
                 UIView.animate(withDuration: info.animationDuration,
                                delay: 0,
@@ -83,58 +105,15 @@ class SearchTopViewController: UIViewController, Storyboardable {
             })
             .addDisposableTo(disposeBag)
         
-        NotificationCenter.default.rx.notification(.UIKeyboardWillHide)
-            .map { $0.userInfo }
-            .filter { $0 != nil }
-            .map { UIKeyboardInfo(info: $0!) }
+        viewModel.keyboardWillHide
             .observeOn(ConcurrentMainScheduler.instance)
             .subscribe(onNext: { [weak self] info in
-                guard let info = info else { return }
                 self?.contentViewBottomConstant.constant = 0
                 UIView.animate(withDuration: info.animationDuration,
                                delay: 0,
                                options: info.animationCurve,
                                animations: { self?.view.layoutIfNeeded() },
                                completion: nil)
-            })
-            .addDisposableTo(disposeBag)
-    }
-    
-    private func observeViewModel() {
-        let itemsObservable = viewModel.items.changed
-        Observable.combineLatest(
-                itemsObservable,
-                viewModel.searchAction.executing
-            ) { $0 }
-            .map { !$0.0.isEmpty || $0.1 }
-            .bind(to: noResultsLabel.rx.isHidden)
-            .addDisposableTo(disposeBag)
-        
-        let hasNextObservable = viewModel.hasNext.changed
-        Observable.combineLatest(
-                itemsObservable,
-                hasNextObservable
-            ) { $0 }
-            .observeOn(ConcurrentMainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.tableView.reloadData()
-            })
-            .addDisposableTo(disposeBag)
-        
-        Observable.combineLatest(
-                itemsObservable,
-                hasNextObservable,
-                viewModel.lastItemsRequest.changed
-            ) { $0 }
-            .observeOn(ConcurrentMainScheduler.instance)
-            .map { !($0.0.isEmpty && $0.1 && $0.2 != nil) }
-            .subscribe(onNext: { [weak self] isHidden in
-                self?.indicatorContainerView.isHidden = isHidden
-                if isHidden {
-                    self?.indicatorView.stopAnimating()
-                } else {
-                    self?.indicatorView.startAnimating()
-                }
             })
             .addDisposableTo(disposeBag)
     }

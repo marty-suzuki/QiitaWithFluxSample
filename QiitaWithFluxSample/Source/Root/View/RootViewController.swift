@@ -49,8 +49,7 @@ class RootViewController: UIViewController {
     private func observeViewModel() {
         viewModel.login
             .observeOn(ConcurrentMainScheduler.instance)
-            .filter { $0 != nil }
-            .map { $0! }
+            .filterNil()
             .subscribe(onNext: { [weak self] displayType in
                 guard let me = self else { return }
                 let loginNC: LoginNavigationController
@@ -77,8 +76,7 @@ class RootViewController: UIViewController {
         
         viewModel.search
             .observeOn(ConcurrentMainScheduler.instance)
-            .filter { $0 != nil }
-            .map { $0! }
+            .filterNil()
             .subscribe(onNext: { [weak self] displayType in
                 guard let me = self else { return }
                 let searchNC: SearchNavigationController
