@@ -18,9 +18,21 @@
 		3734DD551EA3B79700DC30C7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD541EA3B79700DC30C7 /* LoadingView.swift */; };
 		3734DD571EA3B7A500DC30C7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3734DD561EA3B7A500DC30C7 /* LoadingView.xib */; };
 		3734DD5B1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD5A1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift */; };
+		374250431EAC776A008F47F4 /* SearchTopViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374250421EAC776A008F47F4 /* SearchTopViewModelCase.swift */; };
+		374250441EAC7E2C008F47F4 /* SearchTopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD431EA33A5900DC30C7 /* SearchTopViewModel.swift */; };
+		374250451EAC7E76008F47F4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682111EA1F15800DABE71 /* Item.swift */; };
+		374250461EAC7E7C008F47F4 /* ItemsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A71EA4B50B0044F8C4 /* ItemsRequest.swift */; };
+		374250471EAC7E84008F47F4 /* ElementsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6AB1EA4B50B0044F8C4 /* ElementsResponse.swift */; };
+		374250481EAC7E93008F47F4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682121EA1F15800DABE71 /* Tag.swift */; };
+		374250491EAC7E99008F47F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682131EA1F15800DABE71 /* User.swift */; };
+		3742504A1EAC7E9F008F47F4 /* Date.ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD4F1EA3540D00DC30C7 /* Date.ISO8601.swift */; };
+		376071A81EA7B1D900C4DA10 /* LoginTopViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376071A71EA7B1D900C4DA10 /* LoginTopViewModelCase.swift */; };
+		376071A91EA7B22100C4DA10 /* LoginTopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40E1EA48BD700E5CC27 /* LoginTopViewModel.swift */; };
+		376071AB1EA7B5C500C4DA10 /* LoginViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */; };
+		376071AC1EA7B69A00C4DA10 /* OauthAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */; };
+		376071AD1EA7B93800C4DA10 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C4101EA4965C00E5CC27 /* LoginViewModel.swift */; };
 		37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C681A31E9D4BF900DABE71 /* WebKit.framework */; };
 		37C6822E1EA1F15900DABE71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C681FA1EA1F15800DABE71 /* Assets.xcassets */; };
-		37C6822F1EA1F15900DABE71 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37C681FB1EA1F15800DABE71 /* Info.plist */; };
 		37C682301EA1F15900DABE71 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681FE1EA1F15800DABE71 /* Config.swift */; };
 		37C682311EA1F15900DABE71 /* NSObjectProtocol.className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682011EA1F15800DABE71 /* NSObjectProtocol.className.swift */; };
 		37C682321EA1F15900DABE71 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682021EA1F15800DABE71 /* Storyboardable.swift */; };
@@ -51,6 +63,40 @@
 		37C682601EA25D5400DABE71 /* QiitaScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6825F1EA25D5400DABE71 /* QiitaScope.swift */; };
 		37C682621EA2686700DABE71 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682611EA2686700DABE71 /* DefaultsKeys.swift */; };
 		37C682641EA28A2400DABE71 /* UIVIew.inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682631EA28A2400DABE71 /* UIVIew.inspectable.swift */; };
+		37FC07471EAC6B1200514FF6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07461EAC6B1200514FF6 /* SafariServices.framework */; };
+		37FC07501EAC6B2700514FF6 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07481EAC6B2700514FF6 /* Action.framework */; };
+		37FC07511EAC6B2700514FF6 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07491EAC6B2700514FF6 /* APIKit.framework */; };
+		37FC07521EAC6B2700514FF6 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074A1EAC6B2700514FF6 /* Himotoki.framework */; };
+		37FC07531EAC6B2700514FF6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074B1EAC6B2700514FF6 /* Kingfisher.framework */; };
+		37FC07541EAC6B2700514FF6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074C1EAC6B2700514FF6 /* Result.framework */; };
+		37FC07551EAC6B2700514FF6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074D1EAC6B2700514FF6 /* RxCocoa.framework */; };
+		37FC07561EAC6B2700514FF6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074E1EAC6B2700514FF6 /* RxSwift.framework */; };
+		37FC07571EAC6B2700514FF6 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074F1EAC6B2700514FF6 /* SwiftyUserDefaults.framework */; };
+		37FC075A1EAC6E9900514FF6 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07481EAC6B2700514FF6 /* Action.framework */; };
+		37FC075B1EAC6E9900514FF6 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07491EAC6B2700514FF6 /* APIKit.framework */; };
+		37FC075C1EAC6E9900514FF6 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074A1EAC6B2700514FF6 /* Himotoki.framework */; };
+		37FC075D1EAC6E9900514FF6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074C1EAC6B2700514FF6 /* Result.framework */; };
+		37FC075E1EAC6E9900514FF6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074D1EAC6B2700514FF6 /* RxCocoa.framework */; };
+		37FC075F1EAC6E9900514FF6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074E1EAC6B2700514FF6 /* RxSwift.framework */; };
+		37FC07601EAC6E9900514FF6 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074F1EAC6B2700514FF6 /* SwiftyUserDefaults.framework */; };
+		9D39E8CA1EA72994009785E0 /* RouteStoreCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E8C91EA72994009785E0 /* RouteStoreCase.swift */; };
+		9D39E8CC1EA72D71009785E0 /* RouteActionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E8CB1EA72D71009785E0 /* RouteActionCase.swift */; };
+		9D39E8CD1EA72D91009785E0 /* RouteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682091EA1F15800DABE71 /* RouteAction.swift */; };
+		9D39E8CF1EA73067009785E0 /* ApplicationActionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E8CE1EA73067009785E0 /* ApplicationActionCase.swift */; };
+		9D39E8D01EA73090009785E0 /* ApplicationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682591EA2549600DABE71 /* ApplicationAction.swift */; };
+		9D39E8D11EA73092009785E0 /* ApplicationDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682531EA2508600DABE71 /* ApplicationDispatcher.swift */; };
+		9D39E8D31EA730C7009785E0 /* QiitaSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A41EA4B50B0044F8C4 /* QiitaSession.swift */; };
+		9D39E8D41EA730D1009785E0 /* QiitaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A81EA4B50B0044F8C4 /* QiitaRequest.swift */; };
+		9D39E8D51EA730D5009785E0 /* AccessTokensRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A61EA4B50B0044F8C4 /* AccessTokensRequest.swift */; };
+		9D39E8D71EA730E4009785E0 /* AccessTokensResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6AA1EA4B50B0044F8C4 /* AccessTokensResponse.swift */; };
+		9D39E8D91EA730F7009785E0 /* QiitaScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6825F1EA25D5400DABE71 /* QiitaScope.swift */; };
+		9D39E8DB1EA73458009785E0 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681FE1EA1F15800DABE71 /* Config.swift */; };
+		9D39E8DC1EA73470009785E0 /* ApplicationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682551EA2512E00DABE71 /* ApplicationStore.swift */; };
+		9D39E8DD1EA73477009785E0 /* RxProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682061EA1F15800DABE71 /* RxProperty.swift */; };
+		9D39E8DE1EA73496009785E0 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682611EA2686700DABE71 /* DefaultsKeys.swift */; };
+		9D39E8FE1EA74985009785E0 /* ApplicationStoreCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E8FD1EA74985009785E0 /* ApplicationStoreCase.swift */; };
+		9D39E9011EA77074009785E0 /* RootViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E9001EA77074009785E0 /* RootViewModelCase.swift */; };
+		9D39E9021EA770A3009785E0 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40C1EA4858E00E5CC27 /* RootViewModel.swift */; };
 		9D7FB6A01EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */; };
 		9D7FB6A21EA4B4DE0044F8C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A11EA4B4DE0044F8C4 /* AppDelegate.swift */; };
 		9D7FB6AC1EA4B50B0044F8C4 /* QiitaSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A41EA4B50B0044F8C4 /* QiitaSession.swift */; };
@@ -59,12 +105,37 @@
 		9D7FB6AF1EA4B50B0044F8C4 /* QiitaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A81EA4B50B0044F8C4 /* QiitaRequest.swift */; };
 		9D7FB6B01EA4B50B0044F8C4 /* AccessTokensResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6AA1EA4B50B0044F8C4 /* AccessTokensResponse.swift */; };
 		9D7FB6B11EA4B50B0044F8C4 /* ElementsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6AB1EA4B50B0044F8C4 /* ElementsResponse.swift */; };
+		9DDC50E21EA708B30020BC31 /* QiitaWithFluxSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC50E11EA708B30020BC31 /* QiitaWithFluxSampleTests.swift */; };
+		9DDC50E91EA70B810020BC31 /* RouteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6820B1EA1F15800DABE71 /* RouteStore.swift */; };
+		9DDC50EA1EA70B830020BC31 /* RouteDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6820A1EA1F15800DABE71 /* RouteDispatcher.swift */; };
+		9DDC50EB1EA70B960020BC31 /* AnyDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682051EA1F15800DABE71 /* AnyDispatcher.swift */; };
 		9DF6C40D1EA4858E00E5CC27 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40C1EA4858E00E5CC27 /* RootViewModel.swift */; };
 		9DF6C40F1EA48BD700E5CC27 /* LoginTopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40E1EA48BD700E5CC27 /* LoginTopViewModel.swift */; };
 		9DF6C4111EA4965C00E5CC27 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C4101EA4965C00E5CC27 /* LoginViewModel.swift */; };
 		9DF6C4131EA4994900E5CC27 /* LoginViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C4121EA4994900E5CC27 /* LoginViewDataSource.swift */; };
-		DE51B9E61FA5A03B1F62DB5A /* Pods_QiitaWithFluxSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7C2F293EB254FEA6E98F45 /* Pods_QiitaWithFluxSample.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DDC50E41EA708B30020BC31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37FBF7FA1E91404300AE52C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37FBF8011E91404300AE52C3;
+			remoteInfo = QiitaWithFluxSample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		37FC07581EAC6BDC00514FF6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3734DD431EA33A5900DC30C7 /* SearchTopViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTopViewModel.swift; sourceTree = "<group>"; };
@@ -78,6 +149,9 @@
 		3734DD541EA3B79700DC30C7 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3734DD561EA3B7A500DC30C7 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		3734DD5A1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKeyboardInfo.swift; sourceTree = "<group>"; };
+		374250421EAC776A008F47F4 /* SearchTopViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTopViewModelCase.swift; sourceTree = "<group>"; };
+		376071A71EA7B1D900C4DA10 /* LoginTopViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTopViewModelCase.swift; sourceTree = "<group>"; };
+		376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModelCase.swift; sourceTree = "<group>"; };
 		37C681A31E9D4BF900DABE71 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		37C681FA1EA1F15800DABE71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37C681FB1EA1F15800DABE71 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,8 +186,23 @@
 		37C682611EA2686700DABE71 /* DefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		37C682631EA28A2400DABE71 /* UIVIew.inspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVIew.inspectable.swift; sourceTree = "<group>"; };
 		37FBF8021E91404300AE52C3 /* QiitaWithFluxSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaWithFluxSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D4978BDAD27EB3339E8E96A /* Pods-QiitaWithFluxSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaWithFluxSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QiitaWithFluxSample/Pods-QiitaWithFluxSample.debug.xcconfig"; sourceTree = "<group>"; };
+		37FC07461EAC6B1200514FF6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		37FC07481EAC6B2700514FF6 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Action.framework; path = Carthage/Build/iOS/Action.framework; sourceTree = "<group>"; };
+		37FC07491EAC6B2700514FF6 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
+		37FC074A1EAC6B2700514FF6 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
+		37FC074B1EAC6B2700514FF6 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		37FC074C1EAC6B2700514FF6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		37FC074D1EAC6B2700514FF6 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		37FC074E1EAC6B2700514FF6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		37FC074F1EAC6B2700514FF6 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = Carthage/Build/iOS/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
 		5E7C2F293EB254FEA6E98F45 /* Pods_QiitaWithFluxSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiitaWithFluxSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77E83F4638FD69FCC29C9780 /* Pods_QiitaWithFluxSample_QiitaWithFluxSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiitaWithFluxSample_QiitaWithFluxSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88CE5F2FE4E28394D088768E /* Pods_QiitaWithFluxSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiitaWithFluxSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D39E8C91EA72994009785E0 /* RouteStoreCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStoreCase.swift; sourceTree = "<group>"; };
+		9D39E8CB1EA72D71009785E0 /* RouteActionCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteActionCase.swift; sourceTree = "<group>"; };
+		9D39E8CE1EA73067009785E0 /* ApplicationActionCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationActionCase.swift; sourceTree = "<group>"; };
+		9D39E8FD1EA74985009785E0 /* ApplicationStoreCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationStoreCase.swift; sourceTree = "<group>"; };
+		9D39E9001EA77074009785E0 /* RootViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModelCase.swift; sourceTree = "<group>"; };
 		9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthAuthorizeRequest.swift; sourceTree = "<group>"; };
 		9D7FB6A11EA4B4DE0044F8C4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7FB6A41EA4B50B0044F8C4 /* QiitaSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaSession.swift; sourceTree = "<group>"; };
@@ -122,11 +211,13 @@
 		9D7FB6A81EA4B50B0044F8C4 /* QiitaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaRequest.swift; sourceTree = "<group>"; };
 		9D7FB6AA1EA4B50B0044F8C4 /* AccessTokensResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokensResponse.swift; sourceTree = "<group>"; };
 		9D7FB6AB1EA4B50B0044F8C4 /* ElementsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementsResponse.swift; sourceTree = "<group>"; };
+		9DDC50DF1EA708B30020BC31 /* QiitaWithFluxSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiitaWithFluxSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DDC50E11EA708B30020BC31 /* QiitaWithFluxSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaWithFluxSampleTests.swift; sourceTree = "<group>"; };
+		9DDC50E31EA708B30020BC31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DF6C40C1EA4858E00E5CC27 /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		9DF6C40E1EA48BD700E5CC27 /* LoginTopViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTopViewModel.swift; sourceTree = "<group>"; };
 		9DF6C4101EA4965C00E5CC27 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9DF6C4121EA4994900E5CC27 /* LoginViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDataSource.swift; sourceTree = "<group>"; };
-		DFAB7ACD4972AB0BA661BD30 /* Pods-QiitaWithFluxSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaWithFluxSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-QiitaWithFluxSample/Pods-QiitaWithFluxSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +225,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37FC07501EAC6B2700514FF6 /* Action.framework in Frameworks */,
+				37FC07511EAC6B2700514FF6 /* APIKit.framework in Frameworks */,
+				37FC07521EAC6B2700514FF6 /* Himotoki.framework in Frameworks */,
+				37FC07531EAC6B2700514FF6 /* Kingfisher.framework in Frameworks */,
+				37FC07541EAC6B2700514FF6 /* Result.framework in Frameworks */,
+				37FC07551EAC6B2700514FF6 /* RxCocoa.framework in Frameworks */,
+				37FC07561EAC6B2700514FF6 /* RxSwift.framework in Frameworks */,
+				37FC07571EAC6B2700514FF6 /* SwiftyUserDefaults.framework in Frameworks */,
+				37FC07471EAC6B1200514FF6 /* SafariServices.framework in Frameworks */,
 				37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */,
-				DE51B9E61FA5A03B1F62DB5A /* Pods_QiitaWithFluxSample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DDC50DC1EA708B30020BC31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FC075A1EAC6E9900514FF6 /* Action.framework in Frameworks */,
+				37FC075B1EAC6E9900514FF6 /* APIKit.framework in Frameworks */,
+				37FC075C1EAC6E9900514FF6 /* Himotoki.framework in Frameworks */,
+				37FC075D1EAC6E9900514FF6 /* Result.framework in Frameworks */,
+				37FC075E1EAC6E9900514FF6 /* RxCocoa.framework in Frameworks */,
+				37FC075F1EAC6E9900514FF6 /* RxSwift.framework in Frameworks */,
+				37FC07601EAC6E9900514FF6 /* SwiftyUserDefaults.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,8 +258,19 @@
 		3354F5D5EE9EB6E842107602 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37FC07481EAC6B2700514FF6 /* Action.framework */,
+				37FC07491EAC6B2700514FF6 /* APIKit.framework */,
+				37FC074A1EAC6B2700514FF6 /* Himotoki.framework */,
+				37FC074B1EAC6B2700514FF6 /* Kingfisher.framework */,
+				37FC074C1EAC6B2700514FF6 /* Result.framework */,
+				37FC074D1EAC6B2700514FF6 /* RxCocoa.framework */,
+				37FC074E1EAC6B2700514FF6 /* RxSwift.framework */,
+				37FC074F1EAC6B2700514FF6 /* SwiftyUserDefaults.framework */,
+				37FC07461EAC6B1200514FF6 /* SafariServices.framework */,
 				37C681A31E9D4BF900DABE71 /* WebKit.framework */,
 				5E7C2F293EB254FEA6E98F45 /* Pods_QiitaWithFluxSample.framework */,
+				77E83F4638FD69FCC29C9780 /* Pods_QiitaWithFluxSample_QiitaWithFluxSampleTests.framework */,
+				88CE5F2FE4E28394D088768E /* Pods_QiitaWithFluxSampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -363,8 +487,8 @@
 			isa = PBXGroup;
 			children = (
 				37FBF8041E91404300AE52C3 /* QiitaWithFluxSample */,
+				9DDC50E01EA708B30020BC31 /* QiitaWithFluxSampleTests */,
 				37FBF8031E91404300AE52C3 /* Products */,
-				C1408C0A83C8D30AF047DEFA /* Pods */,
 				3354F5D5EE9EB6E842107602 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -373,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				37FBF8021E91404300AE52C3 /* QiitaWithFluxSample.app */,
+				9DDC50DF1EA708B30020BC31 /* QiitaWithFluxSampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -384,6 +509,28 @@
 				37C681FC1EA1F15800DABE71 /* Source */,
 			);
 			path = QiitaWithFluxSample;
+			sourceTree = "<group>";
+		};
+		9D39E8C81EA7297F009785E0 /* Flux */ = {
+			isa = PBXGroup;
+			children = (
+				9D39E8C91EA72994009785E0 /* RouteStoreCase.swift */,
+				9D39E8CB1EA72D71009785E0 /* RouteActionCase.swift */,
+				9D39E8CE1EA73067009785E0 /* ApplicationActionCase.swift */,
+				9D39E8FD1EA74985009785E0 /* ApplicationStoreCase.swift */,
+			);
+			path = Flux;
+			sourceTree = "<group>";
+		};
+		9D39E8FF1EA77063009785E0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9D39E9001EA77074009785E0 /* RootViewModelCase.swift */,
+				376071A71EA7B1D900C4DA10 /* LoginTopViewModelCase.swift */,
+				376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */,
+				374250421EAC776A008F47F4 /* SearchTopViewModelCase.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9D7FB6A31EA4B50B0044F8C4 /* API */ = {
@@ -415,21 +562,23 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		9DDC50E01EA708B30020BC31 /* QiitaWithFluxSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				9D39E8FF1EA77063009785E0 /* ViewModel */,
+				9D39E8C81EA7297F009785E0 /* Flux */,
+				9DDC50E11EA708B30020BC31 /* QiitaWithFluxSampleTests.swift */,
+				9DDC50E31EA708B30020BC31 /* Info.plist */,
+			);
+			path = QiitaWithFluxSampleTests;
+			sourceTree = "<group>";
+		};
 		9DF6C40B1EA4858100E5CC27 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				9DF6C40C1EA4858E00E5CC27 /* RootViewModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		C1408C0A83C8D30AF047DEFA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4D4978BDAD27EB3339E8E96A /* Pods-QiitaWithFluxSample.debug.xcconfig */,
-				DFAB7ACD4972AB0BA661BD30 /* Pods-QiitaWithFluxSample.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,12 +588,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37FBF8141E91404300AE52C3 /* Build configuration list for PBXNativeTarget "QiitaWithFluxSample" */;
 			buildPhases = (
-				6FB9A5E3BBBCBE001DCB3D09 /* [CP] Check Pods Manifest.lock */,
 				37FBF7FE1E91404300AE52C3 /* Sources */,
 				37FBF7FF1E91404300AE52C3 /* Frameworks */,
 				37FBF8001E91404300AE52C3 /* Resources */,
-				0196FEFE5F13F87F140177E2 /* [CP] Embed Pods Frameworks */,
-				4DF50F2E68BB0C79CA1631E8 /* [CP] Copy Pods Resources */,
+				37FC07581EAC6BDC00514FF6 /* CopyFiles */,
+				37FC07591EAC6BF900514FF6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -455,6 +603,24 @@
 			productReference = 37FBF8021E91404300AE52C3 /* QiitaWithFluxSample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9DDC50DE1EA708B30020BC31 /* QiitaWithFluxSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DDC50E81EA708B30020BC31 /* Build configuration list for PBXNativeTarget "QiitaWithFluxSampleTests" */;
+			buildPhases = (
+				9DDC50DB1EA708B30020BC31 /* Sources */,
+				9DDC50DC1EA708B30020BC31 /* Frameworks */,
+				9DDC50DD1EA708B30020BC31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DDC50E51EA708B30020BC31 /* PBXTargetDependency */,
+			);
+			name = QiitaWithFluxSampleTests;
+			productName = QiitaWithFluxSampleTests;
+			productReference = 9DDC50DF1EA708B30020BC31 /* QiitaWithFluxSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -462,12 +628,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "marty-suzuki";
 				TargetAttributes = {
 					37FBF8011E91404300AE52C3 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+					};
+					9DDC50DE1EA708B30020BC31 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Manual;
+						TestTargetID = 37FBF8011E91404300AE52C3;
 					};
 				};
 			};
@@ -485,6 +656,7 @@
 			projectRoot = "";
 			targets = (
 				37FBF8011E91404300AE52C3 /* QiitaWithFluxSample */,
+				9DDC50DE1EA708B30020BC31 /* QiitaWithFluxSampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -494,7 +666,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37C6822F1EA1F15900DABE71 /* Info.plist in Resources */,
 				37C6824F1EA1F19200DABE71 /* LaunchScreen.storyboard in Resources */,
 				37C682451EA1F15900DABE71 /* LoginTopViewController.storyboard in Resources */,
 				37C6824A1EA1F15900DABE71 /* RootViewController.storyboard in Resources */,
@@ -507,53 +678,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9DDC50DD1EA708B30020BC31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0196FEFE5F13F87F140177E2 /* [CP] Embed Pods Frameworks */ = {
+		37FC07591EAC6BF900514FF6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Himotoki.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 			);
-			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QiitaWithFluxSample/Pods-QiitaWithFluxSample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4DF50F2E68BB0C79CA1631E8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QiitaWithFluxSample/Pods-QiitaWithFluxSample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6FB9A5E3BBBCBE001DCB3D09 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -610,7 +764,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9DDC50DB1EA708B30020BC31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				374250431EAC776A008F47F4 /* SearchTopViewModelCase.swift in Sources */,
+				9D39E8D51EA730D5009785E0 /* AccessTokensRequest.swift in Sources */,
+				374250461EAC7E7C008F47F4 /* ItemsRequest.swift in Sources */,
+				9D39E8D31EA730C7009785E0 /* QiitaSession.swift in Sources */,
+				9DDC50EA1EA70B830020BC31 /* RouteDispatcher.swift in Sources */,
+				9D39E8DB1EA73458009785E0 /* Config.swift in Sources */,
+				374250481EAC7E93008F47F4 /* Tag.swift in Sources */,
+				9D39E8D11EA73092009785E0 /* ApplicationDispatcher.swift in Sources */,
+				9DDC50EB1EA70B960020BC31 /* AnyDispatcher.swift in Sources */,
+				9D39E8FE1EA74985009785E0 /* ApplicationStoreCase.swift in Sources */,
+				9D39E8CA1EA72994009785E0 /* RouteStoreCase.swift in Sources */,
+				376071AD1EA7B93800C4DA10 /* LoginViewModel.swift in Sources */,
+				374250451EAC7E76008F47F4 /* Item.swift in Sources */,
+				9D39E9021EA770A3009785E0 /* RootViewModel.swift in Sources */,
+				374250441EAC7E2C008F47F4 /* SearchTopViewModel.swift in Sources */,
+				376071AC1EA7B69A00C4DA10 /* OauthAuthorizeRequest.swift in Sources */,
+				9D39E8CD1EA72D91009785E0 /* RouteAction.swift in Sources */,
+				9D39E8D41EA730D1009785E0 /* QiitaRequest.swift in Sources */,
+				9D39E8D71EA730E4009785E0 /* AccessTokensResponse.swift in Sources */,
+				9D39E8D01EA73090009785E0 /* ApplicationAction.swift in Sources */,
+				9D39E8CF1EA73067009785E0 /* ApplicationActionCase.swift in Sources */,
+				9DDC50E21EA708B30020BC31 /* QiitaWithFluxSampleTests.swift in Sources */,
+				9D39E8D91EA730F7009785E0 /* QiitaScope.swift in Sources */,
+				376071A81EA7B1D900C4DA10 /* LoginTopViewModelCase.swift in Sources */,
+				374250491EAC7E99008F47F4 /* User.swift in Sources */,
+				9D39E8DE1EA73496009785E0 /* DefaultsKeys.swift in Sources */,
+				376071AB1EA7B5C500C4DA10 /* LoginViewModelCase.swift in Sources */,
+				376071A91EA7B22100C4DA10 /* LoginTopViewModel.swift in Sources */,
+				9DDC50E91EA70B810020BC31 /* RouteStore.swift in Sources */,
+				9D39E9011EA77074009785E0 /* RootViewModelCase.swift in Sources */,
+				9D39E8DC1EA73470009785E0 /* ApplicationStore.swift in Sources */,
+				3742504A1EAC7E9F008F47F4 /* Date.ISO8601.swift in Sources */,
+				374250471EAC7E84008F47F4 /* ElementsResponse.swift in Sources */,
+				9D39E8DD1EA73477009785E0 /* RxProperty.swift in Sources */,
+				9D39E8CC1EA72D71009785E0 /* RouteActionCase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DDC50E51EA708B30020BC31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37FBF8011E91404300AE52C3 /* QiitaWithFluxSample */;
+			targetProxy = 9DDC50E41EA708B30020BC31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		37FBF8121E91404300AE52C3 /* Debug */ = {
@@ -708,29 +912,165 @@
 		};
 		37FBF8151E91404300AE52C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D4978BDAD27EB3339E8E96A /* Pods-QiitaWithFluxSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = QiitaWithFluxSample/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		37FBF8161E91404300AE52C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFAB7ACD4972AB0BA661BD30 /* Pods-QiitaWithFluxSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = QiitaWithFluxSample/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
+		};
+		9DDC50E61EA708B30020BC31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = QiitaWithFluxSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QiitaWithFluxSample.app/QiitaWithFluxSample";
+			};
+			name = Debug;
+		};
+		9DDC50E71EA708B30020BC31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = QiitaWithFluxSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QiitaWithFluxSample.app/QiitaWithFluxSample";
+			};
+			name = Release;
+		};
+		9DDC50EC1EA713710020BC31 /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "\"-D\" \"TEST\"";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Test;
+		};
+		9DDC50ED1EA713710020BC31 /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = QiitaWithFluxSample/Resource/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Test;
+		};
+		9DDC50EE1EA713710020BC31 /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = QiitaWithFluxSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QiitaWithFluxSample.app/QiitaWithFluxSample";
+			};
+			name = Test;
 		};
 /* End XCBuildConfiguration section */
 
@@ -739,6 +1079,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37FBF8121E91404300AE52C3 /* Debug */,
+				9DDC50EC1EA713710020BC31 /* Test */,
 				37FBF8131E91404300AE52C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -748,7 +1089,18 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37FBF8151E91404300AE52C3 /* Debug */,
+				9DDC50ED1EA713710020BC31 /* Test */,
 				37FBF8161E91404300AE52C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DDC50E81EA708B30020BC31 /* Build configuration list for PBXNativeTarget "QiitaWithFluxSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DDC50E61EA708B30020BC31 /* Debug */,
+				9DDC50EE1EA713710020BC31 /* Test */,
+				9DDC50E71EA708B30020BC31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

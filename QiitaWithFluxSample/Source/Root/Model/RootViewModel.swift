@@ -23,13 +23,13 @@ final class RootViewModel {
         accessTokenObservable
             .filter { $0 != nil }
             .map { _ in SearchDisplayType.root }
-            .bindNext(routeAction.show)
+            .bind(onNext: routeAction.show)
             .addDisposableTo(disposeBag)
         
         accessTokenObservable
             .filter { $0 == nil }
             .map { _ in LoginDisplayType.root }
-            .bindNext(routeAction.show)
+            .bind(onNext: routeAction.show)
             .addDisposableTo(disposeBag)
         
         self.login = routeStore.login

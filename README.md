@@ -40,9 +40,10 @@ This is a sample project that uses **Flux** and **MVVM** features.
 
 ## Requirements
 
-- Swift 3.0
-- Xcode 8.3
+- Swift 3.1
+- Xcode 8.3.2
 - iOS 10.0
+- Carthage 0.20.1
 
 Please register your application to Qiita.  
 After that, fill **redirectUrl**, **clientId** and **clientSecret** in Config.swift!
@@ -51,12 +52,12 @@ After that, fill **redirectUrl**, **clientId** and **clientSecret** in Config.sw
 
 ## Libraries
 
-- [Action](https://github.com/RxSwiftCommunity/Action) 2.2.2
-- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.3.1
-- [APIKit](https://github.com/ishkawa/APIKit) 3.1.1
+- [Action](https://github.com/RxSwiftCommunity/Action) 2.3.0
+- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.4.0
+- [APIKit](https://github.com/ishkawa/APIKit) 3.1.2
 - [Himotoki](https://github.com/ikesyo/Himotoki) 3.0.1
 - [Kingfisher](https://github.com/onevcat/Kingfisher) 3.6.2
-- [SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults) 3.0.0
+- [SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults) 3.0.1
 
 ## Special Thanks
 

@@ -1,0 +1,6 @@
+github "ishkawa/APIKit" "3.1.2"
+github "ikesyo/Himotoki" "3.0.1"
+github "ReactiveX/RxSwift" "3.4.0"
+github "RxSwiftCommunity/Action" "2.3.0"
+github "radex/SwiftyUserDefaults" "3.0.1"
+github "onevcat/Kingfisher" "3.6.2"

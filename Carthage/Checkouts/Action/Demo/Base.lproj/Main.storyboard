@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gBp-2p-Zj2">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="MwZ-pf-NHd">
+            <objects>
+                <navigationController id="gBp-2p-Zj2" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7rg-kL-XY8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dJY-Br-IiE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nxZ-xO-ip6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-112" y="408"/>
+        </scene>
+        <!--Action demo-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Action demo" id="BYZ-38-t0r" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZL-3G-VZh">
+                                <rect key="frame" x="151" y="31" width="73" height="30"/>
+                                <state key="normal" title="Show alert"/>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Doing some work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulN-2s-mAd">
+                                <rect key="frame" x="234" y="467" width="133" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OrY-7C-i77">
+                                <rect key="frame" x="290" y="496" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rn7-U4-1tI">
+                                <rect key="frame" x="131" y="107" width="113" height="30"/>
+                                <state key="normal" title="Custom button 1"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoY-Sn-0Iw">
+                                <rect key="frame" x="130" y="145" width="115" height="30"/>
+                                <state key="normal" title="Custom button 2"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Rn7-U4-1tI" firstAttribute="centerX" secondItem="SZL-3G-VZh" secondAttribute="centerX" id="2z3-Ib-Bzb"/>
+                            <constraint firstItem="OrY-7C-i77" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dyl-A6-bud"/>
+                            <constraint firstItem="KoY-Sn-0Iw" firstAttribute="centerX" secondItem="Rn7-U4-1tI" secondAttribute="centerX" id="Esh-u5-4Vv"/>
+                            <constraint firstItem="KoY-Sn-0Iw" firstAttribute="top" secondItem="Rn7-U4-1tI" secondAttribute="bottom" constant="8" id="Gph-05-VIV"/>
+                            <constraint firstItem="Rn7-U4-1tI" firstAttribute="top" secondItem="SZL-3G-VZh" secondAttribute="bottom" constant="46" id="Hhn-4d-Hi7"/>
+                            <constraint firstItem="SZL-3G-VZh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="Np0-fa-c3f"/>
+                            <constraint firstItem="ulN-2s-mAd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a5T-qt-gDR"/>
+                            <constraint firstItem="OrY-7C-i77" firstAttribute="top" secondItem="ulN-2s-mAd" secondAttribute="bottom" constant="8" id="eqf-Tp-OJd"/>
+                            <constraint firstItem="SZL-3G-VZh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hb0-j9-0rK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrY-7C-i77" secondAttribute="bottom" constant="20" id="jhU-Jj-aCX"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Action demo" id="6DL-Fh-JcF">
+                        <barButtonItem key="leftBarButtonItem" title="Custom3" id="piR-Gf-7t2"/>
+                        <barButtonItem key="rightBarButtonItem" title="Bar Item" id="7hK-lr-Izl"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="OrY-7C-i77" id="VCS-wT-Lb8"/>
+                        <outlet property="button" destination="SZL-3G-VZh" id="IT1-GJ-Qic"/>
+                        <outlet property="button1" destination="Rn7-U4-1tI" id="zLN-qN-lSH"/>
+                        <outlet property="button2" destination="KoY-Sn-0Iw" id="AUC-hM-Glv"/>
+                        <outlet property="workingLabel" destination="ulN-2s-mAd" id="17Y-xo-0lM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="648" y="408"/>
+        </scene>
+    </scenes>
+</document>

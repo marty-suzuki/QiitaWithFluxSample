@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import RxCocoa
 import SwiftyUserDefaults
 
 final class ApplicationStore {
@@ -21,20 +22,28 @@ final class ApplicationStore {
     private let disposeBag = DisposeBag()
     
     init(dispatcher: AnyObservableDispatcher<ApplicationDispatcher> = .init(.shared)) {
-        if let token = Defaults[.accessToken] {
-            _accessToken.value = token
-        }
+        #if !TEST
+            if let token = Defaults[.accessToken] {
+                _accessToken.value = token
+            }
+        #endif
         
         self.accessToken = Property(_accessToken)
         self.accessTokenError = _accessTokenError
         
-        dispatcher.accessToken
-            .do(onNext: { Defaults[.accessToken] = $0 })
-            .bindTo(_accessToken)
-            .addDisposableTo(disposeBag)
+        #if TEST
+            dispatcher.accessToken
+                .bind(to: _accessToken)
+                .addDisposableTo(disposeBag)
+        #else
+            dispatcher.accessToken
+                .do(onNext: { Defaults[.accessToken] = $0 })
+                .bind(to: _accessToken)
+                .addDisposableTo(disposeBag)
+        #endif
         
         dispatcher.accessTokenError
-            .bindTo(_accessTokenError)
+            .bind(to: _accessTokenError)
             .addDisposableTo(disposeBag)
     }
 }

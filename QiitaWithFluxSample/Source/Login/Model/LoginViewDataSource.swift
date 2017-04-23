@@ -30,8 +30,8 @@ extension LoginViewDataSource: WKNavigationDelegate {
                 let items = URLComponents.queryItems,
                 let codeItem = items.filter({ $0.name == "code"}).first,
                 let code = codeItem.value
-                else {
-                    fatalError("can not find \"code\" from URL query")
+            else {
+                fatalError("can not find \"code\" from URL query")
             }
             
             viewModel.requestAccessToken(withCode: code)

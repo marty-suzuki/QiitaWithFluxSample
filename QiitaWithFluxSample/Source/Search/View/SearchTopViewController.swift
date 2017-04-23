@@ -107,7 +107,7 @@ class SearchTopViewController: UIViewController, Storyboardable {
                 viewModel.searchAction.executing
             ) { $0 }
             .map { !$0.0.isEmpty || $0.1 }
-            .bindTo(noResultsLabel.rx.isHidden)
+            .bind(to: noResultsLabel.rx.isHidden)
             .addDisposableTo(disposeBag)
         
         let hasNextObservable = viewModel.hasNext.changed

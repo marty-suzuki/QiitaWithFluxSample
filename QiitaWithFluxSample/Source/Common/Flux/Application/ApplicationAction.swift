@@ -7,33 +7,36 @@
 //
 
 import RxSwift
+import RxCocoa
 
 final class ApplicationAction {
     static let shared = ApplicationAction()
     
     private let dispatcher: AnyObserverDispatcher<ApplicationDispatcher>
-    private let applicationStore: ApplicationStore
     private let routeAction: RouteAction
+    private let session: SessionType
+    private let config: Config
     
     private let disposeBag = DisposeBag()
     
     init(dispatcher: AnyObserverDispatcher<ApplicationDispatcher> = .init(.shared),
-         applicationStore: ApplicationStore = .shared,
-         routeAction: RouteAction = .shared) {
+         routeAction: RouteAction = .shared,
+         session: SessionType = QiitaSession.shared,
+         config: Config = .shared) {
         self.dispatcher = dispatcher
-        self.applicationStore = applicationStore
         self.routeAction = routeAction
+        self.session = session
+        self.config = config
     }
     
     func requestAccessToken(withCode code: String) {
-        let config = Config.shared
         let request = AccessTokensRequest(clientId: config.clientId,
                                           clientSecret: config.clientSecret,
                                           code: code)
-        QiitaSession.shared.send(request)
+        session.send(request)
             .map { Optional.some($0.token) }
             .do(onError: dispatcher.accessTokenError.onNext)
-            .bindNext(dispatcher.accessToken.onNext)
+            .subscribe(onNext: dispatcher.accessToken.onNext)
             .addDisposableTo(disposeBag)
     }
     

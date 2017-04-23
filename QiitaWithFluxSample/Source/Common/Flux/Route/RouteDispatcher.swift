@@ -15,7 +15,11 @@ final class RouteDispatcher: DispatcherType {
     fileprivate let login = PublishSubject<LoginDisplayType>()
     fileprivate let search = PublishSubject<SearchDisplayType>()
     
+    #if TEST
+    init() {}
+    #else
     private init() {}
+    #endif
 }
 
 extension AnyObserverDispatcher where Dispatcher: RouteDispatcher {
