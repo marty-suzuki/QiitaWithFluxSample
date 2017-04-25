@@ -40,25 +40,9 @@ class SearchTopViewController: UIViewController, Storyboardable {
     }
     
     private func observeUI() {
-        searchBar.rx.text.orEmpty
-            .distinctUntilChanged()
-            .debounce(0.3, scheduler: ConcurrentMainScheduler.instance)
-            .subscribe(onNext: { [weak self] text in
-                self?.viewModel.search(query: text)
-            })
-            .addDisposableTo(disposeBag)
-        
-        tableView.rx.reachedBottom
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.search()
-            })
-            .addDisposableTo(disposeBag)
-        
-        deleteButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.removeAccessToken()
-            })
-            .addDisposableTo(disposeBag)
+        viewModel.observe(textControlProperty: searchBar.rx.text,
+                          deleteButtonTap: deleteButton.rx.tap,
+                          reachedBottom: tableView.rx.reachedBottom)
         
         searchBar.rx.cancelButtonClicked
             .observeOn(ConcurrentMainScheduler.instance)

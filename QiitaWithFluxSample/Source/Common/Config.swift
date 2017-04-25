@@ -13,6 +13,7 @@ struct Config: Decodable {
         case notFoundFile(String)
         case notFoundContents(URL)
         case invalidCast(NSDictionary, String)
+        case emptyString(String)
     }
     
     static let shared: Config = {
@@ -38,11 +39,28 @@ struct Config: Decodable {
     let clientSecret: String
     
     static func decode(_ e: Extractor) throws -> Config {
-        return try Config(
+        let config = try Config(
             baseUrl: e <| "baseUrl",
             redirectUrl: e <| "redirectUrl",
             clientId: e <| "clientId",
             clientSecret: e <| "clientSecret"
         )
+        try config.validate()
+        return config
+    }
+    
+    func validate() throws {
+        if baseUrl.isEmpty {
+            throw Error.emptyString("baseUrl")
+        }
+        if redirectUrl.isEmpty {
+            throw Error.emptyString("redirectUrl")
+        }
+        if clientId.isEmpty {
+            throw Error.emptyString("clientId")
+        }
+        if clientSecret.isEmpty {
+            throw Error.emptyString("clientSecret")
+        }
     }
 }

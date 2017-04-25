@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import RxCocoa
 import Action
 
 final class SearchTopViewModel {
@@ -32,6 +33,7 @@ final class SearchTopViewModel {
     let searchAction: Action<ItemsRequest, ElementsResponse<Item>>
     private let perPage: Int = 20
     private let disposeBag = DisposeBag()
+    private var externalDisposeBag = DisposeBag()
     
     let noResult: Observable<Bool>
     let reloadData: Observable<Void>
@@ -108,6 +110,32 @@ final class SearchTopViewModel {
                 self?._error.value = $0
             })
             .addDisposableTo(disposeBag)
+    }
+    
+    func observe(textControlProperty: ControlProperty<String?>,
+                 deleteButtonTap: ControlEvent<Void>,
+                 reachedBottom: Observable<Void>) {
+        externalDisposeBag = DisposeBag()
+        
+        textControlProperty.orEmpty
+            .distinctUntilChanged()
+            .debounce(0.3, scheduler: ConcurrentMainScheduler.instance)
+            .subscribe(onNext: { [weak self] text in
+                self?.search(query: text)
+            })
+            .addDisposableTo(externalDisposeBag)
+        
+        deleteButtonTap
+            .subscribe(onNext: { [weak self] in
+                self?.removeAccessToken()
+            })
+            .addDisposableTo(externalDisposeBag)
+        
+        reachedBottom
+            .subscribe(onNext: { [weak self] in
+                self?.search()
+            })
+            .addDisposableTo(externalDisposeBag)
     }
     
     func search(query: String? = nil) {

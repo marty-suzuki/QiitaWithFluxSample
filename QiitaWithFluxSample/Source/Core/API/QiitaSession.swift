@@ -27,19 +27,18 @@ final class QiitaSession: SessionType {
     private init() {}
     
     func send<T: QiitaRequest>(_ request: T) -> Observable<T.Response> {
-        return Observable.create { [unowned self] observer in
+        return Single<T.Response>.create { [unowned self] observer in
             let task = self.session.send(request) { result in
                 switch result {
                 case .success(let value):
-                    observer.onNext(value)
-                    observer.onCompleted()
+                    observer(.success(value))
                 case .failure(let error):
-                    observer.onError(error)
+                    observer(.error(error))
                 }
             }
             return Disposables.create {
                 task?.cancel()
             }
-        }.take(1)
+        }.asObservable()
     }
 }
