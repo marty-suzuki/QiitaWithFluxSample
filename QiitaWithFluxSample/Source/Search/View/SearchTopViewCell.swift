@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import QiitaSession
 
 class SearchTopViewCell: UITableViewCell, Nibable {
 

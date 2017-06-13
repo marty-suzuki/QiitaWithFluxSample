@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import QiitaSession
 
 struct OauthAuthorizeRequest {
     enum Error: Swift.Error {

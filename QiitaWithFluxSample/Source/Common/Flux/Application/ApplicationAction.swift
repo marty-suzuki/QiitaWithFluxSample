@@ -8,6 +8,7 @@
 
 import RxSwift
 import RxCocoa
+import QiitaSession
 
 final class ApplicationAction {
     static let shared = ApplicationAction()

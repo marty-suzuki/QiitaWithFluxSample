@@ -9,6 +9,7 @@
 import RxSwift
 import RxCocoa
 import SwiftyUserDefaults
+import QiitaSession
 
 final class ApplicationStore {
     static let shared = ApplicationStore()
@@ -23,23 +24,28 @@ final class ApplicationStore {
     
     init(dispatcher: AnyObservableDispatcher<ApplicationDispatcher> = .init(.shared)) {
         #if !TEST
-            if let token = Defaults[.accessToken] {
-                _accessToken.value = token
-            }
+        if let token = Defaults[.accessToken] {
+            QiitaRequestConfig.token = token
+            _accessToken.value = token
+        }
         #endif
         
         self.accessToken = Property(_accessToken)
         self.accessTokenError = _accessTokenError
         
         #if TEST
-            dispatcher.accessToken
-                .bind(to: _accessToken)
-                .addDisposableTo(disposeBag)
+        dispatcher.accessToken
+            .do(onNext: { QiitaRequestConfig.token = $0 })
+            .bind(to: _accessToken)
+            .addDisposableTo(disposeBag)
         #else
-            dispatcher.accessToken
-                .do(onNext: { Defaults[.accessToken] = $0 })
-                .bind(to: _accessToken)
-                .addDisposableTo(disposeBag)
+        dispatcher.accessToken
+            .do(onNext: {
+                QiitaRequestConfig.token = $0
+                Defaults[.accessToken] = $0
+            })
+            .bind(to: _accessToken)
+            .addDisposableTo(disposeBag)
         #endif
         
         dispatcher.accessTokenError

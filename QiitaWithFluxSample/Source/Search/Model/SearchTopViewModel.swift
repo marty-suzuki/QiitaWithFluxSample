@@ -9,6 +9,7 @@
 import RxSwift
 import RxCocoa
 import Action
+import QiitaSession
 
 final class SearchTopViewModel {
     private let session: SessionType
