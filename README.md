@@ -59,6 +59,12 @@ After that, fill **redirectUrl**, **clientId** and **clientSecret** in Config.sw
 - [Kingfisher](https://github.com/onevcat/Kingfisher) 3.6.2
 - [SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults) 3.0.1
 
+## Playground
+
+API client (QiitaSession) is independent from QiitaWithFluxSample project because trying API call in the Playground before run in main project.
+
+![playground](./Images/playground.png)
+
 ## Special Thanks
 
 This sample uses [Qiita API](https://qiita.com/api/v2/docs).
