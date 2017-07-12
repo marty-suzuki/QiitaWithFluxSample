@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import Nuke
 import QiitaSession
 
 class SearchTopViewCell: UITableViewCell, Nibable {
@@ -29,9 +29,9 @@ class SearchTopViewCell: UITableViewCell, Nibable {
         userNameLabel.text = "\(item.user.id)が\(item.createdDateString)に投稿"
         titleLabel.text = item.title
         descriptionLabel.text = item.newLineExcludedBody
-        
+        thumbnailImageView.image = nil
         if let url = URL(string: item.user.profileImageUrl) {
-            thumbnailImageView.kf.setImage(with: url)
+            loadImage(with: url, into: thumbnailImageView)
         }
     }
 }

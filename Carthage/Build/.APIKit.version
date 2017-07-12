@@ -1,9 +1,8 @@
 {
-  "xcodeVersion" : "Xcode 8.3.2\nBuild version 8E2002",
   "commitish" : "3.1.2",
   "iOS" : [
     {
-      "hash" : "4a2c3f8693ff4a14fd5377055b5f32508090b862119c76cd9117a54b098ac26c",
+      "hash" : "cba7802142617f2a86839fbc8a97f29f013ce711c93e7171c7983197caddddd8",
       "name" : "APIKit"
     }
   ]

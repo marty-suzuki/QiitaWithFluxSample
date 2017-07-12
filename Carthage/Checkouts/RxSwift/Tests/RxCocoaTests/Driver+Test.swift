@@ -779,6 +779,25 @@ extension DriverTest {
     }
 }
 
+// MARK: debug
+extension DriverTest {
+    func testAsDriver_debug() {
+        let hotObservable = BackgroundThreadPrimitiveHotObservable<Int>()
+        let driver = hotObservable.asDriver(onErrorJustReturn: -1).debug("a", trimOutput: false)
+
+        let results = subscribeTwiceOnBackgroundSchedulerAndOnlyOneSubscription(driver) {
+            XCTAssertTrue(hotObservable.subscriptions == [SubscribedToHotObservable])
+
+            hotObservable.on(.next(1))
+            hotObservable.on(.error(testError))
+
+            XCTAssertTrue(hotObservable.subscriptions == [UnsunscribedFromHotObservable])
+        }
+
+        XCTAssertEqual(results, [1, -1])
+    }
+}
+
 // MARK: debounce
 extension DriverTest {
     func testAsDriver_debounce() {
@@ -914,110 +933,156 @@ extension DriverTest {
 // MARK: combine latest
 extension DriverTest {
     func testAsDriver_combineLatest_array() {
-        let hotObservable1 = BackgroundThreadPrimitiveHotObservable<Int>()
-        let hotObservable2 = BackgroundThreadPrimitiveHotObservable<Int>()
+        let factories: [([Driver<Int>]) -> Driver<Int>] =
+            [
+                { e0 in
+                    Driver.combineLatest(e0) { a in a.reduce(0, +) }
+                },
+                { e0 in
+                    Driver.combineLatest(e0).map { a in a.reduce(0, +) }
+                },
+            ]
 
-        let driver = Driver.combineLatest([hotObservable1.asDriver(onErrorJustReturn: -1), hotObservable2.asDriver(onErrorJustReturn: -2)]) { a in a.reduce(0, +) }
+        for factory in factories {
+            let hotObservable1 = BackgroundThreadPrimitiveHotObservable<Int>()
+            let hotObservable2 = BackgroundThreadPrimitiveHotObservable<Int>()
 
-        let results = subscribeTwiceOnBackgroundSchedulerAndOnlyOneSubscription(driver) {
-            XCTAssertTrue(hotObservable1.subscriptions == [SubscribedToHotObservable])
-            XCTAssertTrue(hotObservable2.subscriptions == [SubscribedToHotObservable])
+            let driver = factory([hotObservable1.asDriver(onErrorJustReturn: -1), hotObservable2.asDriver(onErrorJustReturn: -2)])
 
-            hotObservable1.on(.next(1))
-            hotObservable2.on(.next(4))
+            let results = subscribeTwiceOnBackgroundSchedulerAndOnlyOneSubscription(driver) {
+                XCTAssertTrue(hotObservable1.subscriptions == [SubscribedToHotObservable])
+                XCTAssertTrue(hotObservable2.subscriptions == [SubscribedToHotObservable])
 
-            hotObservable1.on(.next(2))
-            hotObservable2.on(.next(5))
+                hotObservable1.on(.next(1))
+                hotObservable2.on(.next(4))
 
-            hotObservable1.on(.error(testError))
-            hotObservable2.on(.error(testError))
+                hotObservable1.on(.next(2))
+                hotObservable2.on(.next(5))
 
-            XCTAssertTrue(hotObservable1.subscriptions == [UnsunscribedFromHotObservable])
-            XCTAssertTrue(hotObservable2.subscriptions == [UnsunscribedFromHotObservable])
+                hotObservable1.on(.error(testError))
+                hotObservable2.on(.error(testError))
+
+                XCTAssertTrue(hotObservable1.subscriptions == [UnsunscribedFromHotObservable])
+                XCTAssertTrue(hotObservable2.subscriptions == [UnsunscribedFromHotObservable])
+            }
+
+            XCTAssertEqual(results, [5, 6, 7, 4, -3])
         }
-
-        XCTAssertEqual(results, [5, 6, 7, 4, -3])
     }
 
     func testAsDriver_combineLatest() {
-        let hotObservable1 = BackgroundThreadPrimitiveHotObservable<Int>()
-        let hotObservable2 = BackgroundThreadPrimitiveHotObservable<Int>()
+        let factories: [(Driver<Int>, Driver<Int>) -> Driver<Int>] =
+            [
+                { e0, e1 in
+                    Driver.combineLatest(e0, e1, resultSelector: +)
+                },
+                { e0, e1 in
+                    Driver.combineLatest(e0, e1).map(+)
+                },
+            ]
+        for factory in factories {
+            let hotObservable1 = BackgroundThreadPrimitiveHotObservable<Int>()
+            let hotObservable2 = BackgroundThreadPrimitiveHotObservable<Int>()
 
-        let driver = Driver.combineLatest(hotObservable1.asDriver(onErrorJustReturn: -1), hotObservable2.asDriver(onErrorJustReturn: -2), resultSelector: +)
+            let driver = factory(hotObservable1.asDriver(onErrorJustReturn: -1), hotObservable2.asDriver(onErrorJustReturn: -2))
 
-        let results = subscribeTwiceOnBackgroundSchedulerAndOnlyOneSubscription(driver) {
-            XCTAssertTrue(hotObservable1.subscriptions == [SubscribedToHotObservable])
-            XCTAssertTrue(hotObservable2.subscriptions == [SubscribedToHotObservable])
+            let results = subscribeTwiceOnBackgroundSchedulerAndOnlyOneSubscription(driver) {
+                XCTAssertTrue(hotObservable1.subscriptions == [SubscribedToHotObservable])
+                XCTAssertTrue(hotObservable2.subscriptions == [SubscribedToHotObservable])
 
-            hotObservable1.on(.next(1))
-            hotObservable2.on(.next(4))
+                hotObservable1.on(.next(1))
+                hotObservable2.on(.next(4))
 
-            hotObservable1.on(.next(2))
-            hotObservable2.on(.next(5))
+                hotObservable1.on(.next(2))
+                hotObservable2.on(.next(5))
 
-            hotObservable1.on(.error(testError))
-            hotObservable2.on(.error(testError))
+                hotObservable1.on(.error(testError))
+                hotObservable2.on(.error(testError))
 
-            XCTAssertTrue(hotObservable1.subscriptions == [UnsunscribedFromHotObservable])
-            XCTAssertTrue(hotObservable2.subscriptions == [UnsunscribedFromHotObservable])
+                XCTAssertTrue(hotObservable1.subscriptions == [UnsunscribedFromHotObservable])
+                XCTAssertTrue(hotObservable2.subscriptions == [UnsunscribedFromHotObservable])
+            }
+
+            XCTAssertEqual(results, [5, 6, 7, 4, -3])
         }
-
-        XCTAssertEqual(results, [5, 6, 7, 4, -3])
     }
 }
 
 // MARK: zip
 extension DriverTest {
     func testAsDriver_zip_array() {
-        let hotObservable1 = BackgroundThreadPrimitiveHotObservable<Int>()
-        let hotObservable2 = BackgroundThreadPrimitiveHotObservable<Int>()
+        let factories: [([Driver<Int>]) -> Driver<Int>] =
+            [
+                { e0 in
+                    Driver.zip(e0) { a in a.reduce(0, +) }
+                },
+                { e0 in
+                    Driver.zip(e0).map { a in a.reduce(0, +) }
+                },
+            ]
 
-        let driver = Driver.zip([hotObservable1.asDriver(onErrorJustReturn: -1), hotObservable2.asDriver(onErrorJustReturn: -2)]) { a in a.reduce(0, +) }
+        for factory in factories {
+            let hotObservable1 = BackgroundThreadPrimitiveHotObservable<Int>()
+            let hotObservable2 = BackgroundThreadPrimitiveHotObservable<Int>()
 
-        let results = subscribeTwiceOnBackgroundSchedulerAndOnlyOneSubscription(driver) {
-            XCTAssertTrue(hotObservable1.subscriptions == [SubscribedToHotObservable])
-            XCTAssertTrue(hotObservable2.subscriptions == [SubscribedToHotObservable])
+            let driver = factory([hotObservable1.asDriver(onErrorJustReturn: -1), hotObservable2.asDriver(onErrorJustReturn: -2)])
 
-            hotObservable1.on(.next(1))
-            hotObservable2.on(.next(4))
+            let results = subscribeTwiceOnBackgroundSchedulerAndOnlyOneSubscription(driver) {
+                XCTAssertTrue(hotObservable1.subscriptions == [SubscribedToHotObservable])
+                XCTAssertTrue(hotObservable2.subscriptions == [SubscribedToHotObservable])
 
-            hotObservable1.on(.next(2))
-            hotObservable2.on(.next(5))
+                hotObservable1.on(.next(1))
+                hotObservable2.on(.next(4))
 
-            hotObservable1.on(.error(testError))
-            hotObservable2.on(.error(testError))
+                hotObservable1.on(.next(2))
+                hotObservable2.on(.next(5))
 
-            XCTAssertTrue(hotObservable1.subscriptions == [UnsunscribedFromHotObservable])
-            XCTAssertTrue(hotObservable2.subscriptions == [UnsunscribedFromHotObservable])
+                hotObservable1.on(.error(testError))
+                hotObservable2.on(.error(testError))
+
+                XCTAssertTrue(hotObservable1.subscriptions == [UnsunscribedFromHotObservable])
+                XCTAssertTrue(hotObservable2.subscriptions == [UnsunscribedFromHotObservable])
+            }
+
+            XCTAssertEqual(results, [5, 7, -3])
         }
-
-        XCTAssertEqual(results, [5, 7, -3])
     }
 
     func testAsDriver_zip() {
-        let hotObservable1 = BackgroundThreadPrimitiveHotObservable<Int>()
-        let hotObservable2 = BackgroundThreadPrimitiveHotObservable<Int>()
+        let factories: [(Driver<Int>, Driver<Int>) -> Driver<Int>] =
+            [
+                { e0, e1 in
+                    Driver.zip(e0, e1, resultSelector: +)
+                },
+                { e0, e1 in
+                    Driver.zip(e0, e1).map(+)
+                },
+            ]
+        for factory in factories {
+            let hotObservable1 = BackgroundThreadPrimitiveHotObservable<Int>()
+            let hotObservable2 = BackgroundThreadPrimitiveHotObservable<Int>()
 
-        let driver = Driver.zip(hotObservable1.asDriver(onErrorJustReturn: -1), hotObservable2.asDriver(onErrorJustReturn: -2), resultSelector: +)
+            let driver = factory(hotObservable1.asDriver(onErrorJustReturn: -1), hotObservable2.asDriver(onErrorJustReturn: -2))
 
-        let results = subscribeTwiceOnBackgroundSchedulerAndOnlyOneSubscription(driver) {
-            XCTAssertTrue(hotObservable1.subscriptions == [SubscribedToHotObservable])
-            XCTAssertTrue(hotObservable2.subscriptions == [SubscribedToHotObservable])
+            let results = subscribeTwiceOnBackgroundSchedulerAndOnlyOneSubscription(driver) {
+                XCTAssertTrue(hotObservable1.subscriptions == [SubscribedToHotObservable])
+                XCTAssertTrue(hotObservable2.subscriptions == [SubscribedToHotObservable])
 
-            hotObservable1.on(.next(1))
-            hotObservable2.on(.next(4))
+                hotObservable1.on(.next(1))
+                hotObservable2.on(.next(4))
 
-            hotObservable1.on(.next(2))
-            hotObservable2.on(.next(5))
+                hotObservable1.on(.next(2))
+                hotObservable2.on(.next(5))
 
-            hotObservable1.on(.error(testError))
-            hotObservable2.on(.error(testError))
+                hotObservable1.on(.error(testError))
+                hotObservable2.on(.error(testError))
 
-            XCTAssertTrue(hotObservable1.subscriptions == [UnsunscribedFromHotObservable])
-            XCTAssertTrue(hotObservable2.subscriptions == [UnsunscribedFromHotObservable])
+                XCTAssertTrue(hotObservable1.subscriptions == [UnsunscribedFromHotObservable])
+                XCTAssertTrue(hotObservable2.subscriptions == [UnsunscribedFromHotObservable])
+            }
+
+            XCTAssertEqual(results, [5, 7, -3])
         }
-
-        XCTAssertEqual(results, [5, 7, -3])
     }
 }
 
@@ -1094,7 +1159,7 @@ extension DriverTest {
 
             XCTAssertTrue(hotObservable1.subscriptions == [UnsunscribedFromHotObservable])
         }
-        
+
         XCTAssertEqual(results, [2, -1])
     }
 }
@@ -1265,5 +1330,130 @@ extension DriverTest {
         _ = Driver.just(1).drive(variable)
 
         XCTAssertEqual(variable.value, 1)
+    }
+}
+
+// MARK: from optional
+
+extension DriverTest {
+    func testDriverFromOptional() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        driveOnScheduler(scheduler) {
+            let res = scheduler.start { Driver.from(optional: 1 as Int?).asObservable() }
+            XCTAssertEqual(res.events, [
+                next(201, 1),
+                completed(202)
+                ])
+        }
+    }
+
+    func testDriverFromOptionalWhenNil() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        driveOnScheduler(scheduler) {
+            let res = scheduler.start { Driver.from(optional: nil as Int?).asObservable() }
+            XCTAssertEqual(res.events, [
+                completed(201)
+                ])
+        }
+    }
+}
+
+
+// MARK: from sequence
+
+extension DriverTest {
+    func testDriverFromSequence() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        driveOnScheduler(scheduler) {
+            let res = scheduler.start { Driver.from(AnySequence([10])).asObservable() }
+            XCTAssertEqual(res.events, [
+                next(201, 10),
+                completed(202)
+                ])
+        }
+    }
+
+    func testDriverFromArray() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        driveOnScheduler(scheduler) {
+            let res = scheduler.start { Driver.from([20]).asObservable() }
+            XCTAssertEqual(res.events, [
+                next(201, 20),
+                completed(202)
+                ])
+        }
+    }
+}
+
+// MARK: correct order of sync subscriptions
+
+extension DriverTest {
+    func testDrivingOrderOfSynchronousSubscriptions1() {
+        func prepareSampleDriver(with item: String) -> Driver<String> {
+            return Observable.create { observer in
+                    observer.onNext(item)
+                    observer.onCompleted()
+                    return Disposables.create()
+                }
+                .asDriver(onErrorJustReturn: "")
+        }
+
+        var disposeBag = DisposeBag()
+        let scheduler = TestScheduler(initialClock: 0)
+        let observer = scheduler.createObserver(String.self)
+        let variable = Variable("initial")
+
+        variable.asDriver()
+            .drive(observer)
+            .disposed(by: disposeBag)
+
+        prepareSampleDriver(with: "first")
+            .drive(variable)
+            .disposed(by: disposeBag)
+
+        prepareSampleDriver(with: "second")
+            .drive(variable)
+            .disposed(by: disposeBag)
+
+        Observable.just("third")
+            .bind(to: variable)
+            .disposed(by: disposeBag)
+
+        disposeBag = DisposeBag()
+
+        XCTAssertEqual(observer.events, [
+            next(0, "initial"),
+            next(0, "first"),
+            next(0, "second"),
+            next(0, "third")
+            ])
+
+    }
+
+    func testDrivingOrderOfSynchronousSubscriptions2() {
+        var latestValue: Int?
+        let state = Variable(1)
+        _ = state.asDriver()
+            .flatMapLatest { x in
+                return Driver.just(x * 2)
+            }
+            .flatMapLatest { y in
+                return Observable.just(y).asDriver(onErrorJustReturn: -1)
+            }
+            .flatMapLatest { y in
+                return Observable.just(y).asDriver(onErrorDriveWith: Driver.empty())
+            }
+            .flatMapLatest { y in
+                return Observable.just(y).asDriver(onErrorRecover: {  _ in Driver.empty() })
+            }
+            .drive(onNext: { element in
+                latestValue = element
+            })
+
+        XCTAssertEqual(latestValue, 2)
     }
 }

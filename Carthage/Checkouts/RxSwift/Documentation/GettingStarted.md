@@ -42,7 +42,7 @@ People are creatures with huge visual cortexes. When we can visualize a concept 
 
 We can lift a lot of the cognitive load from trying to simulate event state machines inside every Rx operator onto high level operations over sequences.
 
-If we don't use Rx but model asynchronous systems, that probably means that our code is full of state machines and transient states that we need to simulate instead of abstracting away.
+If we don't use Rx but model asynchronous systems, that probably means our code is full of state machines and transient states that we need to simulate instead of abstracting away.
 
 Lists and sequences are probably one of the first concepts mathematicians and programmers learn.
 
@@ -59,7 +59,7 @@ Another sequence, with characters:
 --a--b--a--a--a---d---X // terminates with error
 ```
 
-Some sequences are finite and others are infinite, like a sequence of button taps:
+Some sequences are finite while others are infinite, like a sequence of button taps:
 
 ```
 ---tap-tap-------tap--->
@@ -100,11 +100,11 @@ protocol ObserverType {
 
 If a sequence terminates in finite time, not calling `dispose` or not using `disposed(by: disposeBag)` won't cause any permanent resource leaks. However, those resources will be used until the sequence completes, either by finishing production of elements or returning an error.
 
-If a sequence does not terminate in some way, resources will be allocated permanently unless `dispose` is called manually, automatically inside of a `disposeBag`, `takeUntil` or in some other way.
+If a sequence does not terminate on its own, such as with a series of button taps, resources will be allocated permanently unless `dispose` is called manually, automatically inside of a `disposeBag`, with the `takeUntil` operator, or in some other way.
 
 **Using dispose bags or `takeUntil` operator is a robust way of making sure resources are cleaned up. We recommend using them in production even if the sequences will terminate in finite time.**
 
-In case you are curious why `Swift.Error` isn't generic, you can find explanation [here](DesignRationale.md#why-error-type-isnt-generic).
+If you are curious why `Swift.Error` isn't generic, you can find the explanation [here](DesignRationale.md#why-error-type-isnt-generic).
 
 ## Disposing
 
@@ -135,11 +135,11 @@ This will print:
 5
 ```
 
-Note that you usually do not want to manually call `dispose`; this is only educational example. Calling dispose manually is usually a bad code smell. There are better ways to dispose subscriptions. We can use `DisposeBag`, the `takeUntil` operator, or some other mechanism.
+Note that you usually do not want to manually call `dispose`; this is only an educational example. Calling dispose manually is usually a bad code smell. There are better ways to dispose of subscriptions such as `DisposeBag`, the `takeUntil` operator, or some other mechanism.
 
-So can this code print something after the `dispose` call executed? The answer is: it depends.
+So can this code print something after the `dispose` call is executed? The answer is: it depends.
 
-* If the `scheduler` is a **serial scheduler** (ex. `MainScheduler`) and `dispose` is called on **on the same serial scheduler**, the answer is **no**.
+* If the `scheduler` is a **serial scheduler** (ex. `MainScheduler`) and `dispose` is called **on the same serial scheduler**, the answer is **no**.
 
 * Otherwise it is **yes**.
 
@@ -148,7 +148,7 @@ You can find out more about schedulers [here](Schedulers.md).
 You simply have two processes happening in parallel.
 
 * one is producing elements
-* the other is disposing the subscription
+* the other is disposing of the subscription
 
 The question "Can something be printed after?" does not even make sense in the case that those processes are on different schedulers.
 
@@ -235,7 +235,7 @@ someObservable
   }
 ```
 
-this will always print:
+This will always print:
 
 ```
 Event processing started
@@ -246,7 +246,7 @@ Event processing started
 Event processing ended
 ```
 
-it can never print:
+It can never print:
 
 ```
 Event processing started
@@ -263,7 +263,7 @@ There is one crucial thing to understand about observables.
 
 It is true that `Observable` can generate elements in many ways. Some of them cause side effects and some of them tap into existing running processes like tapping into mouse events, etc.
 
-**But if you just call a method that returns an `Observable`, no sequence generation is performed, and there are no side effects. `Observable` is just a definition how the sequence is generated and what parameters are used for element generation. Sequence generation starts when `subscribe` method is called.**
+**However, if you just call a method that returns an `Observable`, no sequence generation is performed and there are no side effects. `Observable` just defines how the sequence is generated and what parameters are used for element generation. Sequence generation starts when `subscribe` method is called.**
 
 E.g. Let's say you have a method with similar prototype:
 
@@ -284,9 +284,9 @@ let cancel = searchForMe
 
 ```
 
-There are a lot of ways how you can create your own `Observable` sequence. Probably the easiest way is using `create` function.
+There are a lot of ways to create your own `Observable` sequence. The easiest way is probably to use the `create` function.
 
-Let's create a function which creates a sequence that returns one element upon subscription. That function is called 'just'.
+Let's write a function that creates a sequence which returns one element upon subscription. That function is called 'just'.
 
 *This is the actual implementation*
 
@@ -305,7 +305,7 @@ myJust(0)
     })
 ```
 
-this will print:
+This will print:
 
 ```
 0
@@ -459,7 +459,7 @@ subscription2.dispose()
 print("Ended ----")
 ```
 
-this would print:
+This would print:
 
 ```
 Started ----
@@ -524,7 +524,7 @@ subscription2.dispose()
 print("Ended ----")
 ```
 
-this will print
+This will print
 
 ```
 Started ----
@@ -642,7 +642,7 @@ let subscription = myInterval(0.1)
     })
 ```
 
-and this will print
+This will print:
 
 ```
 Subscribed
@@ -694,7 +694,7 @@ This isn't something that should be practiced often, and is a bad code smell, bu
     // ....
 ```
 
-Every time you do this, somebody will probably write this code somewhere
+Every time you do this, somebody will probably write this code somewhere:
 
 ```swift
   kittens
@@ -704,7 +704,7 @@ Every time you do this, somebody will probably write this code somewhere
     .disposed(by: disposeBag)
 ```
 
-so please try not to do this.
+So please try not to do this.
 
 ## Playgrounds
 

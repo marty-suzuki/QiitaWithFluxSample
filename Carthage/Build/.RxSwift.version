@@ -1,21 +1,28 @@
 {
-  "xcodeVersion" : "Xcode 8.3.2\nBuild version 8E2002",
-  "commitish" : "3.4.0",
+  "commitish" : "3.5.0",
   "iOS" : [
     {
-      "hash" : "6217831d1cf6ea857cc7b34e88a293ca50d007389c8456a9021ec580e278e3e0",
+      "hash" : "04fd4dc3a437ae1c024f28e12bb929526918d70aa77285ae046f63defd395400",
       "name" : "RxBlocking"
     },
     {
-      "hash" : "d4abf2a5bc94e84acfd1ec88fdfbd2c01fb04f0b4a70efde4b662e0b5cbbd795",
+      "hash" : "f5aefc830c9a8cb06babfc4b46d206deffcfb05494b5ba48c041e2e1fb608718",
       "name" : "RxTest"
     },
     {
-      "hash" : "f674a9d3c614bcefa24d9b01d94994b99f81019f33bea7d0eaf3e209ba8e3226",
+      "hash" : "cb5f6d038c7fb31954309f04c00320dcbaacb23bcb2d28afe3a88d052bdd3864",
       "name" : "RxCocoa"
     },
     {
-      "hash" : "d0463c641c1a55976f83fbcc5bf051f06aea562067cd060a89e72e5010c5f3a1",
+      "hash" : "cb5f6d038c7fb31954309f04c00320dcbaacb23bcb2d28afe3a88d052bdd3864",
+      "name" : "RxCocoa"
+    },
+    {
+      "hash" : "8a107dec0359b29cfdc9cef1fd2209386f6b3d146bdbeb4027749b37d5cecc9a",
+      "name" : "RxSwift"
+    },
+    {
+      "hash" : "8a107dec0359b29cfdc9cef1fd2209386f6b3d146bdbeb4027749b37d5cecc9a",
       "name" : "RxSwift"
     }
   ]

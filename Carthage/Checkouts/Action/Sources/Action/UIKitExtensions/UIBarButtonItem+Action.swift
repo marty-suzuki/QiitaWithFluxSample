@@ -27,33 +27,33 @@ public extension Reactive where Base: UIBarButtonItem {
             if let action = newValue {
                 action
                     .enabled
-                    .bindTo(self.isEnabled)
-                    .addDisposableTo(self.base.actionDisposeBag)
+                    .bind(to: self.isEnabled)
+                    .disposed(by: self.base.actionDisposeBag)
                 
                 self.tap.subscribe(onNext: { (_) in
                     action.execute()
                 })
-                .addDisposableTo(self.base.actionDisposeBag)
+                .disposed(by: self.base.actionDisposeBag)
             }
         }
     }
 
-    public func bindTo<Input, Output>(action: Action<Input, Output>, inputTransform: @escaping (Base) -> (Input)) {
+    public func bind<Input, Output>(to action: Action<Input, Output>, inputTransform: @escaping (Base) -> (Input)) {
         unbindAction()
 
         self.tap
             .map { inputTransform(self.base) }
-            .bindTo(action.inputs)
-            .addDisposableTo(self.base.actionDisposeBag)
+            .bind(to: action.inputs)
+            .disposed(by: self.base.actionDisposeBag)
 
         action
             .enabled
-            .bindTo(self.isEnabled)
-            .addDisposableTo(self.base.actionDisposeBag)
+            .bind(to: self.isEnabled)
+            .disposed(by: self.base.actionDisposeBag)
     }
 
-    public func bindTo<Input, Output>(action: Action<Input, Output>, input: Input) {
-        self.bindTo(action: action) { _ in input}
+    public func bind<Input, Output>(to action: Action<Input, Output>, input: Input) {
+        self.bind(to: action) { _ in input}
     }
 
     /// Unbinds any existing action, disposing of all subscriptions.

@@ -1,9 +1,8 @@
 {
-  "xcodeVersion" : "Xcode 8.3.2\nBuild version 8E2002",
   "commitish" : "3.0.1",
   "iOS" : [
     {
-      "hash" : "0c81c26442742dd68559abb4fd63b120968d2d7a35e8df2ee6d764fff7b90701",
+      "hash" : "d827b8a5b9563fdf51727581c728112d116f45e4f237cf362278ce246a4a56ce",
       "name" : "Himotoki"
     }
   ]

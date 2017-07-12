@@ -27,7 +27,6 @@
 		376071AB1EA7B5C500C4DA10 /* LoginViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */; };
 		376071AC1EA7B69A00C4DA10 /* OauthAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */; };
 		376071AD1EA7B93800C4DA10 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C4101EA4965C00E5CC27 /* LoginViewModel.swift */; };
-		37AF563C1EF05220003C8B3D /* QiitaSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF56051EF04E50003C8B3D /* QiitaSession.framework */; };
 		37AF563F1EF054C1003C8B3D /* Item.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AF563E1EF054C1003C8B3D /* Item.extension.swift */; };
 		37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C681A31E9D4BF900DABE71 /* WebKit.framework */; };
 		37C6822E1EA1F15900DABE71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C681FA1EA1F15800DABE71 /* Assets.xcassets */; };
@@ -61,7 +60,6 @@
 		37FC07501EAC6B2700514FF6 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07481EAC6B2700514FF6 /* Action.framework */; };
 		37FC07511EAC6B2700514FF6 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07491EAC6B2700514FF6 /* APIKit.framework */; };
 		37FC07521EAC6B2700514FF6 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074A1EAC6B2700514FF6 /* Himotoki.framework */; };
-		37FC07531EAC6B2700514FF6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074B1EAC6B2700514FF6 /* Kingfisher.framework */; };
 		37FC07541EAC6B2700514FF6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074C1EAC6B2700514FF6 /* Result.framework */; };
 		37FC07551EAC6B2700514FF6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074D1EAC6B2700514FF6 /* RxCocoa.framework */; };
 		37FC07561EAC6B2700514FF6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074E1EAC6B2700514FF6 /* RxSwift.framework */; };
@@ -88,6 +86,9 @@
 		9D39E9021EA770A3009785E0 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40C1EA4858E00E5CC27 /* RootViewModel.swift */; };
 		9D7FB6A01EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */; };
 		9D7FB6A21EA4B4DE0044F8C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A11EA4B4DE0044F8C4 /* AppDelegate.swift */; };
+		9D9DAB511F15F9CF0037E034 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9DAB501F15F9CF0037E034 /* Nuke.framework */; };
+		9D9DAB591F15FE210037E034 /* QiitaSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF56051EF04E50003C8B3D /* QiitaSession.framework */; };
+		9D9DAB5A1F15FE210037E034 /* QiitaSession.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF56051EF04E50003C8B3D /* QiitaSession.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9DDC50E21EA708B30020BC31 /* QiitaWithFluxSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC50E11EA708B30020BC31 /* QiitaWithFluxSampleTests.swift */; };
 		9DDC50E91EA70B810020BC31 /* RouteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6820B1EA1F15800DABE71 /* RouteStore.swift */; };
 		9DDC50EA1EA70B830020BC31 /* RouteDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6820A1EA1F15800DABE71 /* RouteDispatcher.swift */; };
@@ -104,6 +105,13 @@
 			containerPortal = 37AF56001EF04E4F003C8B3D /* QiitaSession.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 37AF55F51EF04E4F003C8B3D;
+			remoteInfo = QiitaSession;
+		};
+		9D9DAB5B1F15FE220037E034 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37AF56001EF04E4F003C8B3D /* QiitaSession.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 37AF55F41EF04E4F003C8B3D;
 			remoteInfo = QiitaSession;
 		};
 		9DDC50E41EA708B30020BC31 /* PBXContainerItemProxy */ = {
@@ -123,6 +131,17 @@
 			dstSubfolderSpec = 7;
 			files = (
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D9DAB5D1F15FE220037E034 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9D9DAB5A1F15FE210037E034 /* QiitaSession.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -194,6 +213,7 @@
 		9D39E9001EA77074009785E0 /* RootViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModelCase.swift; sourceTree = "<group>"; };
 		9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthAuthorizeRequest.swift; sourceTree = "<group>"; };
 		9D7FB6A11EA4B4DE0044F8C4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9D9DAB501F15F9CF0037E034 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
 		9DDC50DF1EA708B30020BC31 /* QiitaWithFluxSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiitaWithFluxSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DDC50E11EA708B30020BC31 /* QiitaWithFluxSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaWithFluxSampleTests.swift; sourceTree = "<group>"; };
 		9DDC50E31EA708B30020BC31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -208,11 +228,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37AF563C1EF05220003C8B3D /* QiitaSession.framework in Frameworks */,
+				9D9DAB591F15FE210037E034 /* QiitaSession.framework in Frameworks */,
+				9D9DAB511F15F9CF0037E034 /* Nuke.framework in Frameworks */,
 				37FC07501EAC6B2700514FF6 /* Action.framework in Frameworks */,
 				37FC07511EAC6B2700514FF6 /* APIKit.framework in Frameworks */,
 				37FC07521EAC6B2700514FF6 /* Himotoki.framework in Frameworks */,
-				37FC07531EAC6B2700514FF6 /* Kingfisher.framework in Frameworks */,
 				37FC07541EAC6B2700514FF6 /* Result.framework in Frameworks */,
 				37FC07551EAC6B2700514FF6 /* RxCocoa.framework in Frameworks */,
 				37FC07561EAC6B2700514FF6 /* RxSwift.framework in Frameworks */,
@@ -242,6 +262,7 @@
 		3354F5D5EE9EB6E842107602 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D9DAB501F15F9CF0037E034 /* Nuke.framework */,
 				37FC07481EAC6B2700514FF6 /* Action.framework */,
 				37FC07491EAC6B2700514FF6 /* APIKit.framework */,
 				37FC074A1EAC6B2700514FF6 /* Himotoki.framework */,
@@ -554,10 +575,12 @@
 				37FBF8001E91404300AE52C3 /* Resources */,
 				37FC07581EAC6BDC00514FF6 /* CopyFiles */,
 				37FC07591EAC6BF900514FF6 /* ShellScript */,
+				9D9DAB5D1F15FE220037E034 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9D9DAB5C1F15FE220037E034 /* PBXTargetDependency */,
 			);
 			name = QiitaWithFluxSample;
 			productName = QiitaWithFluxSample;
@@ -675,7 +698,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Himotoki.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Nuke.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
@@ -768,6 +791,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9D9DAB5C1F15FE220037E034 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QiitaSession;
+			targetProxy = 9D9DAB5B1F15FE220037E034 /* PBXContainerItemProxy */;
+		};
 		9DDC50E51EA708B30020BC31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 37FBF8011E91404300AE52C3 /* QiitaWithFluxSample */;
@@ -872,6 +900,7 @@
 		37FBF8151E91404300AE52C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -891,6 +920,7 @@
 		37FBF8161E91404300AE52C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -999,6 +1029,7 @@
 		9DDC50ED1EA713710020BC31 /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (

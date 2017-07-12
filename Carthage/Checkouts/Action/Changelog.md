@@ -4,6 +4,23 @@ Changelog
 Current master
 --------------
 
+3.1.1
+-----
+
+- Loosens dependency on RxSwift.
+
+3.1.0
+-----
+
+- Replace `PublishSubject` with `InputSubject` [#92](https://github.com/RxSwiftCommunity/Action/pull/92)
+- Added missing sources for watchOS target [#95](https://github.com/RxSwiftCommunity/Action/pull/95)
+
+3.0.0
+-----
+
+- Change `bindTo([...])` methods to `bind(to: [...])` to better align with the revised Rx API
+- Update Rx invocations to resolve deprecation warnings related to same
+
 2.2.2
 -----
 

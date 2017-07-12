@@ -308,6 +308,23 @@ SWIFT_CLASS("_TtC7RxCocoa29RxCollectionViewDelegateProxy")
 @end
 
 
+/// For more information take a look at <code>DelegateProxyType</code>.
+SWIFT_CLASS("_TtC7RxCocoa35RxNavigationControllerDelegateProxy")
+@interface RxNavigationControllerDelegateProxy : DelegateProxy <UINavigationControllerDelegate>
+/// For more information take a look at <code>DelegateProxyType</code>.
++ (id _Nullable)currentDelegateFor:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
+/// For more information take a look at <code>DelegateProxyType</code>.
++ (void)setCurrentDelegate:(id _Nullable)delegate toObject:(id _Nonnull)object;
+/// For more information take a look at <code>DelegateProxyType</code>.
++ (id _Nonnull)createProxyForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithParentObject:(id _Nonnull)parentObject OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface RxNavigationControllerDelegateProxy (SWIFT_EXTENSION(RxCocoa)) <UIImagePickerControllerDelegate>
+@end
+
+
 SWIFT_CLASS("_TtC7RxCocoa25RxPickerViewDelegateProxy")
 @interface RxPickerViewDelegateProxy : DelegateProxy <UIPickerViewDelegate>
 /// For more information take a look at <code>DelegateProxyType</code>.
@@ -472,6 +489,15 @@ SWIFT_CLASS("_TtC7RxCocoa25TableViewDataSourceNotSet")
 /// returns:
 /// Instance of delegate proxy that wraps <code>dataSource</code>.
 - (RxCollectionViewDataSourceProxy * _Nonnull)createRxDataSourceProxy SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface UINavigationController (SWIFT_EXTENSION(RxCocoa))
+/// Factory method that enables subclasses to implement their own <code>delegate</code>.
+///
+/// returns:
+/// Instance of delegate proxy that wraps <code>delegate</code>.
+- (RxNavigationControllerDelegateProxy * _Nonnull)createRxDelegateProxy SWIFT_WARN_UNUSED_RESULT;
 @end
 
 

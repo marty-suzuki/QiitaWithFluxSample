@@ -34,36 +34,36 @@ class ActionTests: QuickSpec {
 
             func bindAction(action: Action<String, String>) {
                 action.inputs
-                    .bindTo(inputs)
-                    .addDisposableTo(disposeBag)
+                    .bind(to: inputs)
+                    .disposed(by: disposeBag)
 
                 action.elements
-                    .bindTo(elements)
-                    .addDisposableTo(disposeBag)
+                    .bind(to: elements)
+                    .disposed(by: disposeBag)
 
                 action.errors
-                    .bindTo(errors)
-                    .addDisposableTo(disposeBag)
+                    .bind(to: errors)
+                    .disposed(by: disposeBag)
                 
                 action.enabled
-                    .bindTo(enabled)
-                    .addDisposableTo(disposeBag)
+                    .bind(to: enabled)
+                    .disposed(by: disposeBag)
                 
                 action.executing
-                    .bindTo(executing)
-                    .addDisposableTo(disposeBag)
+                    .bind(to: executing)
+                    .disposed(by: disposeBag)
 
                 action.executionObservables
-                    .bindTo(executionObservables)
-                    .addDisposableTo(disposeBag)
+                    .bind(to: executionObservables)
+                    .disposed(by: disposeBag)
 
                 // Dummy subscription for multiple subcription tests
-                action.inputs.subscribe().addDisposableTo(disposeBag)
-                action.elements.subscribe().addDisposableTo(disposeBag)
-                action.errors.subscribe().addDisposableTo(disposeBag)
-                action.enabled.subscribe().addDisposableTo(disposeBag)
-                action.executing.subscribe().addDisposableTo(disposeBag)
-                action.executionObservables.subscribe().addDisposableTo(disposeBag)
+                action.inputs.subscribe().disposed(by: disposeBag)
+                action.elements.subscribe().disposed(by: disposeBag)
+                action.errors.subscribe().disposed(by: disposeBag)
+                action.enabled.subscribe().disposed(by: disposeBag)
+                action.executing.subscribe().disposed(by: disposeBag)
+                action.executionObservables.subscribe().disposed(by: disposeBag)
             }
 
             describe("single element action") {
@@ -376,19 +376,19 @@ class ActionTests: QuickSpec {
 
             func bindAndExecuteTwice(action: Action<String, String>) {
                 action.executionObservables
-                    .bindTo(executionObservables)
-                    .addDisposableTo(disposeBag)
+                    .bind(to: executionObservables)
+                    .disposed(by: disposeBag)
                 
                 scheduler.scheduleAt(10) {
                     action.execute("a")
-                        .bindTo(element)
-                        .addDisposableTo(disposeBag)
+                        .bind(to: element)
+                        .disposed(by: disposeBag)
                 }
 
                 scheduler.scheduleAt(20) {
                     action.execute("b")
-                        .bindTo(element)
-                        .addDisposableTo(disposeBag)
+                        .bind(to: element)
+                        .disposed(by: disposeBag)
                 }
 
                 scheduler.start()
@@ -484,19 +484,19 @@ class ActionTests: QuickSpec {
                     action = Action { Observable.just($0).sample(trigger) }
                     
                     action.executionObservables
-                        .bindTo(executionObservables)
-                        .addDisposableTo(disposeBag)
+                        .bind(to: executionObservables)
+                        .disposed(by: disposeBag)
                     
                     scheduler.scheduleAt(10) {
                         action.execute("a")
-                            .bindTo(element)
-                            .addDisposableTo(disposeBag)
+                            .bind(to: element)
+                            .disposed(by: disposeBag)
                     }
 
                     scheduler.scheduleAt(20) {
                         action.execute("b")
-                            .bindTo(secondElement)
-                            .addDisposableTo(disposeBag)
+                            .bind(to: secondElement)
+                            .disposed(by: disposeBag)
                     }
 
                     scheduler.scheduleAt(30) {

@@ -14,8 +14,6 @@ import XCTest
 
 // MARK: Tests
 
-// MARK: UITableView
-
 extension DelegateProxyTest {
     func test_UITableViewDelegateExtension() {
         performDelegateTest(UITableViewSubclass1(frame: CGRect.zero))
@@ -25,8 +23,6 @@ extension DelegateProxyTest {
         performDelegateTest(UITableViewSubclass2(frame: CGRect.zero))
     }
 }
-
-// MARK: UICollectionView
 
 extension DelegateProxyTest {
 
@@ -41,15 +37,17 @@ extension DelegateProxyTest {
     }
 }
 
-// MARK: UIScrollView
+extension DelegateProxyTest {
+    func test_UINavigationControllerDelegateExtension() {
+        performDelegateTest(UINavigationControllerSubclass())
+    }
+}
 
 extension DelegateProxyTest {
     func test_UIScrollViewDelegateExtension() {
         performDelegateTest(UIScrollViewSubclass(frame: CGRect.zero))
     }
 }
-
-// MARK: UISearchBar
 
 #if os(iOS)
 extension DelegateProxyTest {
@@ -59,15 +57,12 @@ extension DelegateProxyTest {
 }
 #endif
 
-// MARK: UITextView
-
 extension DelegateProxyTest {
     func test_UITextViewDelegateExtension() {
         performDelegateTest(UITextViewSubclass(frame: CGRect.zero))
     }
 }
 
-// MARK UISearchController
 #if os(iOS)
 extension DelegateProxyTest {
     func test_UISearchController() {
@@ -82,7 +77,6 @@ extension DelegateProxyTest {
 }
 #endif
 
-// MARK: UIWebView
 #if os(iOS)
 extension DelegateProxyTest {
     func test_UIWebViewDelegateExtension() {
@@ -91,23 +85,17 @@ extension DelegateProxyTest {
 }
 #endif
 
-// MARK: UITabBarController
-
 extension DelegateProxyTest {
     func test_UITabBarControllerDelegateExtension() {
         performDelegateTest(UITabBarControllerSubclass())
     }
 }
 
-// MARK: UITabBar
-
 extension DelegateProxyTest {
     func test_UITabBarDelegateExtension() {
         performDelegateTest(UITabBarSubclass())
     }
 }
-
-// MARK: NSTextStorage
 
 extension DelegateProxyTest {
     /* something is wrong with subclassing mechanism.
@@ -467,7 +455,16 @@ final class NSTextStorageSubclass
     }
 }
 
+final class ExtendNavigationControllerDelegateProxy
+    : RxNavigationControllerDelegateProxy
+    , TestDelegateProtocol {
+    weak fileprivate(set) var control: UINavigationControllerSubclass?
 
+    required init(parentObject: AnyObject) {
+        self.control = (parentObject as! UINavigationControllerSubclass)
+        super.init(parentObject: parentObject)
+    }
+}
 
 final class ExtendTabBarControllerDelegateProxy
     : RxTabBarControllerDelegateProxy
@@ -488,6 +485,26 @@ final class ExtendTabBarDelegateProxy
     required init(parentObject: AnyObject) {
         self.control = (parentObject as! UITabBarSubclass)
         super.init(parentObject: parentObject)
+    }
+}
+
+final class UINavigationControllerSubclass: UINavigationController, TestDelegateControl {
+    override func createRxDelegateProxy() -> RxNavigationControllerDelegateProxy {
+        return ExtendNavigationControllerDelegateProxy(parentObject: self)
+    }
+
+    func doThatTest(_ value: Int) {
+        (delegate as! TestDelegateProtocol).testEventHappened?(value)
+    }
+
+    var delegateProxy: DelegateProxy {
+        return self.rx.delegate
+    }
+
+    func setMineForwardDelegate(_ testDelegate: TestDelegateProtocol) -> Disposable {
+        return RxNavigationControllerDelegateProxy.installForwardDelegate(testDelegate,
+                                                                          retainDelegate: false,
+                                                                          onProxyForObject: self)
     }
 }
 
