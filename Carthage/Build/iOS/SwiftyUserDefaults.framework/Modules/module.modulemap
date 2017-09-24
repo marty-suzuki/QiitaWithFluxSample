@@ -7,4 +7,5 @@ framework module SwiftyUserDefaults {
 
 module SwiftyUserDefaults.Swift {
     header "SwiftyUserDefaults-Swift.h"
+    requires objc
 }

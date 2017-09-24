@@ -98,10 +98,20 @@ class DecodableTest: XCTestCase {
     }
 
     func testPerformanceByPersons() {
-        let peopleJSON = Array(repeating: personJSON, count: 500)
+        #if _runtime(_ObjC)
+            // Intentionally bridged to `NSArray` for the performance test. That
+            // should match return values from `JSONSerialization`.
+            let peopleJSON: Any = Array(NSArray(array: Array(repeating: personJSON, count: 500)))
+        #else
+            let peopleJSON: Any = Array(repeating: personJSON, count: 500)
+        #endif
 
         measure {
-            _ = try? [Person].decode(peopleJSON)
+            do {
+                _ = try [Person].decode(peopleJSON)
+            } catch {
+                XCTFail(String(describing: error))
+            }
         }
     }
 
@@ -185,7 +195,7 @@ extension DecodableTest {
     }
 }
 
-struct Person: Decodable {
+struct Person: Himotoki.Decodable {
     let firstName: String
     let lastName: String
     let age: Int
@@ -229,7 +239,7 @@ struct Person: Decodable {
     }
 }
 
-struct Group: Decodable {
+struct Group: Himotoki.Decodable {
     let name: String
     let floor: Int
     let optional: [String]?
@@ -243,7 +253,7 @@ struct Group: Decodable {
     }
 }
 
-struct Numbers: Decodable {
+struct Numbers: Himotoki.Decodable {
     let int: Int
     let uint: UInt
     let int8: Int8

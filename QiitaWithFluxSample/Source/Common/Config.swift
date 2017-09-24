@@ -8,7 +8,7 @@
 
 import Himotoki
 
-struct Config: Decodable {
+struct Config: Himotoki.Decodable {
     enum Error: Swift.Error {
         case notFoundFile(String)
         case notFoundContents(URL)

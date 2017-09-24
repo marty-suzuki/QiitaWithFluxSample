@@ -6,7 +6,7 @@ import XCTest
 import Foundation
 
 extension XCTestCase {
-    func expect(_ block: (_ fulfill: @escaping (Void) -> Void) -> Void) {
+    func expect(_ block: (_ fulfill: @escaping () -> Void) -> Void) {
         let expectation = makeExpectation()
         block({ expectation.fulfill() })
     }
