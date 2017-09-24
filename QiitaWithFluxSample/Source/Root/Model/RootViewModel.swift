@@ -23,14 +23,18 @@ final class RootViewModel {
         accessTokenObservable
             .filter { $0 != nil }
             .map { _ in SearchDisplayType.root }
-            .bind(onNext: routeAction.show)
-            .addDisposableTo(disposeBag)
+            .subscribe(onNext: { [weak routeAction] in
+                routeAction?.show(searchDisplayType: $0)
+            })
+            .disposed(by: disposeBag)
         
         accessTokenObservable
             .filter { $0 == nil }
             .map { _ in LoginDisplayType.root }
-            .bind(onNext: routeAction.show)
-            .addDisposableTo(disposeBag)
+            .subscribe(onNext: { [weak routeAction] in
+                routeAction?.show(loginDisplayType: $0)
+            })
+            .disposed(by: disposeBag)
         
         self.login = routeStore.login
         self.search = routeStore.search

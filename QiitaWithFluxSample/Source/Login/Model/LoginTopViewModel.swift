@@ -18,6 +18,6 @@ final class LoginTopViewModel {
         loginButtonTap
             .map { LoginDisplayType.webView }
             .bind(onNext: routeAction.show)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 }

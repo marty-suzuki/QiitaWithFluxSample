@@ -21,8 +21,4 @@ class LoginTopViewController: UIViewController, Storyboardable {
         
         _ = viewModel
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }

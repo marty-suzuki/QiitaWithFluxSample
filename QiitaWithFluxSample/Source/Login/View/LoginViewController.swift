@@ -14,38 +14,28 @@ class LoginViewController: UIViewController, Storyboardable {
     let loadingView = LoadingView(indicatorStyle: .whiteLarge)
     let webView: WKWebView = WKWebView(frame: .zero)
     
-    private let viewModel = LoginViewModel()
+    private(set) lazy var viewModel: LoginViewModel = .init(requestAccessTokenWithCode: self.requestAccessTokenWithCode)
     private(set) lazy var dataSource: LoginViewDataSource = .init(viewModel: self.viewModel)
+    private let requestAccessTokenWithCode = PublishSubject<String>()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureWebView()
-        configureLoadingView()
-        observeViewModel()
-    }
-    
-    private func configureWebView() {
         webView.navigationDelegate = dataSource
         view.addSubview(webView, toEdges: .zero)
         view.bringSubview(toFront: webView)
         webView.load(URLRequest(url: viewModel.authorizeUrl))
-    }
-    
-    private func configureLoadingView() {
+
         view.addSubview(loadingView, toEdges: .zero)
         loadingView.isHidden = true
-    }
 
-    private func observeViewModel() {
         viewModel.isLoading.changed
             .observeOn(ConcurrentMainScheduler.instance)
             .bind(to: loadingView.rx.isHiddenAndAnimating)
-            .addDisposableTo(disposeBag)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+            .disposed(by: disposeBag)
+        dataSource.requestAccessTokenWithCode
+            .bind(to: requestAccessTokenWithCode)
+            .disposed(by: disposeBag)
     }
 }

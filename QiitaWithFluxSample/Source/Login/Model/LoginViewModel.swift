@@ -21,7 +21,8 @@ final class LoginViewModel {
     
     init(applicationStore: ApplicationStore = .shared,
          applicationAction: ApplicationAction = .shared,
-         config: Config = .shared) {
+         config: Config = .shared,
+         requestAccessTokenWithCode: Observable<String>) {
         self.applicationAction = applicationAction
         self.isLoading = Property(_isLoading)
         self.authorizeRequest = OauthAuthorizeRequest(scope: [.read, .write], config: config)
@@ -35,15 +36,17 @@ final class LoginViewModel {
         applicationStore.accessToken.asObservable()
             .map { _ in false }
             .bind(to: _isLoading)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         applicationStore.accessTokenError
             .map { _ in false }
             .bind(to: _isLoading)
-            .addDisposableTo(disposeBag)
-    }
-    
-    func requestAccessToken(withCode code: String) {
-        _isLoading.value = true
-        applicationAction.requestAccessToken(withCode: code)
+            .disposed(by: disposeBag)
+        
+        requestAccessTokenWithCode
+            .subscribe(onNext: { [weak self, weak applicationAction] code in
+                self?._isLoading.value = true
+                applicationAction?.requestAccessToken(withCode: code)
+            })
+            .disposed(by: disposeBag)
     }
 }

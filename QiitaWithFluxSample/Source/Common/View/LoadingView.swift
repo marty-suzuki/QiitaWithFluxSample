@@ -10,9 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoadingView: UIView {
-    
-    
+final class LoadingView: UIView {
     private let activityIndicatorViewStyle: UIActivityIndicatorViewStyle
     let indicatorView: UIActivityIndicatorView
     

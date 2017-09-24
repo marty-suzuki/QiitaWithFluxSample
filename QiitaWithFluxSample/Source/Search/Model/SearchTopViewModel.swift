@@ -34,7 +34,6 @@ final class SearchTopViewModel {
     let searchAction: Action<ItemsRequest, ElementsResponse<Item>>
     private let perPage: Int = 20
     private let disposeBag = DisposeBag()
-    private var externalDisposeBag = DisposeBag()
     
     let noResult: Observable<Bool>
     let reloadData: Observable<Void>
@@ -44,7 +43,11 @@ final class SearchTopViewModel {
     
     init(session: SessionType = QiitaSession.shared,
          routeAction: RouteAction = .shared,
-         applicationAction: ApplicationAction = .shared) {
+         applicationAction: ApplicationAction = .shared,
+         selectedIndexPath: Observable<IndexPath>,
+         searchText: ControlProperty<String>,
+         deleteButtonTap: ControlEvent<Void>,
+         reachedBottom: Observable<Void>) {
         self.session = session
         self.routeAction = routeAction
         self.applicationAction = applicationAction
@@ -56,29 +59,22 @@ final class SearchTopViewModel {
         self.hasNext = Property(_hasNext)
         
         self.searchAction = Action { [weak session] request in
-            guard let session = session else { return .empty() }
-            return session.send(request)
+            session.map { $0.send(request) } ?? .empty()
         }
         
         let itemsObservable = items.changed
-        self.noResult = Observable.combineLatest(
-                itemsObservable,
-                searchAction.executing
-            ) { $0 }
-            .map { !$0.0.isEmpty || $0.1 }
+        self.noResult = Observable.combineLatest(itemsObservable,
+                                                 searchAction.executing)
+            .map { !$0.isEmpty || $1 }
         
         let hasNextObservable = hasNext.changed
-        self.reloadData = Observable.combineLatest(
-                itemsObservable,
-                hasNextObservable
-            ) { $0 }
+        self.reloadData = Observable.combineLatest(itemsObservable,
+                                                   hasNextObservable)
             .map { _ in }
         
-        self.isFirstLoading = Observable.combineLatest(
-                itemsObservable,
-                hasNextObservable,
-                lastItemsRequest.changed
-            ) { $0 }
+        self.isFirstLoading = Observable.combineLatest(itemsObservable,
+                                                       hasNextObservable,
+                                                       lastItemsRequest.changed)
             .map { $0.0.isEmpty && $0.1 && $0.2 != nil }
         
         self.keyboardWillShow = NotificationCenter.default.rx.notification(.UIKeyboardWillShow)
@@ -93,10 +89,14 @@ final class SearchTopViewModel {
             .map { UIKeyboardInfo(info: $0) }
             .filterNil()
         
-        observeAction()
-    }
-    
-    private func observeAction() {
+        selectedIndexPath
+            .withLatestFrom(_items.asObservable()) { $1[$0.row] }
+            .flatMap { URL(string: $0.url).map { Observable<URL>.just($0) } ?? .empty() }
+            .subscribe(onNext: { [weak routeAction] in
+                routeAction?.show(searchDisplayType: .webView($0))
+            })
+            .disposed(by: disposeBag)
+        
         searchAction.elements
             .subscribe(onNext: { [weak self] response in
                 guard let me = self else { return }
@@ -104,71 +104,50 @@ final class SearchTopViewModel {
                 me._totalCount.value = response.totalCount
                 me._hasNext.value = (me._items.value.count < me._totalCount.value) && !response.elements.isEmpty
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         searchAction.errors
-            .subscribe(onNext: { [weak self] in
-                self?._error.value = $0
-            })
-            .addDisposableTo(disposeBag)
-    }
-    
-    func observe(textControlProperty: ControlProperty<String?>,
-                 deleteButtonTap: ControlEvent<Void>,
-                 reachedBottom: Observable<Void>) {
-        externalDisposeBag = DisposeBag()
-        
-        textControlProperty.orEmpty
-            .distinctUntilChanged()
-            .debounce(0.3, scheduler: ConcurrentMainScheduler.instance)
-            .subscribe(onNext: { [weak self] text in
-                self?.search(query: text)
-            })
-            .addDisposableTo(externalDisposeBag)
+            .map { Optional($0) }
+            .bind(to: _error)
+            .disposed(by: disposeBag)
         
         deleteButtonTap
-            .subscribe(onNext: { [weak self] in
-                self?.removeAccessToken()
+            .subscribe(onNext: { [weak applicationAction] in
+                applicationAction?.removeAccessToken()
             })
-            .addDisposableTo(externalDisposeBag)
+            .disposed(by: disposeBag)
+
+        let firstLoad = searchText
+            .debounce(0.3, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .do(onNext: { [weak self] _ in
+                self?._lastItemsRequest.value = nil
+                self?._items.value.removeAll()
+                self?._hasNext.value = true
+            })
+            .filter { !$0.isEmpty }
+            .map { ($0, 1) }
         
-        reachedBottom
-            .subscribe(onNext: { [weak self] in
-                self?.search()
-            })
-            .addDisposableTo(externalDisposeBag)
-    }
-    
-    func search(query: String? = nil) {
-        let nextQuery: String
-        let nextPage: Int
-        if let query = query {
-            _lastItemsRequest.value = nil
-            _items.value.removeAll()
-            _hasNext.value = true
-            if query.isEmpty {
-                return
+        let loadMore = reachedBottom
+            .withLatestFrom(hasNext.asObservable())
+            .filter { $0 }
+            .withLatestFrom(lastItemsRequest.asObservable())
+            .filterNil()
+            .map { ($0.query, $0.page + 1) }
+
+        Observable.merge(firstLoad, loadMore)
+            .flatMap { [weak self] query, page -> Observable<ItemsRequest> in
+                self.map { .just(ItemsRequest(page: page, perPage: $0.perPage, query: query)) } ?? .empty()
             }
-            nextQuery = query
-            nextPage = 1
-        } else if hasNext.value, let lastItemsRequest = lastItemsRequest.value {
-            nextQuery = lastItemsRequest.query
-            nextPage = lastItemsRequest.page + 1
-        } else {
-            return
-        }
-        let request = ItemsRequest(page: nextPage, perPage: perPage, query: nextQuery)
-        _lastItemsRequest.value = request
-        searchAction.execute(request)
-    }
-    
-    func showItem(rowAt indexPath: IndexPath) {
-        let item = items.value[indexPath.row]
-        guard let url = URL(string: item.url) else { return }
-        routeAction.show(searchDisplayType: .webView(url))
-    }
-    
-    func removeAccessToken() {
-        applicationAction.removeAccessToken()
+            .bind(to: _lastItemsRequest)
+            .disposed(by: disposeBag)
+            
+        _lastItemsRequest.asObservable()
+            .filterNil()
+            .distinctUntilChanged { $0.page == $1.page && $0.query == $1.query }
+            .subscribe(onNext: { [weak self] request in
+                self?.searchAction.execute(request)
+            })
+            .disposed(by: disposeBag)
     }
 }
