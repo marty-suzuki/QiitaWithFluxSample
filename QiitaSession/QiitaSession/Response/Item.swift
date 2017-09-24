@@ -8,7 +8,7 @@
 
 import Himotoki
 
-public struct Item: Decodable {
+public struct Item: Himotoki.Decodable {
     public let renderedBody: String
     public let body: String
     public let coediting: Bool

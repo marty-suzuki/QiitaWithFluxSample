@@ -1,8 +1,8 @@
 {
-  "commitish" : "3.0.1",
+  "commitish" : "3.1.0",
   "iOS" : [
     {
-      "hash" : "d827b8a5b9563fdf51727581c728112d116f45e4f237cf362278ce246a4a56ce",
+      "hash" : "fabc6a8a9f541b00afd732fe29f83897158515a5087238d8facd4a650a68ecaf",
       "name" : "Himotoki"
     }
   ]

@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import RxSwift
 
 final class SearchTopDataSource: NSObject {
     let viewModel: SearchTopViewModel
+    
+    let selectedIndexPath: Observable<IndexPath>
+    fileprivate let _selectedIndexPath = PublishSubject<IndexPath>()
     
     fileprivate var canShowLoadingView: Bool {
         return viewModel.hasNext.value && !viewModel.items.value.isEmpty && viewModel.lastItemsRequest.value != nil
@@ -17,6 +21,7 @@ final class SearchTopDataSource: NSObject {
     
     init(viewModel: SearchTopViewModel) {
         self.viewModel = viewModel
+        self.selectedIndexPath = _selectedIndexPath
     }
     
     func configure(with tableView: UITableView) {
@@ -57,7 +62,7 @@ extension SearchTopDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        viewModel.showItem(rowAt: indexPath)
+        _selectedIndexPath.onNext(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

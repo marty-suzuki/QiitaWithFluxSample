@@ -24,7 +24,7 @@ A powerful **image loading** and **caching** framework which allows for hassle-f
 
 - [Installation Guide](https://github.com/kean/Nuke/blob/master/Documentation/Guides/Installation%20Guide.md)
 - [Documentation](https://github.com/kean/Nuke/blob/master/Documentation/)
-- [API Reference](http://kean.github.io/Nuke/reference/5.1/index.html)
+- [API Reference](http://kean.github.io/Nuke/reference/5.1.1/index.html)
 
 Upgrading from the previous version? Use a [migration guide](https://github.com/kean/Nuke/blob/master/Documentation/Migrations).
 
@@ -259,8 +259,8 @@ Nuke provides a fast in-memory `Cache` that implements `Caching` protocol. It st
 # Requirements<a name="h_requirements"></a>
 
 - iOS 9.0 / watchOS 2.0 / macOS 10.11 / tvOS 9.0
-- Xcode 8
-- Swift 3
+- Xcode 8, 9
+- Swift 3.2 and 4.0
 
 
 # License

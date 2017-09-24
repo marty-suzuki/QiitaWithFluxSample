@@ -8,7 +8,7 @@
 
 import Himotoki
 
-public struct Tag: Decodable {
+public struct Tag: Himotoki.Decodable {
     public let name: String
     public let versions: [String]
     

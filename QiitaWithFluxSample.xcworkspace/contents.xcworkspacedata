@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:QiitaSession.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:QiitaSession"
+      name = "Dependencies">
+      <FileRef
+         location = "group:QiitaSession/../Carthage/Checkouts/RxSwift/Rx.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:QiitaSession/../Carthage/Checkouts/Result/Result.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:QiitaSession/../Carthage/Checkouts/Himotoki/Himotoki.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:QiitaSession/../Carthage/Checkouts/APIKit/APIKit.xcodeproj">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "container:QiitaWithFluxSample.xcodeproj">
+   </FileRef>
+</Workspace>

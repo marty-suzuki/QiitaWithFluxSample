@@ -8,7 +8,7 @@
 
 import Himotoki
 
-public struct User: Decodable {
+public struct User: Himotoki.Decodable {
     public let `description`: String?
     public let facebookId: String?
     public let followeesCount: Int

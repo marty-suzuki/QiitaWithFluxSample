@@ -7,4 +7,5 @@ framework module Action {
 
 module Action.Swift {
     header "Action-Swift.h"
+    requires objc
 }

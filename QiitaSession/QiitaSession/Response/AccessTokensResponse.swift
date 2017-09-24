@@ -8,7 +8,7 @@
 
 import Himotoki
 
-public struct AccessTokensResponse: Decodable {
+public struct AccessTokensResponse: Himotoki.Decodable {
     public let cliendId: String
     public let scopes: [QiitaScope]
     public let token: String

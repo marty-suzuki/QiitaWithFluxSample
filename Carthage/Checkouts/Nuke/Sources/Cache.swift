@@ -66,7 +66,7 @@ public final class Cache: Caching {
         #endif
     }
 
-    private static func defaultCostLimit() -> Int {
+    public static func defaultCostLimit() -> Int {
         let physicalMemory = ProcessInfo.processInfo.physicalMemory
         let ratio = physicalMemory <= (1024 * 1024 * 512 /* 512 Mb */) ? 0.1 : 0.2
         let limit = physicalMemory / UInt64(1 / ratio)
@@ -79,12 +79,13 @@ public final class Cache: Caching {
             lock.lock()  // faster than `sync()`
             defer { lock.unlock() }
 
-            return map[key].map {
-                // bubble node up to the head
-                list.remove($0)
-                list.append($0)
-                return $0.value.image
-            }
+            guard let node = map[key] else { return nil }
+
+            // bubble node up to the head
+            list.remove(node)
+            list.append(node)
+
+            return node.value.image
         }
         set {
             lock.lock() // faster than `sync()`
@@ -94,12 +95,16 @@ public final class Cache: Caching {
                 add(node: Node(value: CachedImage(image: image, cost: cost(image), key: key)))
                 trim()
             } else {
-                map[key].map(remove)
+                guard let node = map[key] else { return }
+                remove(node: node)
             }
         }
     }
 
     private func add(node: Node<CachedImage>) {
+        if let existingNode = map[node.value.key] {
+            remove(node: existingNode)
+        }
         list.append(node)
         map[node.value.key] = node
         totalCost += node.value.cost
@@ -112,7 +117,7 @@ public final class Cache: Caching {
     }
 
     /// Removes all cached images.
-    public dynamic func removeAll() {
+    @objc public dynamic func removeAll() {
         lock.sync {
             map.removeAll()
             list.removeAll()
@@ -125,7 +130,7 @@ public final class Cache: Caching {
         _trim(toCount: countLimit)
     }
 
-    private dynamic func didEnterBackground() {
+    @objc private dynamic func didEnterBackground() {
         // Remove most of the stored items when entering background.
         // This behaviour is similar to `NSCache` (which removes all
         // items). This feature is not documented and may be subject

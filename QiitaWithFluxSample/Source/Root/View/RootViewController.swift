@@ -8,9 +8,10 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import SafariServices
 
-class RootViewController: UIViewController {
+final class RootViewController: UIViewController {
     private (set) var currentViewController: UIViewController? {
         didSet {
             guard let currentViewController = currentViewController else { return }
@@ -39,67 +40,62 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        observeViewModel()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        viewModel.login
+            .filterNil()
+            .bind(to: showLogin)
+            .disposed(by: disposeBag)
+        viewModel.search
+            .filterNil()
+            .bind(to: showSearch)
+            .disposed(by: disposeBag)
     }
     
-    private func observeViewModel() {
-        viewModel.login
-            .observeOn(ConcurrentMainScheduler.instance)
-            .filterNil()
-            .subscribe(onNext: { [weak self] displayType in
-                guard let me = self else { return }
-                let loginNC: LoginNavigationController
-                if let nc = me.currentViewController as? LoginNavigationController {
-                    loginNC = nc
-                } else {
-                    loginNC = LoginNavigationController()
-                    me.currentViewController = loginNC
+    private var showLogin: AnyObserver<LoginDisplayType> {
+        return UIBindingObserver(UIElement: self) { me, displayType in
+            let loginNC: LoginNavigationController
+            if let nc = me.currentViewController as? LoginNavigationController {
+                loginNC = nc
+            } else {
+                loginNC = LoginNavigationController()
+                me.currentViewController = loginNC
+            }
+            switch displayType {
+            case .root:
+                if loginNC.topViewController is LoginTopViewController {
+                    return
                 }
-                switch displayType {
-                case .root:
-                    if loginNC.topViewController is LoginTopViewController {
-                        return
-                    }
-                    loginNC.popToRootViewController(animated: true)
-                case .webView:
-                    if loginNC.topViewController is LoginViewController {
-                        return
-                    }
-                    loginNC.pushViewController(LoginViewController.instantiate(), animated: true)
+                loginNC.popToRootViewController(animated: true)
+            case .webView:
+                if loginNC.topViewController is LoginViewController {
+                    return
                 }
-            })
-            .addDisposableTo(disposeBag)
-        
-        viewModel.search
-            .observeOn(ConcurrentMainScheduler.instance)
-            .filterNil()
-            .subscribe(onNext: { [weak self] displayType in
-                guard let me = self else { return }
-                let searchNC: SearchNavigationController
-                if let nc = me.currentViewController as? SearchNavigationController {
-                    searchNC = nc
-                } else {
-                    searchNC = SearchNavigationController()
-                    me.currentViewController = searchNC
+                loginNC.pushViewController(LoginViewController.instantiate(), animated: true)
+            }
+        }.asObserver()
+    }
+    
+    private var showSearch: AnyObserver<SearchDisplayType> {
+        return UIBindingObserver(UIElement: self) { me, displayType in
+            let searchNC: SearchNavigationController
+            if let nc = me.currentViewController as? SearchNavigationController {
+                searchNC = nc
+            } else {
+                searchNC = SearchNavigationController()
+                me.currentViewController = searchNC
+            }
+            switch displayType {
+            case .root:
+                if searchNC.topViewController is SearchTopViewController {
+                    return
                 }
-                switch displayType {
-                case .root:
-                    if searchNC.topViewController is SearchTopViewController {
-                        return
-                    }
-                    searchNC.popToRootViewController(animated: true)
-                case .webView(let url):
-                    if searchNC.topViewController is SFSafariViewController {
-                        return
-                    }
-                    searchNC.pushViewController(SFSafariViewController(url: url), animated:  true)
+                searchNC.popToRootViewController(animated: true)
+            case .webView(let url):
+                if searchNC.topViewController is SFSafariViewController {
+                    return
                 }
-            })
-            .addDisposableTo(disposeBag)
+                searchNC.pushViewController(SFSafariViewController(url: url), animated:  true)
+            }
+        }.asObserver()
     }
 }
 

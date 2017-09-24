@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import RxSwift
 import WebKit
 
 final class LoginViewDataSource: NSObject {
     
     let viewModel: LoginViewModel
+    let requestAccessTokenWithCode: Observable<String>
+    fileprivate let _requestAccessTokenWithCode = PublishSubject<String>()
     
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
+        self.requestAccessTokenWithCode = _requestAccessTokenWithCode
     }
 }
 
@@ -34,7 +38,7 @@ extension LoginViewDataSource: WKNavigationDelegate {
                 fatalError("can not find \"code\" from URL query")
             }
             
-            viewModel.requestAccessToken(withCode: code)
+            _requestAccessTokenWithCode.onNext(code)
             decisionHandler(.cancel)
             return
         }

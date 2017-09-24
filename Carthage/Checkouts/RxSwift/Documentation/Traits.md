@@ -129,7 +129,7 @@ A Completable is a variation of Observable that can only _complete_ or _emit an 
 * Doesn't share side effects
 
 A useful use case for Completable would be to model any case where we only care for the fact an operation has completed, but don't care about a element resulted by that completion.
-You could compare it to using using an `Observable<Void>` that can't emit elements.
+You could compare it to using an `Observable<Void>` that can't emit elements.
 
 #### Creating a Completable
 Creating a Completable is similar to creating an Observable. A simple example would look like this:
@@ -379,7 +379,7 @@ Any observable sequence can be converted to `Driver` trait, as long as it satisf
 
 So how do you make sure those properties are satisfied? Just use normal Rx operators. `asDriver(onErrorJustReturn: [])` is equivalent to following code.
 
-```
+```swift
 let safeSequence = xs
   .observeOn(MainScheduler.instance)       // observe events on main scheduler
   .catchErrorJustReturn(onErrorJustReturn) // can't error out
