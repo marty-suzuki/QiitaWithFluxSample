@@ -8,6 +8,7 @@
 
 import XCTest
 import RxSwift
+@testable import QiitaWithFluxSample
 
 class RouteStoreCase: XCTestCase {
     var routeStore: RouteStore!
@@ -16,11 +17,10 @@ class RouteStoreCase: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        #if TEST
-            let dispatcher = RouteDispatcher()
-            routeDispatcher = AnyObserverDispatcher(dispatcher)
-            routeStore = RouteStore(dispatcher: AnyObservableDispatcher(dispatcher))
-        #endif
+
+        let dispatcher = RouteDispatcher.testable.make()
+        routeDispatcher = AnyObserverDispatcher(dispatcher)
+        routeStore = RouteStore(dispatcher: AnyObservableDispatcher(dispatcher))
     }
     
     override func tearDown() {
@@ -39,7 +39,7 @@ class RouteStoreCase: XCTestCase {
                 XCTAssertEqual($0, LoginDisplayType.root)
                 loginDisplayTypeExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         routeDispatcher.login.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -67,7 +67,7 @@ class RouteStoreCase: XCTestCase {
                 XCTAssertEqual(url?.absoluteString, "https://github.com")
                 searchDisplayTypeExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         routeDispatcher.search.onNext(.webView(url))
         waitForExpectations(timeout: 0.1, handler: nil)
     }

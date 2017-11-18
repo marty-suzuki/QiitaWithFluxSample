@@ -11,9 +11,10 @@ import QiitaSession
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
-QiitaRequestConfig.baseUrl = "https://qiita.com/api"
+let session = QiitaSession(tokenGetter: { nil },
+                           baseURL: "https://qiita.com/api")
 let request = ItemsRequest(page: 1, perPage: 3, query: "marty-suzuki")
-_ = QiitaSession.shared.send(request)
+_ = session.send(request)
     .subscribe(
         onNext: { response in
             print(response.elements)

@@ -52,9 +52,9 @@ final class LoadingView: UIView {
 }
 
 extension Reactive where Base: LoadingView {
-    var isHiddenAndAnimating: UIBindingObserver<Base, Bool> {
-        return UIBindingObserver(UIElement: base, binding: { (base, isHidden) in
+    var isHiddenAndAnimating: Binder<Bool> {
+        return Binder(base) { base, isHidden in
             base.isHidden = isHidden
-        })
+        }
     }
 }

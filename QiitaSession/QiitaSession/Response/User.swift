@@ -6,9 +6,9 @@
 //  Copyright © 2017年 marty-suzuki. All rights reserved.
 //
 
-import Himotoki
+import Foundation
 
-public struct User: Himotoki.Decodable {
+public struct User: Codable {
     public let `description`: String?
     public let facebookId: String?
     public let followeesCount: Int
@@ -24,24 +24,30 @@ public struct User: Himotoki.Decodable {
     public let profileImageUrl: String
     public let twitterScreenName: String?
     public let websiteUrl: String?
-    
-    public static func decode(_ e: Extractor) throws -> User {
-        return try User(
-            description: e <|? "description",
-            facebookId: e <|? "facebook_id",
-            followeesCount: e <| "followees_count",
-            followersCount: e <| "followers_count",
-            githubLoginName: e <|? "github_login_name",
-            id: e <| "id",
-            itemsCount: e <| "items_count",
-            linkedinId: e <|? "linkedin_id",
-            location: e <|? "location",
-            name: e <|? "name",
-            organization: e <|? "organization",
-            permanentId: e <| "permanent_id",
-            profileImageUrl: e <| "profile_image_url",
-            twitterScreenName: e <|? "twitter_screen_name",
-            websiteUrl: e <|? "website_url"
-        )
+
+    private enum CodingKeys: String, CodingKey {
+        case description
+        case facebookId = "facebook_id"
+        case followeesCount = "followees_count"
+        case followersCount = "followers_count"
+        case githubLoginName = "github_login_name"
+        case id
+        case itemsCount = "items_count"
+        case linkedinId = "linkedin_id"
+        case location
+        case name
+        case organization
+        case permanentId = "permanent_id"
+        case profileImageUrl = "profile_image_url"
+        case twitterScreenName = "twitter_screen_name"
+        case websiteUrl = "website_url"
+    }
+}
+
+extension User: TestableCompatible {}
+
+extension Testable where Base == User.Type {
+    public func make(description: String?, facebookId: String?, followeesCount: Int, followersCount: Int, githubLoginName: String?, id: String, itemsCount: Int, linkedinId: String?, location: String?, name: String?, organization: String?, permanentId: Int, profileImageUrl: String, twitterScreenName: String?, websiteUrl: String?) -> User {
+        return User(description: description, facebookId: facebookId, followeesCount: followeesCount, followersCount: followersCount, githubLoginName: githubLoginName, id: id, itemsCount: itemsCount, linkedinId: linkedinId, location: location, name: name, organization: organization, permanentId: permanentId, profileImageUrl: profileImageUrl, twitterScreenName: twitterScreenName, websiteUrl: websiteUrl)
     }
 }

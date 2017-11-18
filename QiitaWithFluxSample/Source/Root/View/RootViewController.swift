@@ -51,7 +51,7 @@ final class RootViewController: UIViewController {
     }
     
     private var showLogin: AnyObserver<LoginDisplayType> {
-        return UIBindingObserver(UIElement: self) { me, displayType in
+        return Binder(self) { me, displayType in
             let loginNC: LoginNavigationController
             if let nc = me.currentViewController as? LoginNavigationController {
                 loginNC = nc
@@ -75,7 +75,7 @@ final class RootViewController: UIViewController {
     }
     
     private var showSearch: AnyObserver<SearchDisplayType> {
-        return UIBindingObserver(UIElement: self) { me, displayType in
+        return Binder(self) { me, displayType in
             let searchNC: SearchNavigationController
             if let nc = me.currentViewController as? SearchNavigationController {
                 searchNC = nc

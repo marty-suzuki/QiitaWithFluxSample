@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum QiitaScope: String {
+public enum QiitaScope: String, Codable {
     case read = "read_qiita"
     case write = "write_qiita"
 }

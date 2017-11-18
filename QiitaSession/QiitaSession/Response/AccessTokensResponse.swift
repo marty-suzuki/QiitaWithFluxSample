@@ -6,18 +6,24 @@
 //  Copyright © 2017年 marty-suzuki. All rights reserved.
 //
 
-import Himotoki
+import Foundation
 
-public struct AccessTokensResponse: Himotoki.Decodable {
+public struct AccessTokensResponse: Codable {
     public let cliendId: String
     public let scopes: [QiitaScope]
     public let token: String
-    
-    public static func decode(_ e: Extractor) throws -> AccessTokensResponse {
-        return try AccessTokensResponse(
-            cliendId: e <| "client_id",
-            scopes: (e <|| "scopes").flatMap { QiitaScope(rawValue: $0) },
-            token: e <| "token"
-        )
+
+    private enum CodingKeys: String, CodingKey {
+        case cliendId = "client_id"
+        case scopes
+        case token
+    }
+}
+
+extension AccessTokensResponse: TestableCompatible {}
+
+extension Testable where Base == AccessTokensResponse.Type {
+    public func make(cliendId: String, scopes: [QiitaScope], token: String) -> AccessTokensResponse {
+        return AccessTokensResponse(cliendId: cliendId, scopes: scopes, token: token)
     }
 }

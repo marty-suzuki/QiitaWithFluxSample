@@ -8,6 +8,7 @@
 
 import XCTest
 import RxSwift
+@testable import QiitaWithFluxSample
 
 class RootViewModelCase: XCTestCase {
     var applicationDispatcher: AnyObserverDispatcher<ApplicationDispatcher>!
@@ -23,20 +24,19 @@ class RootViewModelCase: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        #if TEST
-            let routeParentDispatcher = RouteDispatcher()
-            routeObservableDispatcher = AnyObservableDispatcher(routeParentDispatcher)
-            routeStore = RouteStore(dispatcher: routeObservableDispatcher)
-            routeObserverDispatcher = AnyObserverDispatcher(routeParentDispatcher)
-            routeAction = RouteAction(dispatcher: routeObserverDispatcher)
-            
-            let applicationParentDispatcher = ApplicationDispatcher()
-            applicationDispatcher = AnyObserverDispatcher(applicationParentDispatcher)
-            applicationStore = ApplicationStore(dispatcher: AnyObservableDispatcher(applicationParentDispatcher))
-            rootViewModel = RootViewModel(applicationStore: applicationStore,
-                                          routeAction: routeAction,
-                                          routeStore: routeStore)
-        #endif
+        
+        let routeParentDispatcher = RouteDispatcher.testable.make()
+        routeObservableDispatcher = AnyObservableDispatcher(routeParentDispatcher)
+        routeStore = RouteStore(dispatcher: routeObservableDispatcher)
+        routeObserverDispatcher = AnyObserverDispatcher(routeParentDispatcher)
+        routeAction = RouteAction(dispatcher: routeObserverDispatcher)
+
+        let applicationParentDispatcher = ApplicationDispatcher.testable.make()
+        applicationDispatcher = AnyObserverDispatcher(applicationParentDispatcher)
+        applicationStore = ApplicationStore(dispatcher: AnyObservableDispatcher(applicationParentDispatcher))
+        rootViewModel = RootViewModel(applicationStore: applicationStore,
+                                      routeAction: routeAction,
+                                      routeStore: routeStore)
     }
     
     override func tearDown() {
@@ -55,7 +55,7 @@ class RootViewModelCase: XCTestCase {
                 XCTAssertEqual($0, LoginDisplayType.root)
                 loginDisplayTypeExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         routeObserverDispatcher.login.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -71,7 +71,7 @@ class RootViewModelCase: XCTestCase {
                 XCTAssertEqual($0, LoginDisplayType.root)
                 loginDisplayTypeExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         applicationDispatcher.accessToken.onNext(nil)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -93,7 +93,7 @@ class RootViewModelCase: XCTestCase {
                 XCTAssertTrue(isSearchRoot)
                 searchDisplayTypeExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         routeObserverDispatcher.search.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -115,7 +115,7 @@ class RootViewModelCase: XCTestCase {
                 XCTAssertTrue(isSearchRoot)
                 searchDisplayTypeExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         applicationDispatcher.accessToken.onNext("accessToken")
         waitForExpectations(timeout: 0.1, handler: nil)
     }

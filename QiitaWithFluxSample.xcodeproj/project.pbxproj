@@ -19,14 +19,9 @@
 		3734DD571EA3B7A500DC30C7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3734DD561EA3B7A500DC30C7 /* LoadingView.xib */; };
 		3734DD5B1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD5A1EA3CEEB00DC30C7 /* UIKeyboardInfo.swift */; };
 		374250431EAC776A008F47F4 /* SearchTopViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374250421EAC776A008F47F4 /* SearchTopViewModelCase.swift */; };
-		374250441EAC7E2C008F47F4 /* SearchTopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD431EA33A5900DC30C7 /* SearchTopViewModel.swift */; };
-		3742504A1EAC7E9F008F47F4 /* Date.ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734DD4F1EA3540D00DC30C7 /* Date.ISO8601.swift */; };
 		3742504C1EAD0694008F47F4 /* ObservableType.filterNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742504B1EAD0694008F47F4 /* ObservableType.filterNil.swift */; };
 		376071A81EA7B1D900C4DA10 /* LoginTopViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376071A71EA7B1D900C4DA10 /* LoginTopViewModelCase.swift */; };
-		376071A91EA7B22100C4DA10 /* LoginTopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40E1EA48BD700E5CC27 /* LoginTopViewModel.swift */; };
 		376071AB1EA7B5C500C4DA10 /* LoginViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */; };
-		376071AC1EA7B69A00C4DA10 /* OauthAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */; };
-		376071AD1EA7B93800C4DA10 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C4101EA4965C00E5CC27 /* LoginViewModel.swift */; };
 		37AF563F1EF054C1003C8B3D /* Item.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AF563E1EF054C1003C8B3D /* Item.extension.swift */; };
 		37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C681A31E9D4BF900DABE71 /* WebKit.framework */; };
 		37C6822E1EA1F15900DABE71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C681FA1EA1F15800DABE71 /* Assets.xcassets */; };
@@ -56,47 +51,34 @@
 		37C6825A1EA2549600DABE71 /* ApplicationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682591EA2549600DABE71 /* ApplicationAction.swift */; };
 		37C682621EA2686700DABE71 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682611EA2686700DABE71 /* DefaultsKeys.swift */; };
 		37C682641EA28A2400DABE71 /* UIVIew.inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682631EA28A2400DABE71 /* UIVIew.inspectable.swift */; };
-		37F66A021F778C9E00B26931 /* QiitaSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F66A011F778C9E00B26931 /* QiitaSession.framework */; };
-		37F66A031F778C9E00B26931 /* QiitaSession.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 37F66A011F778C9E00B26931 /* QiitaSession.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		37FC07471EAC6B1200514FF6 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07461EAC6B1200514FF6 /* SafariServices.framework */; };
 		37FC07501EAC6B2700514FF6 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07481EAC6B2700514FF6 /* Action.framework */; };
 		37FC07511EAC6B2700514FF6 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07491EAC6B2700514FF6 /* APIKit.framework */; };
-		37FC07521EAC6B2700514FF6 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074A1EAC6B2700514FF6 /* Himotoki.framework */; };
 		37FC07541EAC6B2700514FF6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074C1EAC6B2700514FF6 /* Result.framework */; };
 		37FC07551EAC6B2700514FF6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074D1EAC6B2700514FF6 /* RxCocoa.framework */; };
 		37FC07561EAC6B2700514FF6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074E1EAC6B2700514FF6 /* RxSwift.framework */; };
 		37FC07571EAC6B2700514FF6 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074F1EAC6B2700514FF6 /* SwiftyUserDefaults.framework */; };
 		37FC075A1EAC6E9900514FF6 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07481EAC6B2700514FF6 /* Action.framework */; };
 		37FC075B1EAC6E9900514FF6 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC07491EAC6B2700514FF6 /* APIKit.framework */; };
-		37FC075C1EAC6E9900514FF6 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074A1EAC6B2700514FF6 /* Himotoki.framework */; };
 		37FC075D1EAC6E9900514FF6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074C1EAC6B2700514FF6 /* Result.framework */; };
 		37FC075E1EAC6E9900514FF6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074D1EAC6B2700514FF6 /* RxCocoa.framework */; };
 		37FC075F1EAC6E9900514FF6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074E1EAC6B2700514FF6 /* RxSwift.framework */; };
 		37FC07601EAC6E9900514FF6 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FC074F1EAC6B2700514FF6 /* SwiftyUserDefaults.framework */; };
 		9D39E8CA1EA72994009785E0 /* RouteStoreCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E8C91EA72994009785E0 /* RouteStoreCase.swift */; };
 		9D39E8CC1EA72D71009785E0 /* RouteActionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E8CB1EA72D71009785E0 /* RouteActionCase.swift */; };
-		9D39E8CD1EA72D91009785E0 /* RouteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682091EA1F15800DABE71 /* RouteAction.swift */; };
 		9D39E8CF1EA73067009785E0 /* ApplicationActionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E8CE1EA73067009785E0 /* ApplicationActionCase.swift */; };
-		9D39E8D01EA73090009785E0 /* ApplicationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682591EA2549600DABE71 /* ApplicationAction.swift */; };
-		9D39E8D11EA73092009785E0 /* ApplicationDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682531EA2508600DABE71 /* ApplicationDispatcher.swift */; };
-		9D39E8DB1EA73458009785E0 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C681FE1EA1F15800DABE71 /* Config.swift */; };
-		9D39E8DC1EA73470009785E0 /* ApplicationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682551EA2512E00DABE71 /* ApplicationStore.swift */; };
-		9D39E8DD1EA73477009785E0 /* RxProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682061EA1F15800DABE71 /* RxProperty.swift */; };
-		9D39E8DE1EA73496009785E0 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682611EA2686700DABE71 /* DefaultsKeys.swift */; };
 		9D39E8FE1EA74985009785E0 /* ApplicationStoreCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E8FD1EA74985009785E0 /* ApplicationStoreCase.swift */; };
 		9D39E9011EA77074009785E0 /* RootViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D39E9001EA77074009785E0 /* RootViewModelCase.swift */; };
-		9D39E9021EA770A3009785E0 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40C1EA4858E00E5CC27 /* RootViewModel.swift */; };
 		9D7FB6A01EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB69F1EA4B4CB0044F8C4 /* OauthAuthorizeRequest.swift */; };
 		9D7FB6A21EA4B4DE0044F8C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FB6A11EA4B4DE0044F8C4 /* AppDelegate.swift */; };
 		9D9DAB511F15F9CF0037E034 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9DAB501F15F9CF0037E034 /* Nuke.framework */; };
-		9DDC50E21EA708B30020BC31 /* QiitaWithFluxSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC50E11EA708B30020BC31 /* QiitaWithFluxSampleTests.swift */; };
-		9DDC50E91EA70B810020BC31 /* RouteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6820B1EA1F15800DABE71 /* RouteStore.swift */; };
-		9DDC50EA1EA70B830020BC31 /* RouteDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6820A1EA1F15800DABE71 /* RouteDispatcher.swift */; };
-		9DDC50EB1EA70B960020BC31 /* AnyDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C682051EA1F15800DABE71 /* AnyDispatcher.swift */; };
 		9DF6C40D1EA4858E00E5CC27 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40C1EA4858E00E5CC27 /* RootViewModel.swift */; };
 		9DF6C40F1EA48BD700E5CC27 /* LoginTopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C40E1EA48BD700E5CC27 /* LoginTopViewModel.swift */; };
 		9DF6C4111EA4965C00E5CC27 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C4101EA4965C00E5CC27 /* LoginViewModel.swift */; };
 		9DF6C4131EA4994900E5CC27 /* LoginViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C4121EA4994900E5CC27 /* LoginViewDataSource.swift */; };
+		ED6F5DBB1FBFE9A200DC3E4D /* QiitaSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6F5DBA1FBFE9A200DC3E4D /* QiitaSession.framework */; };
+		ED6F5DBC1FBFE9A200DC3E4D /* QiitaSession.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED6F5DBA1FBFE9A200DC3E4D /* QiitaSession.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ED6F5DBE1FBFEAC300DC3E4D /* QiitaSession.shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6F5DBD1FBFEAC300DC3E4D /* QiitaSession.shared.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +107,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				37F66A031F778C9E00B26931 /* QiitaSession.framework in Embed Frameworks */,
+				ED6F5DBC1FBFE9A200DC3E4D /* QiitaSession.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,12 +160,10 @@
 		37C682591EA2549600DABE71 /* ApplicationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAction.swift; sourceTree = "<group>"; };
 		37C682611EA2686700DABE71 /* DefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		37C682631EA28A2400DABE71 /* UIVIew.inspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVIew.inspectable.swift; sourceTree = "<group>"; };
-		37F66A011F778C9E00B26931 /* QiitaSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QiitaSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37FBF8021E91404300AE52C3 /* QiitaWithFluxSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaWithFluxSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37FC07461EAC6B1200514FF6 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		37FC07481EAC6B2700514FF6 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Action.framework; path = Carthage/Build/iOS/Action.framework; sourceTree = "<group>"; };
 		37FC07491EAC6B2700514FF6 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
-		37FC074A1EAC6B2700514FF6 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
 		37FC074C1EAC6B2700514FF6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		37FC074D1EAC6B2700514FF6 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		37FC074E1EAC6B2700514FF6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -197,12 +177,13 @@
 		9D7FB6A11EA4B4DE0044F8C4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D9DAB501F15F9CF0037E034 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
 		9DDC50DF1EA708B30020BC31 /* QiitaWithFluxSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiitaWithFluxSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DDC50E11EA708B30020BC31 /* QiitaWithFluxSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaWithFluxSampleTests.swift; sourceTree = "<group>"; };
 		9DDC50E31EA708B30020BC31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DF6C40C1EA4858E00E5CC27 /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		9DF6C40E1EA48BD700E5CC27 /* LoginTopViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTopViewModel.swift; sourceTree = "<group>"; };
 		9DF6C4101EA4965C00E5CC27 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9DF6C4121EA4994900E5CC27 /* LoginViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDataSource.swift; sourceTree = "<group>"; };
+		ED6F5DBA1FBFE9A200DC3E4D /* QiitaSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QiitaSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED6F5DBD1FBFEAC300DC3E4D /* QiitaSession.shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaSession.shared.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,16 +191,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37F66A021F778C9E00B26931 /* QiitaSession.framework in Frameworks */,
 				9D9DAB511F15F9CF0037E034 /* Nuke.framework in Frameworks */,
 				37FC07501EAC6B2700514FF6 /* Action.framework in Frameworks */,
 				37FC07511EAC6B2700514FF6 /* APIKit.framework in Frameworks */,
-				37FC07521EAC6B2700514FF6 /* Himotoki.framework in Frameworks */,
 				37FC07541EAC6B2700514FF6 /* Result.framework in Frameworks */,
 				37FC07551EAC6B2700514FF6 /* RxCocoa.framework in Frameworks */,
 				37FC07561EAC6B2700514FF6 /* RxSwift.framework in Frameworks */,
 				37FC07571EAC6B2700514FF6 /* SwiftyUserDefaults.framework in Frameworks */,
 				37FC07471EAC6B1200514FF6 /* SafariServices.framework in Frameworks */,
+				ED6F5DBB1FBFE9A200DC3E4D /* QiitaSession.framework in Frameworks */,
 				37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,7 +210,6 @@
 			files = (
 				37FC075A1EAC6E9900514FF6 /* Action.framework in Frameworks */,
 				37FC075B1EAC6E9900514FF6 /* APIKit.framework in Frameworks */,
-				37FC075C1EAC6E9900514FF6 /* Himotoki.framework in Frameworks */,
 				37FC075D1EAC6E9900514FF6 /* Result.framework in Frameworks */,
 				37FC075E1EAC6E9900514FF6 /* RxCocoa.framework in Frameworks */,
 				37FC075F1EAC6E9900514FF6 /* RxSwift.framework in Frameworks */,
@@ -247,7 +226,6 @@
 				9D9DAB501F15F9CF0037E034 /* Nuke.framework */,
 				37FC07481EAC6B2700514FF6 /* Action.framework */,
 				37FC07491EAC6B2700514FF6 /* APIKit.framework */,
-				37FC074A1EAC6B2700514FF6 /* Himotoki.framework */,
 				37FC074C1EAC6B2700514FF6 /* Result.framework */,
 				37FC074D1EAC6B2700514FF6 /* RxCocoa.framework */,
 				37FC074E1EAC6B2700514FF6 /* RxSwift.framework */,
@@ -279,6 +257,7 @@
 		37AF563D1EF054AF003C8B3D /* QiitaSession */ = {
 			isa = PBXGroup;
 			children = (
+				ED6F5DBD1FBFEAC300DC3E4D /* QiitaSession.shared.swift */,
 				37AF563E1EF054C1003C8B3D /* Item.extension.swift */,
 			);
 			path = QiitaSession;
@@ -466,7 +445,7 @@
 		37FBF7F91E91404300AE52C3 = {
 			isa = PBXGroup;
 			children = (
-				37F66A011F778C9E00B26931 /* QiitaSession.framework */,
+				ED6F5DBA1FBFE9A200DC3E4D /* QiitaSession.framework */,
 				37FBF8041E91404300AE52C3 /* QiitaWithFluxSample */,
 				9DDC50E01EA708B30020BC31 /* QiitaWithFluxSampleTests */,
 				37FBF8031E91404300AE52C3 /* Products */,
@@ -519,7 +498,6 @@
 			children = (
 				9D39E8FF1EA77063009785E0 /* ViewModel */,
 				9D39E8C81EA7297F009785E0 /* Flux */,
-				9DDC50E11EA708B30020BC31 /* QiitaWithFluxSampleTests.swift */,
 				9DDC50E31EA708B30020BC31 /* Info.plist */,
 			);
 			path = QiitaWithFluxSampleTests;
@@ -581,7 +559,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "marty-suzuki";
 				TargetAttributes = {
 					37FBF8011E91404300AE52C3 = {
@@ -650,7 +628,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Himotoki.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Nuke.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
@@ -692,6 +669,7 @@
 				9DF6C40D1EA4858E00E5CC27 /* RootViewModel.swift in Sources */,
 				9DF6C4111EA4965C00E5CC27 /* LoginViewModel.swift in Sources */,
 				37AF563F1EF054C1003C8B3D /* Item.extension.swift in Sources */,
+				ED6F5DBE1FBFEAC300DC3E4D /* QiitaSession.shared.swift in Sources */,
 				3734DD441EA33A5900DC30C7 /* SearchTopViewModel.swift in Sources */,
 				37C6824B1EA1F15900DABE71 /* RootViewController.swift in Sources */,
 				37C682581EA253F800DABE71 /* SearchNavigationController.swift in Sources */,
@@ -714,29 +692,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				374250431EAC776A008F47F4 /* SearchTopViewModelCase.swift in Sources */,
-				9DDC50EA1EA70B830020BC31 /* RouteDispatcher.swift in Sources */,
-				9D39E8DB1EA73458009785E0 /* Config.swift in Sources */,
-				9D39E8D11EA73092009785E0 /* ApplicationDispatcher.swift in Sources */,
-				9DDC50EB1EA70B960020BC31 /* AnyDispatcher.swift in Sources */,
 				9D39E8FE1EA74985009785E0 /* ApplicationStoreCase.swift in Sources */,
 				9D39E8CA1EA72994009785E0 /* RouteStoreCase.swift in Sources */,
-				376071AD1EA7B93800C4DA10 /* LoginViewModel.swift in Sources */,
-				9D39E9021EA770A3009785E0 /* RootViewModel.swift in Sources */,
-				374250441EAC7E2C008F47F4 /* SearchTopViewModel.swift in Sources */,
-				376071AC1EA7B69A00C4DA10 /* OauthAuthorizeRequest.swift in Sources */,
-				9D39E8CD1EA72D91009785E0 /* RouteAction.swift in Sources */,
-				9D39E8D01EA73090009785E0 /* ApplicationAction.swift in Sources */,
 				9D39E8CF1EA73067009785E0 /* ApplicationActionCase.swift in Sources */,
-				9DDC50E21EA708B30020BC31 /* QiitaWithFluxSampleTests.swift in Sources */,
 				376071A81EA7B1D900C4DA10 /* LoginTopViewModelCase.swift in Sources */,
-				9D39E8DE1EA73496009785E0 /* DefaultsKeys.swift in Sources */,
 				376071AB1EA7B5C500C4DA10 /* LoginViewModelCase.swift in Sources */,
-				376071A91EA7B22100C4DA10 /* LoginTopViewModel.swift in Sources */,
-				9DDC50E91EA70B810020BC31 /* RouteStore.swift in Sources */,
 				9D39E9011EA77074009785E0 /* RootViewModelCase.swift in Sources */,
-				9D39E8DC1EA73470009785E0 /* ApplicationStore.swift in Sources */,
-				3742504A1EAC7E9F008F47F4 /* Date.ISO8601.swift in Sources */,
-				9D39E8DD1EA73477009785E0 /* RxProperty.swift in Sources */,
 				9D39E8CC1EA72D71009785E0 /* RouteActionCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,7 +722,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -769,7 +732,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -811,7 +778,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -819,7 +788,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -861,7 +834,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -881,7 +854,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -899,7 +872,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QiitaWithFluxSample.app/QiitaWithFluxSample";
 			};
 			name = Debug;
@@ -918,7 +891,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QiitaWithFluxSample.app/QiitaWithFluxSample";
 			};
 			name = Release;
@@ -932,7 +905,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -940,7 +915,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -990,7 +969,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Test;
 		};
@@ -1008,7 +987,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaWithFluxSampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QiitaWithFluxSample.app/QiitaWithFluxSample";
 			};
 			name = Test;

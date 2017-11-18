@@ -8,12 +8,14 @@
 
 import XCTest
 import RxSwift
+import QiitaSession
+@testable import QiitaWithFluxSample
 
 private class RequestAccessTokenMockSession: SessionType {
     func send<T : QiitaRequest>(_ request: T) -> Observable<T.Response> {
-        let element = AccessTokensResponse(cliendId: "clientId",
-                                           scopes: [],
-                                           token: "accessToken") as! T.Response
+        let element = AccessTokensResponse.testable.make(cliendId: "clientId",
+                                                         scopes: [],
+                                                         token: "accessToken") as! T.Response
         return Observable.just(element)
     }
 }
@@ -25,21 +27,19 @@ class ApplicationActionCase: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        #if TEST
-            let dispatcher = ApplicationDispatcher()
-            let routeAction = RouteAction(dispatcher: AnyObserverDispatcher(RouteDispatcher()))
-            let mockSession = RequestAccessTokenMockSession()
-            let config = Config(baseUrl: "https://github.com",
-                                redirectUrl: "https://github.com",
-                                clientId: "clientId",
-                                clientSecret: "secret")
-            applicationDispatcher = AnyObservableDispatcher(dispatcher)
-            applicationAction = ApplicationAction(dispatcher: AnyObserverDispatcher(dispatcher),
-                                                  routeAction: routeAction,
-                                                  session: mockSession,
-                                                  config: config)
-        #endif
+
+        let dispatcher = ApplicationDispatcher.testable.make()
+        let routeAction = RouteAction(dispatcher: AnyObserverDispatcher(RouteDispatcher.testable.make()))
+        let mockSession = RequestAccessTokenMockSession()
+        let config = Config(baseUrl: "https://github.com",
+                            redirectUrl: "https://github.com",
+                            clientId: "clientId",
+                            clientSecret: "secret")
+        applicationDispatcher = AnyObservableDispatcher(dispatcher)
+        applicationAction = ApplicationAction(dispatcher: AnyObserverDispatcher(dispatcher),
+                                              routeAction: routeAction,
+                                              session: mockSession,
+                                              config: config)
     }
     
     override func tearDown() {
@@ -53,11 +53,12 @@ class ApplicationActionCase: XCTestCase {
         let requestAccessTokenExpectation = expectation(description: "accessToken is accessToken")
         
         let disposeBag = DisposeBag()
-        applicationDispatcher.accessToken.subscribe(onNext: {
-            XCTAssertEqual($0, "accessToken")
-            requestAccessTokenExpectation.fulfill()
-        })
-        .addDisposableTo(disposeBag)
+        applicationDispatcher.accessToken
+            .subscribe(onNext: {
+                XCTAssertEqual($0, "accessToken")
+                requestAccessTokenExpectation.fulfill()
+            })
+            .disposed(by: disposeBag)
         applicationAction.requestAccessToken(withCode: "code")
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -68,11 +69,12 @@ class ApplicationActionCase: XCTestCase {
         let removeAccessTokenExpectation = expectation(description: "accessToken is nil")
         
         let disposeBag = DisposeBag()
-        applicationDispatcher.accessToken.subscribe(onNext: {
-            XCTAssertNil($0)
-            removeAccessTokenExpectation.fulfill()
-        })
-        .addDisposableTo(disposeBag)
+        applicationDispatcher.accessToken
+            .subscribe(onNext: {
+                XCTAssertNil($0)
+                removeAccessTokenExpectation.fulfill()
+            })
+            .disposed(by: disposeBag)
         applicationAction.removeAccessToken()
         waitForExpectations(timeout: 0.1, handler: nil)
     }

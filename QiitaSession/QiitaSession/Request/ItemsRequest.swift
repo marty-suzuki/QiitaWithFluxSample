@@ -7,9 +7,10 @@
 //
 
 import APIKit
-import Himotoki
 
 public struct ItemsRequest: QiitaRequest {
+    public typealias Response = ElementsResponse<Item>
+
     public let method: HTTPMethod = .get
     public let path: String = "/items"
     public var queryParameters: [String : Any]? {
@@ -30,11 +31,12 @@ public struct ItemsRequest: QiitaRequest {
         self.query = query
     }
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> ElementsResponse<Item> {
-        let items: [Item] = try decodeArray(object)
+    public func response(from data: Data, urlResponse: HTTPURLResponse) throws -> Response {
+        let decoder = JSONDecoder()
+        let items = try decoder.decode([Item].self, from: data)
         guard let totalCountStr = urlResponse.allHeaderFields["Total-Count"] as? String,
               let totalCount = Int(totalCountStr) else {
-            throw typeMismatch("Int", actual: urlResponse.allHeaderFields["Total-Count"])
+                throw QiitaSession.Error.typeMismatch("Int", actual: urlResponse.allHeaderFields["Total-Count"])
         }
         return ElementsResponse(totalCount: totalCount, elements: items)
     }

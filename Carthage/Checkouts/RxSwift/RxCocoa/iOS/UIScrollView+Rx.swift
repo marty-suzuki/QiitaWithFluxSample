@@ -14,32 +14,22 @@
 
     import UIKit
 
-    extension UIScrollView {
-        
-        /// Factory method that enables subclasses to implement their own `delegate`.
-        ///
-        /// - returns: Instance of delegate proxy that wraps `delegate`.
-        public func createRxDelegateProxy() -> RxScrollViewDelegateProxy {
-            return RxScrollViewDelegateProxy(parentObject: self)
-        }
-        
-    }
-
     extension Reactive where Base: UIScrollView {
         public typealias EndZoomEvent = (view: UIView?, scale: CGFloat)
+        public typealias WillEndDraggingEvent = (velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
 
         /// Reactive wrapper for `delegate`.
         ///
         /// For more information take a look at `DelegateProxyType` protocol documentation.
-        public var delegate: DelegateProxy {
-            return RxScrollViewDelegateProxy.proxyForObject(base)
+        public var delegate: DelegateProxy<UIScrollView, UIScrollViewDelegate> {
+            return RxScrollViewDelegateProxy.proxy(for: base)
         }
         
         /// Reactive wrapper for `contentOffset`.
         public var contentOffset: ControlProperty<CGPoint> {
-            let proxy = RxScrollViewDelegateProxy.proxyForObject(base)
+            let proxy = RxScrollViewDelegateProxy.proxy(for: base)
 
-            let bindingObserver = UIBindingObserver(UIElement: self.base) { scrollView, contentOffset in
+            let bindingObserver = Binder(self.base) { scrollView, contentOffset in
                 scrollView.contentOffset = contentOffset
             }
 
@@ -47,15 +37,15 @@
         }
 
         /// Bindable sink for `scrollEnabled` property.
-        public var isScrollEnabled: UIBindingObserver<Base, Bool> {
-            return UIBindingObserver(UIElement: self.base) { scrollView, scrollEnabled in
+        public var isScrollEnabled: Binder<Bool> {
+            return Binder(self.base) { scrollView, scrollEnabled in
                 scrollView.isScrollEnabled = scrollEnabled
             }
         }
 
         /// Reactive wrapper for delegate method `scrollViewDidScroll`
         public var didScroll: ControlEvent<Void> {
-            let source = RxScrollViewDelegateProxy.proxyForObject(base).contentOffsetPublishSubject
+            let source = RxScrollViewDelegateProxy.proxy(for: base).contentOffsetPublishSubject
             return ControlEvent(events: source)
         }
         
@@ -77,8 +67,23 @@
             return ControlEvent(events: source)
         }
         
+        /// Reactive wrapper for delegate method `scrollViewWillEndDragging(_:withVelocity:targetContentOffset:)`
+        public var willEndDragging: ControlEvent<WillEndDraggingEvent> {
+            let source = delegate.methodInvoked(#selector(UIScrollViewDelegate.scrollViewWillEndDragging(_:withVelocity:targetContentOffset:)))
+                .map { value -> WillEndDraggingEvent in
+                    let velocity = try castOrThrow(CGPoint.self, value[1])
+                    let targetContentOffsetValue = try castOrThrow(NSValue.self, value[2])
+
+                    guard let rawPointer = targetContentOffsetValue.pointerValue else { throw RxCocoaError.unknown }
+                    let typedPointer = rawPointer.bindMemory(to: CGPoint.self, capacity: MemoryLayout<CGPoint>.size)
+
+                    return (velocity, typedPointer)
+            }
+            return ControlEvent(events: source)
+        }
+        
     	/// Reactive wrapper for delegate method `scrollViewDidEndDragging(_:willDecelerate:)`
-    	public var didEndDragging: ControlEvent<Bool> {
+        public var didEndDragging: ControlEvent<Bool> {
     		let source = delegate.methodInvoked(#selector(UIScrollViewDelegate.scrollViewDidEndDragging(_:willDecelerate:))).map { value -> Bool in
     			return try castOrThrow(Bool.self, value[1])
     		}

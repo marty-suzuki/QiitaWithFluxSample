@@ -6,16 +6,9 @@
 //  Copyright © 2017年 marty-suzuki. All rights reserved.
 //
 
-import Himotoki
+import Foundation
 
-public struct Tag: Himotoki.Decodable {
+public struct Tag: Codable {
     public let name: String
     public let versions: [String]
-    
-    public static func decode(_ e: Extractor) throws -> Tag {
-        return try Tag(
-            name: e <| "name",
-            versions: e.array("versions")
-        )
-    }
 }

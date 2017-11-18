@@ -46,7 +46,7 @@ extension UIScrollViewTests {
             let scrollView = UIScrollView()
             var didScroll = false
 
-            _ = scrollView.rx.didScroll.subscribe(onNext: {
+            _ = scrollView.rx.didScroll.subscribe(onNext: { _ in
                 didScroll = true
             }, onCompleted: {
                 completed = true
@@ -69,7 +69,7 @@ extension UIScrollViewTests {
             let scrollView = UIScrollView()
             var willBeginDecelerating = false
 
-            _ = scrollView.rx.willBeginDecelerating.subscribe(onNext: {
+            _ = scrollView.rx.willBeginDecelerating.subscribe(onNext: { _ in
                 willBeginDecelerating = true
             }, onCompleted: {
                 completed = true
@@ -92,7 +92,7 @@ extension UIScrollViewTests {
 			let scrollView = UIScrollView()
 			var didEndDecelerating = false
 			
-			_ = scrollView.rx.didEndDecelerating.subscribe(onNext: {
+			_ = scrollView.rx.didEndDecelerating.subscribe(onNext: { _ in
 				didEndDecelerating = true
 			}, onCompleted: {
 				completed = true
@@ -115,7 +115,7 @@ extension UIScrollViewTests {
             let scrollView = UIScrollView()
             var willBeginDragging = false
 
-            _ = scrollView.rx.willBeginDragging.subscribe(onNext: {
+            _ = scrollView.rx.willBeginDragging.subscribe(onNext: { _ in
                 willBeginDragging = true
             }, onCompleted: {
                 completed = true
@@ -131,6 +131,70 @@ extension UIScrollViewTests {
         XCTAssertTrue(completed)
     }
 	
+    func testScrollViewWillEndDragging() {
+        var completed = false
+        
+        autoreleasepool {
+            let scrollView = UIScrollView()
+
+            let positiveVelocity = CGPoint(x: 1.5, y: 2.5)
+            var positiveOffset = CGPoint(x: 27.4, y: 853.0)
+
+            let negativeVelocity = CGPoint(x: 1.5, y: 2.5)
+            var zeroOffset = CGPoint.zero
+
+            var velocity: CGPoint? = nil
+            var offset: CGPoint? = nil
+
+            _ = scrollView.rx.willEndDragging.subscribe(onNext: {
+                velocity = $0
+                offset = $1.pointee
+            }, onCompleted: {
+                completed = true
+            })
+            
+            XCTAssertNil(velocity)
+            XCTAssertNil(offset)
+
+            scrollView.delegate!.scrollViewWillEndDragging!(scrollView, withVelocity: positiveVelocity, targetContentOffset: &positiveOffset)
+
+            XCTAssertEqual(positiveVelocity, velocity)
+            XCTAssertEqual(positiveOffset, offset)
+
+            scrollView.delegate!.scrollViewWillEndDragging!(scrollView, withVelocity: negativeVelocity, targetContentOffset: &zeroOffset)
+
+            XCTAssertEqual(negativeVelocity, velocity)
+            XCTAssertEqual(zeroOffset, offset)
+        }
+        
+        XCTAssertTrue(completed)
+    }
+
+    func testScrollViewWillEndDraggingWithModifyingOffset() {
+        var completed = false
+
+        autoreleasepool {
+            let scrollView = UIScrollView()
+
+            var initialOffset = CGPoint(x: 27.4, y: 853.0)
+            let changedOffset = CGPoint(x: 42.5, y: 97.4)
+
+            _ = scrollView.rx.willEndDragging.subscribe(onNext: {
+                $1.pointee = changedOffset
+            }, onCompleted: {
+                completed = true
+            })
+
+            XCTAssertNotEqual(changedOffset, initialOffset)
+
+            scrollView.delegate!.scrollViewWillEndDragging!(scrollView, withVelocity: CGPoint.zero, targetContentOffset: &initialOffset)
+
+            XCTAssertEqual(changedOffset, initialOffset)
+        }
+
+        XCTAssertTrue(completed)
+    }
+
 	func testScrollViewDidEndDragging() {
 		var completed = false
 		
@@ -154,7 +218,7 @@ extension UIScrollViewTests {
 		
 		XCTAssertTrue(completed)
 		
-		}
+    }
 
     func testScrollViewContentOffset() {
         var completed = false
@@ -186,7 +250,7 @@ extension UIScrollViewTests {
         let scrollView = UIScrollView()
         var didZoom = false
 
-        let subscription = scrollView.rx.didZoom.subscribe(onNext: {
+        let subscription = scrollView.rx.didZoom.subscribe(onNext: { _ in
             didZoom = true
         })
 
@@ -202,7 +266,7 @@ extension UIScrollViewTests {
         let scrollView = UIScrollView()
         var didScrollToTop = false
 
-        let subscription = scrollView.rx.didScrollToTop.subscribe(onNext: {
+        let subscription = scrollView.rx.didScrollToTop.subscribe(onNext: { _ in
             didScrollToTop = true
         })
 
@@ -221,7 +285,7 @@ extension UIScrollViewTests {
             let scrollView = UIScrollView()
             var didEndScrollingAnimation = false
             
-            _ = scrollView.rx.didEndScrollingAnimation.subscribe(onNext: {
+            _ = scrollView.rx.didEndScrollingAnimation.subscribe(onNext: { _ in
                 didEndScrollingAnimation = true
             }, onCompleted: {
                 completed = true
@@ -272,7 +336,8 @@ extension UIScrollViewTests {
             var viewResults: [UIView?] = []
             var scaleResults: [CGFloat] = []
 
-            _ = scrollView.rx.didEndZooming.subscribe(onNext: { (view, scale) in
+            _ = scrollView.rx.didEndZooming.subscribe(onNext: {
+                let (view, scale) = $0
                 viewResults.append(view)
                 scaleResults.append(scale)
             }, onCompleted: {

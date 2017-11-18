@@ -75,13 +75,13 @@ class SearchTopViewController: UIViewController, Storyboardable {
     }
     
     private var reloadData: AnyObserver<Void> {
-        return UIBindingObserver(UIElement: self) { me, _ in
+        return Binder(self) { me, _ in
             me.tableView.reloadData()
         }.asObserver()
     }
     
     private var isLoadingHidden: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: self) { me, isHidden in
+        return Binder(self) { me, isHidden in
             me.indicatorContainerView.isHidden = isHidden
             if isHidden {
                 me.indicatorView.stopAnimating()
@@ -92,7 +92,7 @@ class SearchTopViewController: UIViewController, Storyboardable {
     }
     
     private var keyboardWillShow: AnyObserver<UIKeyboardInfo> {
-        return UIBindingObserver(UIElement: self) { me, info in
+        return Binder(self) { me, info in
             me.contentViewBottomConstant.constant = info.frame.size.height
             UIView.animate(withDuration: info.animationDuration,
                            delay: 0,
@@ -103,7 +103,7 @@ class SearchTopViewController: UIViewController, Storyboardable {
     }
     
     private var keyboardWillHide: AnyObserver<UIKeyboardInfo> {
-        return UIBindingObserver(UIElement: self) { me, info in
+        return Binder(self) { me, info in
             me.contentViewBottomConstant.constant = 0
             UIView.animate(withDuration: info.animationDuration,
                            delay: 0,

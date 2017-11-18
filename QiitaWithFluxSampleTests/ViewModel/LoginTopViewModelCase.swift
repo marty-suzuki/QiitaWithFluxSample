@@ -9,6 +9,7 @@
 import XCTest
 import RxSwift
 import RxCocoa
+@testable import QiitaWithFluxSample
 
 class LoginTopViewModelCase: XCTestCase {
     var routeDispatcher: AnyObservableDispatcher<RouteDispatcher>!
@@ -18,16 +19,15 @@ class LoginTopViewModelCase: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        #if TEST
-            let routeParentDispatcher = RouteDispatcher()
-            routeDispatcher = AnyObservableDispatcher(routeParentDispatcher)
-            routeAction = RouteAction(dispatcher: AnyObserverDispatcher(routeParentDispatcher))
-            let loginButtonSubject = PublishSubject<Void>()
-            loginButtonTap = loginButtonSubject.asObserver()
-            loginTopViewModel = LoginTopViewModel(loginButtonTap: ControlEvent<Void>(events: loginButtonSubject),
-                                                  routeAction: routeAction)
-        #endif
+        // Put setup code here. This method is called before the invocation of each test method in the class.\
+
+        let routeParentDispatcher = RouteDispatcher.testable.make()
+        routeDispatcher = AnyObservableDispatcher(routeParentDispatcher)
+        routeAction = RouteAction(dispatcher: AnyObserverDispatcher(routeParentDispatcher))
+        let loginButtonSubject = PublishSubject<Void>()
+        loginButtonTap = loginButtonSubject.asObserver()
+        loginTopViewModel = LoginTopViewModel(loginButtonTap: ControlEvent<Void>(events: loginButtonSubject),
+                                              routeAction: routeAction)
     }
     
     override func tearDown() {
@@ -46,8 +46,8 @@ class LoginTopViewModelCase: XCTestCase {
                 XCTAssertEqual($0, LoginDisplayType.webView)
                 loginDisplayTypeExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
-        loginButtonTap.onNext()
+            .disposed(by: disposeBag)
+        loginButtonTap.onNext(())
         waitForExpectations(timeout: 0.1, handler: nil)
     }
 }

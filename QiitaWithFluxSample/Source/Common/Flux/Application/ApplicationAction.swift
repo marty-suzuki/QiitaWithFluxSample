@@ -38,7 +38,7 @@ final class ApplicationAction {
             .map { Optional.some($0.token) }
             .do(onError: dispatcher.accessTokenError.onNext)
             .subscribe(onNext: dispatcher.accessToken.onNext)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
     
     func removeAccessToken() {

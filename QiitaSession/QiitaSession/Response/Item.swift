@@ -6,9 +6,9 @@
 //  Copyright © 2017年 marty-suzuki. All rights reserved.
 //
 
-import Himotoki
+import Foundation
 
-public struct Item: Himotoki.Decodable {
+public struct Item: Codable {
     public let renderedBody: String
     public let body: String
     public let coediting: Bool
@@ -18,22 +18,28 @@ public struct Item: Himotoki.Decodable {
     public let tags: [Tag]
     public let title: String
     public let updatedAt: String
-    public let url: String
+    public let url: URL
     public let user: User
-    
-    public static func decode(_ e: Extractor) throws -> Item {
-        return try Item(
-            renderedBody: e <| "rendered_body",
-            body: e <| "body",
-            coediting: e <| "coediting",
-            createdAt: e <| "created_at",
-            id: e <| "id",
-            private: e <| "private",
-            tags: e.array("tags"),
-            title: e <| "title",
-            updatedAt: e <| "updated_at",
-            url: e <| "url",
-            user: e <| "user"
-        )
+
+    private enum CodingKeys: String, CodingKey {
+        case renderedBody = "rendered_body"
+        case body
+        case coediting
+        case createdAt = "created_at"
+        case id
+        case `private`
+        case tags
+        case title
+        case updatedAt = "updated_at"
+        case url
+        case user
+    }
+}
+
+extension Item: TestableCompatible {}
+
+extension Testable where Base == Item.Type {
+    public func make(renderedBody: String, body: String, coediting: Bool, createdAt: String, id: String, `private`: Bool, tags: [Tag], title: String, updatedAt: String, url: URL, user: User) -> Item {
+        return Item(renderedBody: renderedBody, body: body, coediting: coediting, createdAt: createdAt, id: id, private: `private`, tags: tags, title: title, updatedAt: updatedAt, url: url, user: user)
     }
 }

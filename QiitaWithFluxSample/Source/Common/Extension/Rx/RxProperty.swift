@@ -58,12 +58,12 @@ public final class Property<Element> {
         let disposeBag = DisposeBag()
         _disposeBag = disposeBag
 
-        let observable = unsafeObservable.shareReplayLatestWhileConnected()
+        let observable = unsafeObservable.share(replay: 1, scope: .whileConnected)
         var initial: E? = nil
 
         observable
             .subscribe(onNext: { initial = $0 })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         guard let initial_ = initial else {
             fatalError("An unsafeObservable promised to send at least one value. Received none.")
@@ -73,7 +73,7 @@ public final class Property<Element> {
 
         observable
             .bind(to: _variable)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
     /// Observable that synchronously sends current element and then changed elements.

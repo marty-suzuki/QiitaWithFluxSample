@@ -14,11 +14,7 @@ final class ApplicationDispatcher: DispatcherType {
     fileprivate let accessToken = PublishSubject<String?>()
     fileprivate let accessTokenError = PublishSubject<Error>()
     
-    #if TEST
-    init() {}
-    #else
-    private init() {}
-    #endif
+    fileprivate init() {}
 }
 
 extension AnyObserverDispatcher where Dispatcher: ApplicationDispatcher {
@@ -36,5 +32,13 @@ extension AnyObservableDispatcher where Dispatcher: ApplicationDispatcher {
     }
     var accessTokenError: Observable<Error> {
         return dispatcher.accessTokenError
+    }
+}
+
+import QiitaSession
+extension ApplicationDispatcher: TestableCompatible {}
+extension Testable where Base == ApplicationDispatcher.Type {
+    func make() -> ApplicationDispatcher {
+        return ApplicationDispatcher()
     }
 }

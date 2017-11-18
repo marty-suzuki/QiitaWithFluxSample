@@ -7,9 +7,10 @@
 //
 
 import APIKit
-import Himotoki
 
 public struct AccessTokensRequest: QiitaRequest {
+    public typealias Response = AccessTokensResponse
+
     public let method: HTTPMethod = .post
     public let path: String = "/access_tokens"
     public var queryParameters: [String : Any]? {
@@ -28,9 +29,5 @@ public struct AccessTokensRequest: QiitaRequest {
         self.clientId = clientId
         self.clientSecret = clientSecret
         self.code = code
-    }
-    
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> AccessTokensResponse {
-        return try decodeValue(object)
     }
 }

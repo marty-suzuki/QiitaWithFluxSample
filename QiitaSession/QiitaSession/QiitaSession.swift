@@ -15,20 +15,43 @@ public protocol SessionType: class {
 }
 
 public final class QiitaSession: SessionType {
+    public enum Error: Swift.Error {
+        case isNotData(Any)
+        case typeMismatch(String, actual: Any?)
+        case createBaseURLFailed(String)
+        case sessionMissing
+    }
     
-    public static let shared = QiitaSession()
-    
-    private let session: Session = {
-        let configuration = URLSessionConfiguration.default
-        let adapter = URLSessionAdapter(configuration: configuration)
-        return Session(adapter: adapter)
-    }()
-    
-    private init() {}
+    private let session: Session
+    private let baseURL: String
+    private let tokenGetter: () -> (String?)
+
+    public init(tokenGetter: @escaping () -> (String?),
+                baseURL: String = "https://qiita.com/api",
+                configuration: URLSessionConfiguration = .default) {
+        self.tokenGetter = tokenGetter
+        self.baseURL = baseURL
+        self.session = Session(adapter: URLSessionAdapter(configuration: configuration))
+    }
     
     public func send<T: QiitaRequest>(_ request: T) -> Observable<T.Response> {
-        return Single<T.Response>.create { [unowned self] observer in
-            let task = self.session.send(request) { result in
+        return Single<T.Response>.create { [weak self] observer in
+            guard let me = self else {
+                observer(.error(QiitaSession.Error.sessionMissing))
+                return Disposables.create()
+            }
+
+            let proxy: QiitaRequestProxy<T>
+            do {
+                proxy = try QiitaRequestProxy(request: request,
+                                              token: me.tokenGetter(),
+                                              baseURL: me.baseURL)
+            } catch let error {
+                observer(.error(error))
+                return Disposables.create()
+            }
+
+            let task = me.session.send(proxy) { result in
                 switch result {
                 case .success(let value):
                     observer(.success(value))

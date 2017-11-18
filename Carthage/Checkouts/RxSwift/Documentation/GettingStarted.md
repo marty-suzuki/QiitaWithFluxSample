@@ -880,7 +880,7 @@ The reason why 2 navigations are suggested is because first navigation forces lo
 
 `Variable`s represent some observable state. `Variable` without containing value can't exist because initializer requires initial value.
 
-Variable wraps a [`Subject`](http://reactivex.io/documentation/subject.html). More specifically it is a `BehaviorSubject`.  Unlike `BehaviorSubject`, it only exposes `value` interface, so variable can never terminate or fail.
+Variable wraps a [`Subject`](http://reactivex.io/documentation/subject.html). More specifically it is a `BehaviorSubject`.  Unlike `BehaviorSubject`, it only exposes `value` interface, so variable can never terminate with error.
 
 It will also broadcast its current value immediately on subscription.
 
@@ -911,6 +911,8 @@ _ = variable.asObservable()
         print("Completed 2")
     })
 
+print("Before send 2")
+
 variable.value = 2
 
 print("End ---")
@@ -925,6 +927,7 @@ Before send 1
 First 1
 Before second subscription ---
 Second 1
+Before send 2
 First 2
 Second 2
 End ---
@@ -941,13 +944,13 @@ There are two built in ways this library supports KVO.
 ```swift
 // KVO
 extension Reactive where Base: NSObject {
-    public func observe<E>(type: E.Type, _ keyPath: String, options: NSKeyValueObservingOptions, retainSelf: Bool = true) -> Observable<E?> {}
+    public func observe<E>(type: E.Type, _ keyPath: String, options: KeyValueObservingOptions, retainSelf: Bool = true) -> Observable<E?> {}
 }
 
 #if !DISABLE_SWIZZLING
 // KVO
 extension Reactive where Base: NSObject {
-    public func observeWeakly<E>(type: E.Type, _ keyPath: String, options: NSKeyValueObservingOptions) -> Observable<E?> {}
+    public func observeWeakly<E>(type: E.Type, _ keyPath: String, options: KeyValueObservingOptions) -> Observable<E?> {}
 }
 #endif
 ```

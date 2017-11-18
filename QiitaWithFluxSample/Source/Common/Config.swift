@@ -6,14 +6,15 @@
 //  Copyright © 2017年 marty-suzuki. All rights reserved.
 //
 
-import Himotoki
+import Foundation
 
-struct Config: Himotoki.Decodable {
+struct Config: Codable {
     enum Error: Swift.Error {
         case notFoundFile(String)
         case notFoundContents(URL)
         case invalidCast(NSDictionary, String)
         case emptyString(String)
+        case notFoundValueForKey(String)
     }
     
     static let shared: Config = {
@@ -27,7 +28,9 @@ struct Config: Himotoki.Decodable {
             let plist = try dict as? [String : String] ?? {
                 throw Error.invalidCast(dict, "[String : String]")
             }()
-            return try decodeValue(plist)
+            let config = try Config(dict: plist)
+            try config.validate()
+            return config
         } catch let e {
             fatalError("\(e)")
         }
@@ -37,18 +40,7 @@ struct Config: Himotoki.Decodable {
     let redirectUrl: String
     let clientId: String
     let clientSecret: String
-    
-    static func decode(_ e: Extractor) throws -> Config {
-        let config = try Config(
-            baseUrl: e <| "baseUrl",
-            redirectUrl: e <| "redirectUrl",
-            clientId: e <| "clientId",
-            clientSecret: e <| "clientSecret"
-        )
-        try config.validate()
-        return config
-    }
-    
+
     func validate() throws {
         if baseUrl.isEmpty {
             throw Error.emptyString("baseUrl")
@@ -62,5 +54,17 @@ struct Config: Himotoki.Decodable {
         if clientSecret.isEmpty {
             throw Error.emptyString("clientSecret")
         }
+    }
+}
+
+extension Config {
+    private init(dict: [String : String]) throws {
+        func value(for key: String) throws -> String {
+            return try dict[key] ?? { throw Error.notFoundValueForKey(key) }()
+        }
+        self.baseUrl = try value(for: "baseUrl")
+        self.redirectUrl = try value(for: "redirectUrl")
+        self.clientId = try value(for: "clientId")
+        self.clientSecret = try value(for: "clientSecret")
     }
 }

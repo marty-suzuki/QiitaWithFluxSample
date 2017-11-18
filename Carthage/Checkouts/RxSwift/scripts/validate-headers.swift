@@ -34,11 +34,13 @@ let allowedExtensions = [
 ]
 
 let excludedRootPaths = [
+    "Carthage",
     ".git",
     "build",
     "Rx.playground",
     "vendor",
     "Sources",
+    "Carthage"
 ]
 
 let excludePaths = [
@@ -87,6 +89,7 @@ func validateRegexMatches(regularExpression: NSRegularExpression, content: Strin
 
     return (matches[0 ..< matches.count].flatMap { m -> [String] in
         return (1 ..< m.numberOfRanges).map { index in
+
 #if swift(>=4.0)
             let range = m.range(at: index)
 #else

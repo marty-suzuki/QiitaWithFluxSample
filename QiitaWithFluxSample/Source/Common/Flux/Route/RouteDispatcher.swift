@@ -14,12 +14,8 @@ final class RouteDispatcher: DispatcherType {
     
     fileprivate let login = PublishSubject<LoginDisplayType>()
     fileprivate let search = PublishSubject<SearchDisplayType>()
-    
-    #if TEST
-    init() {}
-    #else
-    private init() {}
-    #endif
+
+    fileprivate init() {}
 }
 
 extension AnyObserverDispatcher where Dispatcher: RouteDispatcher {
@@ -39,5 +35,14 @@ extension AnyObservableDispatcher where Dispatcher: RouteDispatcher {
     
     var search: Observable<SearchDisplayType> {
         return dispatcher.search
+    }
+}
+
+
+import QiitaSession
+extension RouteDispatcher: TestableCompatible {}
+extension Testable where Base == RouteDispatcher.Type {
+    func make() -> RouteDispatcher {
+        return RouteDispatcher()
     }
 }

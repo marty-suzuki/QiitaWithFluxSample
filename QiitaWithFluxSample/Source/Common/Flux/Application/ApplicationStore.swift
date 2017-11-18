@@ -25,7 +25,6 @@ final class ApplicationStore {
     init(dispatcher: AnyObservableDispatcher<ApplicationDispatcher> = .init(.shared)) {
         #if !TEST
         if let token = Defaults[.accessToken] {
-            QiitaRequestConfig.token = token
             _accessToken.value = token
         }
         #endif
@@ -41,15 +40,14 @@ final class ApplicationStore {
         #else
         dispatcher.accessToken
             .do(onNext: {
-                QiitaRequestConfig.token = $0
                 Defaults[.accessToken] = $0
             })
             .bind(to: _accessToken)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         #endif
         
         dispatcher.accessTokenError
             .bind(to: _accessTokenError)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 }

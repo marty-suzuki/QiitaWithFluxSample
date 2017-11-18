@@ -6,9 +6,15 @@
 //  Copyright © 2017年 marty-suzuki. All rights reserved.
 //
 
-import Himotoki
+import Foundation
 
 public struct ElementsResponse<T> {
     public let totalCount: Int
     public let elements: [T]
+}
+
+extension ElementsResponse {
+    public static func testable_make(totalCount: Int, elements: [T]) -> ElementsResponse<T> {
+        return ElementsResponse<T>(totalCount: totalCount, elements: elements)
+    }
 }

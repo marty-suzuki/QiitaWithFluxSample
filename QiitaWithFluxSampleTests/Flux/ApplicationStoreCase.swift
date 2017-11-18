@@ -8,6 +8,7 @@
 
 import XCTest
 import RxSwift
+@testable import QiitaWithFluxSample
 
 class ApplicationStoreCase: XCTestCase {
     var applicationStore: ApplicationStore!
@@ -16,11 +17,10 @@ class ApplicationStoreCase: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        #if TEST
-            let dispatcher = ApplicationDispatcher()
-            applicationDispatcher = AnyObserverDispatcher(dispatcher)
-            applicationStore = ApplicationStore(dispatcher: AnyObservableDispatcher(dispatcher))
-        #endif
+
+        let dispatcher = ApplicationDispatcher.testable.make()
+        applicationDispatcher = AnyObserverDispatcher(dispatcher)
+        applicationStore = ApplicationStore(dispatcher: AnyObservableDispatcher(dispatcher))
     }
     
     override func tearDown() {
@@ -39,7 +39,7 @@ class ApplicationStoreCase: XCTestCase {
                 XCTAssertEqual($0, "accessToken")
                 nonNilAccessTokenExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         applicationDispatcher.accessToken.onNext("accessToken")
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -55,7 +55,7 @@ class ApplicationStoreCase: XCTestCase {
                 XCTAssertNil($0)
                 nilAccessTokenExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         applicationDispatcher.accessToken.onNext(nil)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
@@ -71,7 +71,7 @@ class ApplicationStoreCase: XCTestCase {
                 XCTAssertEqual(($0 as NSError).domain, NSCocoaErrorDomain)
                 errorExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         applicationDispatcher.accessTokenError.onNext(NSError(domain: NSCocoaErrorDomain, code: -9999, userInfo: nil))
         waitForExpectations(timeout: 0.1, handler: nil)
     }

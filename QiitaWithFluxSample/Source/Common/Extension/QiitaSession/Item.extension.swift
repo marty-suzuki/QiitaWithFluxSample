@@ -6,7 +6,6 @@
 //  Copyright © 2017年 marty-suzuki. All rights reserved.
 //
 
-import Himotoki
 import QiitaSession
 
 extension Item {
@@ -19,7 +18,7 @@ extension Item {
         return dateFormatter.string(from: date)
     }
     var newLineExcludedBody: String {
-        return String(body.characters.filter { !" \n\t\r".characters.contains($0) })
+        return String(body.filter { !" \n\t\r".contains($0) })
     }
 }
 

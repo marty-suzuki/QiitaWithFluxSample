@@ -36,10 +36,10 @@ final class RouteStore {
         
         dispatcher.login
             .bind(to: _login)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         dispatcher.search
             .bind(to: _search)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 }

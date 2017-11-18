@@ -91,7 +91,7 @@ final class SearchTopViewModel {
         
         selectedIndexPath
             .withLatestFrom(_items.asObservable()) { $1[$0.row] }
-            .flatMap { URL(string: $0.url).map { Observable<URL>.just($0) } ?? .empty() }
+            .map { $0.url }
             .subscribe(onNext: { [weak routeAction] in
                 routeAction?.show(searchDisplayType: .webView($0))
             })
