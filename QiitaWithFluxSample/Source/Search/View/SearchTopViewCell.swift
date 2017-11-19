@@ -10,7 +10,7 @@ import UIKit
 import Nuke
 import QiitaSession
 
-class SearchTopViewCell: UITableViewCell, Nibable {
+final class SearchTopViewCell: UITableViewCell, Nibable {
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!

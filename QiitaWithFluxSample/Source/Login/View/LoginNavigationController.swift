@@ -8,17 +8,8 @@
 
 import UIKit
 
-class LoginNavigationController: UINavigationController {
-
+final class LoginNavigationController: UINavigationController {
     convenience init() {
         self.init(rootViewController: LoginTopViewController.instantiate())
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }

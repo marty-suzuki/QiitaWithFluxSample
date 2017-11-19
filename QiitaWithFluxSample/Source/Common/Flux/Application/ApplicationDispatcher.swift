@@ -8,7 +8,7 @@
 
 import RxSwift
 
-final class ApplicationDispatcher: DispatcherType {
+final class ApplicationDispatcher {
     static let shared = ApplicationDispatcher()
     
     fileprivate let accessToken = PublishSubject<String?>()
@@ -17,7 +17,8 @@ final class ApplicationDispatcher: DispatcherType {
     fileprivate init() {}
 }
 
-extension AnyObserverDispatcher where Dispatcher: ApplicationDispatcher {
+extension ApplicationDispatcher: DispatchCompatible {}
+extension Dispatch where Dispatcher: ApplicationDispatcher {
     var accessToken: AnyObserver<String?> {
         return dispatcher.accessToken.asObserver()
     }
@@ -26,7 +27,8 @@ extension AnyObserverDispatcher where Dispatcher: ApplicationDispatcher {
     }
 }
 
-extension AnyObservableDispatcher where Dispatcher: ApplicationDispatcher {
+extension ApplicationDispatcher: RegisterCompatible {}
+extension Register where Dispatcher: ApplicationDispatcher {
     var accessToken: Observable<String?> {
         return dispatcher.accessToken
     }

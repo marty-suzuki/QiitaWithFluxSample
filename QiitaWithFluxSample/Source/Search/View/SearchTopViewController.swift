@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchTopViewController: UIViewController, Storyboardable {
+final class SearchTopViewController: UIViewController, Storyboardable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var indicatorContainerView: UIView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!

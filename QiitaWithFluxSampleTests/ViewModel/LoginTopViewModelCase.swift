@@ -12,7 +12,7 @@ import RxCocoa
 @testable import QiitaWithFluxSample
 
 class LoginTopViewModelCase: XCTestCase {
-    var routeDispatcher: AnyObservableDispatcher<RouteDispatcher>!
+    var routeDispatcher: RouteDispatcher!
     var routeAction: RouteAction!
     var loginButtonTap: AnyObserver<Void>!
     var loginTopViewModel: LoginTopViewModel!
@@ -22,8 +22,8 @@ class LoginTopViewModelCase: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.\
 
         let routeParentDispatcher = RouteDispatcher.testable.make()
-        routeDispatcher = AnyObservableDispatcher(routeParentDispatcher)
-        routeAction = RouteAction(dispatcher: AnyObserverDispatcher(routeParentDispatcher))
+        routeDispatcher = routeParentDispatcher
+        routeAction = RouteAction(dispatcher: routeParentDispatcher)
         let loginButtonSubject = PublishSubject<Void>()
         loginButtonTap = loginButtonSubject.asObserver()
         loginTopViewModel = LoginTopViewModel(loginButtonTap: ControlEvent<Void>(events: loginButtonSubject),
@@ -41,7 +41,7 @@ class LoginTopViewModelCase: XCTestCase {
         let loginDisplayTypeExpectation = expectation(description: "loginDisplayType is .webview")
         
         let disposeBag = DisposeBag()
-        routeDispatcher.login
+        routeDispatcher.register.login
             .subscribe(onNext: {
                 XCTAssertEqual($0, LoginDisplayType.webView)
                 loginDisplayTypeExpectation.fulfill()

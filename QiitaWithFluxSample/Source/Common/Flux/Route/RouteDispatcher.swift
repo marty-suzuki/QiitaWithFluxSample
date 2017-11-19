@@ -8,8 +8,7 @@
 
 import RxSwift
 
-final class RouteDispatcher: DispatcherType {
-    
+final class RouteDispatcher {
     static let shared = RouteDispatcher()
     
     fileprivate let login = PublishSubject<LoginDisplayType>()
@@ -18,7 +17,8 @@ final class RouteDispatcher: DispatcherType {
     fileprivate init() {}
 }
 
-extension AnyObserverDispatcher where Dispatcher: RouteDispatcher {
+extension RouteDispatcher: DispatchCompatible {}
+extension Dispatch where Dispatcher: RouteDispatcher {
     var login: AnyObserver<LoginDisplayType> {
         return dispatcher.login.asObserver()
     }
@@ -28,7 +28,8 @@ extension AnyObserverDispatcher where Dispatcher: RouteDispatcher {
     }
 }
 
-extension AnyObservableDispatcher where Dispatcher: RouteDispatcher {
+extension RouteDispatcher: RegisterCompatible {}
+extension Register where Dispatcher: RouteDispatcher {
     var login: Observable<LoginDisplayType> {
         return dispatcher.login
     }
@@ -38,7 +39,6 @@ extension AnyObservableDispatcher where Dispatcher: RouteDispatcher {
     }
 }
 
-
 import QiitaSession
 extension RouteDispatcher: TestableCompatible {}
 extension Testable where Base == RouteDispatcher.Type {
@@ -46,3 +46,4 @@ extension Testable where Base == RouteDispatcher.Type {
         return RouteDispatcher()
     }
 }
+

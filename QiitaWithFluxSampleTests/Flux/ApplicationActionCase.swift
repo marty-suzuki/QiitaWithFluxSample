@@ -11,7 +11,7 @@ import RxSwift
 import QiitaSession
 @testable import QiitaWithFluxSample
 
-private class RequestAccessTokenMockSession: SessionType {
+private class RequestAccessTokenMockSession: QiitaSessionType {
     func send<T : QiitaRequest>(_ request: T) -> Observable<T.Response> {
         let element = AccessTokensResponse.testable.make(cliendId: "clientId",
                                                          scopes: [],
@@ -22,21 +22,21 @@ private class RequestAccessTokenMockSession: SessionType {
 
 class ApplicationActionCase: XCTestCase {
     var applicationAction: ApplicationAction!
-    var applicationDispatcher: AnyObservableDispatcher<ApplicationDispatcher>!
+    var applicationDispatcher: ApplicationDispatcher!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         let dispatcher = ApplicationDispatcher.testable.make()
-        let routeAction = RouteAction(dispatcher: AnyObserverDispatcher(RouteDispatcher.testable.make()))
+        let routeAction = RouteAction(dispatcher: RouteDispatcher.testable.make())
         let mockSession = RequestAccessTokenMockSession()
         let config = Config(baseUrl: "https://github.com",
                             redirectUrl: "https://github.com",
                             clientId: "clientId",
                             clientSecret: "secret")
-        applicationDispatcher = AnyObservableDispatcher(dispatcher)
-        applicationAction = ApplicationAction(dispatcher: AnyObserverDispatcher(dispatcher),
+        applicationDispatcher = dispatcher
+        applicationAction = ApplicationAction(dispatcher: dispatcher,
                                               routeAction: routeAction,
                                               session: mockSession,
                                               config: config)
@@ -53,7 +53,7 @@ class ApplicationActionCase: XCTestCase {
         let requestAccessTokenExpectation = expectation(description: "accessToken is accessToken")
         
         let disposeBag = DisposeBag()
-        applicationDispatcher.accessToken
+        applicationDispatcher.register.accessToken
             .subscribe(onNext: {
                 XCTAssertEqual($0, "accessToken")
                 requestAccessTokenExpectation.fulfill()
@@ -69,7 +69,7 @@ class ApplicationActionCase: XCTestCase {
         let removeAccessTokenExpectation = expectation(description: "accessToken is nil")
         
         let disposeBag = DisposeBag()
-        applicationDispatcher.accessToken
+        applicationDispatcher.register.accessToken
             .subscribe(onNext: {
                 XCTAssertNil($0)
                 removeAccessTokenExpectation.fulfill()

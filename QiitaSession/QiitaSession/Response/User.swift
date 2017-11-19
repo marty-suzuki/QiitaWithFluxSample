@@ -45,7 +45,6 @@ public struct User: Codable {
 }
 
 extension User: TestableCompatible {}
-
 extension Testable where Base == User.Type {
     public func make(description: String?, facebookId: String?, followeesCount: Int, followersCount: Int, githubLoginName: String?, id: String, itemsCount: Int, linkedinId: String?, location: String?, name: String?, organization: String?, permanentId: Int, profileImageUrl: String, twitterScreenName: String?, websiteUrl: String?) -> User {
         return User(description: description, facebookId: facebookId, followeesCount: followeesCount, followersCount: followersCount, githubLoginName: githubLoginName, id: id, itemsCount: itemsCount, linkedinId: linkedinId, location: location, name: name, organization: organization, permanentId: permanentId, profileImageUrl: profileImageUrl, twitterScreenName: twitterScreenName, websiteUrl: websiteUrl)

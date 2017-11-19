@@ -13,7 +13,7 @@ import Action
 import QiitaSession
 @testable import QiitaWithFluxSample
 
-private class SearchMockSession: SessionType {
+private class SearchMockSession: QiitaSessionType {
     var response: ElementsResponse<Item>!
     var error: Error?
     
@@ -39,13 +39,13 @@ class SearchTopViewModelCase: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
-        routeAction = RouteAction(dispatcher: AnyObserverDispatcher(RouteDispatcher.testable.make()))
+        routeAction = RouteAction(dispatcher: RouteDispatcher.testable.make())
         mockSession = SearchMockSession()
         let config = Config(baseUrl: "https://github.com",
                             redirectUrl: "https://github.com",
                             clientId: "clientId",
                             clientSecret: "secret")
-        applicationAction = ApplicationAction(dispatcher: AnyObserverDispatcher(ApplicationDispatcher.testable.make()),
+        applicationAction = ApplicationAction(dispatcher: ApplicationDispatcher.testable.make(),
                                               routeAction: routeAction,
                                               session: mockSession,
                                               config: config)

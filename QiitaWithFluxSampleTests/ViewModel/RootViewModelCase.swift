@@ -11,11 +11,11 @@ import RxSwift
 @testable import QiitaWithFluxSample
 
 class RootViewModelCase: XCTestCase {
-    var applicationDispatcher: AnyObserverDispatcher<ApplicationDispatcher>!
+    var applicationDispatcher: ApplicationDispatcher!
     var applicationStore: ApplicationStore!
     
-    var routeObservableDispatcher: AnyObservableDispatcher<RouteDispatcher>!
-    var routeObserverDispatcher: AnyObserverDispatcher<RouteDispatcher>!
+    var routeObservableDispatcher: RouteDispatcher!
+    var routeObserverDispatcher: RouteDispatcher!
     var routeStore: RouteStore!
     var routeAction: RouteAction!
     
@@ -26,14 +26,14 @@ class RootViewModelCase: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         let routeParentDispatcher = RouteDispatcher.testable.make()
-        routeObservableDispatcher = AnyObservableDispatcher(routeParentDispatcher)
+        routeObservableDispatcher = routeParentDispatcher
         routeStore = RouteStore(dispatcher: routeObservableDispatcher)
-        routeObserverDispatcher = AnyObserverDispatcher(routeParentDispatcher)
+        routeObserverDispatcher = routeParentDispatcher
         routeAction = RouteAction(dispatcher: routeObserverDispatcher)
 
         let applicationParentDispatcher = ApplicationDispatcher.testable.make()
-        applicationDispatcher = AnyObserverDispatcher(applicationParentDispatcher)
-        applicationStore = ApplicationStore(dispatcher: AnyObservableDispatcher(applicationParentDispatcher))
+        applicationDispatcher = applicationParentDispatcher
+        applicationStore = ApplicationStore(dispatcher: applicationParentDispatcher)
         rootViewModel = RootViewModel(applicationStore: applicationStore,
                                       routeAction: routeAction,
                                       routeStore: routeStore)
@@ -56,7 +56,7 @@ class RootViewModelCase: XCTestCase {
                 loginDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        routeObserverDispatcher.login.onNext(.root)
+        routeObserverDispatcher.dispatch.login.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -66,13 +66,13 @@ class RootViewModelCase: XCTestCase {
         let loginDisplayTypeExpectation = expectation(description: "loginDisplayType is .root")
         
         let disposeBag = DisposeBag()
-        routeObservableDispatcher.login
+        routeObservableDispatcher.register.login
             .subscribe(onNext: {
                 XCTAssertEqual($0, LoginDisplayType.root)
                 loginDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.accessToken.onNext(nil)
+        applicationDispatcher.dispatch.accessToken.onNext(nil)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -94,7 +94,7 @@ class RootViewModelCase: XCTestCase {
                 searchDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        routeObserverDispatcher.search.onNext(.root)
+        routeObserverDispatcher.dispatch.search.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -104,7 +104,7 @@ class RootViewModelCase: XCTestCase {
         let searchDisplayTypeExpectation = expectation(description: "searchDisplayType is .root")
         
         let disposeBag = DisposeBag()
-        routeObservableDispatcher.search
+        routeObservableDispatcher.register.search
             .subscribe(onNext: {
                 let isSearchRoot: Bool
                 if case .root = $0 {
@@ -116,7 +116,7 @@ class RootViewModelCase: XCTestCase {
                 searchDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.accessToken.onNext("accessToken")
+        applicationDispatcher.dispatch.accessToken.onNext("accessToken")
         waitForExpectations(timeout: 0.1, handler: nil)
     }
 }

@@ -13,16 +13,16 @@ import QiitaSession
 final class ApplicationAction {
     static let shared = ApplicationAction()
     
-    private let dispatcher: AnyObserverDispatcher<ApplicationDispatcher>
+    private let dispatcher: ApplicationDispatcher
     private let routeAction: RouteAction
-    private let session: SessionType
+    private let session: QiitaSessionType
     private let config: Config
     
     private let disposeBag = DisposeBag()
     
-    init(dispatcher: AnyObserverDispatcher<ApplicationDispatcher> = .init(.shared),
+    init(dispatcher: ApplicationDispatcher = .shared,
          routeAction: RouteAction = .shared,
-         session: SessionType = QiitaSession.shared,
+         session: QiitaSessionType = QiitaSession.shared,
          config: Config = .shared) {
         self.dispatcher = dispatcher
         self.routeAction = routeAction
@@ -36,12 +36,12 @@ final class ApplicationAction {
                                           code: code)
         session.send(request)
             .map { Optional.some($0.token) }
-            .do(onError: dispatcher.accessTokenError.onNext)
-            .subscribe(onNext: dispatcher.accessToken.onNext)
+            .do(onError: dispatcher.dispatch.accessTokenError.onNext)
+            .subscribe(onNext: dispatcher.dispatch.accessToken.onNext)
             .disposed(by: disposeBag)
     }
     
     func removeAccessToken() {
-        dispatcher.accessToken.onNext(nil)
+        dispatcher.dispatch.accessToken.onNext(nil)
     }
 }

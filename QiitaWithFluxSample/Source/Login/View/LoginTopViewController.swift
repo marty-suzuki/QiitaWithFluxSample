@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginTopViewController: UIViewController, Storyboardable {
+final class LoginTopViewController: UIViewController, Storyboardable {
 
     @IBOutlet weak var loginButton: UIButton!
     

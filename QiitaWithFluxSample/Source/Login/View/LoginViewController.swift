@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import WebKit
 
-class LoginViewController: UIViewController, Storyboardable {
+final class LoginViewController: UIViewController, Storyboardable {
     let loadingView = LoadingView(indicatorStyle: .whiteLarge)
     let webView: WKWebView = WKWebView(frame: .zero)
     

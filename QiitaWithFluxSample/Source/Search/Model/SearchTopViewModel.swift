@@ -12,7 +12,7 @@ import Action
 import QiitaSession
 
 final class SearchTopViewModel {
-    private let session: SessionType
+    private let session: QiitaSessionType
     private let routeAction: RouteAction
     private let applicationAction: ApplicationAction
     
@@ -41,7 +41,7 @@ final class SearchTopViewModel {
     let keyboardWillShow: Observable<UIKeyboardInfo>
     let keyboardWillHide: Observable<UIKeyboardInfo>
     
-    init(session: SessionType = QiitaSession.shared,
+    init(session: QiitaSessionType = QiitaSession.shared,
          routeAction: RouteAction = .shared,
          applicationAction: ApplicationAction = .shared,
          selectedIndexPath: Observable<IndexPath>,
@@ -58,7 +58,7 @@ final class SearchTopViewModel {
         self.totalCount = Property(_totalCount)
         self.hasNext = Property(_hasNext)
         
-        self.searchAction = Action { [weak session] request in
+        self.searchAction = Action { [weak session] request -> Observable<ElementsResponse<Item>> in
             session.map { $0.send(request) } ?? .empty()
         }
         

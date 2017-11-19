@@ -12,15 +12,15 @@ import RxSwift
 
 class RouteStoreCase: XCTestCase {
     var routeStore: RouteStore!
-    var routeDispatcher: AnyObserverDispatcher<RouteDispatcher>!
+    var routeDispatcher: RouteDispatcher!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         let dispatcher = RouteDispatcher.testable.make()
-        routeDispatcher = AnyObserverDispatcher(dispatcher)
-        routeStore = RouteStore(dispatcher: AnyObservableDispatcher(dispatcher))
+        routeDispatcher = dispatcher
+        routeStore = RouteStore(dispatcher: dispatcher)
     }
     
     override func tearDown() {
@@ -40,7 +40,7 @@ class RouteStoreCase: XCTestCase {
                 loginDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        routeDispatcher.login.onNext(.root)
+        routeDispatcher.dispatch.login.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -68,7 +68,7 @@ class RouteStoreCase: XCTestCase {
                 searchDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        routeDispatcher.search.onNext(.webView(url))
+        routeDispatcher.dispatch.search.onNext(.webView(url))
         waitForExpectations(timeout: 0.1, handler: nil)
     }
 }

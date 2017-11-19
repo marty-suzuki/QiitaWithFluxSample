@@ -12,7 +12,7 @@ import RxCocoa
 import QiitaSession
 @testable import QiitaWithFluxSample
 
-private class RequestAccessTokenMockSession: SessionType {
+private class RequestAccessTokenMockSession: QiitaSessionType {
     func send<T : QiitaRequest>(_ request: T) -> Observable<T.Response> {
         let element = AccessTokensResponse.testable.make(cliendId: "clientId",
                                                          scopes: [],
@@ -23,9 +23,9 @@ private class RequestAccessTokenMockSession: SessionType {
 
 class LoginViewModelCase: XCTestCase {
     var applicationAction: ApplicationAction!
-    var applicationObserverDispatcherForAction: AnyObserverDispatcher<ApplicationDispatcher>!
-    var applicationObserverDispatcherForStore: AnyObserverDispatcher<ApplicationDispatcher>!
-    var applicationObservableDispatcherForStore: AnyObservableDispatcher<ApplicationDispatcher>!
+    var applicationObserverDispatcherForAction: ApplicationDispatcher!
+    var applicationObserverDispatcherForStore: ApplicationDispatcher!
+    var applicationObservableDispatcherForStore: ApplicationDispatcher!
     var applicationStore: ApplicationStore!
     
     var loginViewModel: LoginViewModel!
@@ -35,20 +35,20 @@ class LoginViewModelCase: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
-        let routeAction = RouteAction(dispatcher: AnyObserverDispatcher(RouteDispatcher.testable.make()))
+        let routeAction = RouteAction(dispatcher: RouteDispatcher.testable.make())
         let mockSession = RequestAccessTokenMockSession()
         let config = Config(baseUrl: "https://github.com",
                             redirectUrl: "https://github.com",
                             clientId: "clientId",
                             clientSecret: "secret")
-        applicationObserverDispatcherForAction = AnyObserverDispatcher(ApplicationDispatcher.testable.make())
+        applicationObserverDispatcherForAction = ApplicationDispatcher.testable.make()
         applicationAction = ApplicationAction(dispatcher: applicationObserverDispatcherForAction,
                                               routeAction: routeAction,
                                               session: mockSession,
                                               config: config)
         let applicationDispatcher = ApplicationDispatcher.testable.make()
-        applicationObserverDispatcherForStore = AnyObserverDispatcher(applicationDispatcher)
-        applicationObservableDispatcherForStore = AnyObservableDispatcher(applicationDispatcher)
+        applicationObserverDispatcherForStore = applicationDispatcher
+        applicationObservableDispatcherForStore = applicationDispatcher
         applicationStore = ApplicationStore(dispatcher: applicationObservableDispatcherForStore)
         requestAccessTokenWithCode = PublishSubject<String>()
         loginViewModel = LoginViewModel(applicationStore: applicationStore,
@@ -69,7 +69,7 @@ class LoginViewModelCase: XCTestCase {
         requestAccessTokenWithCode.onNext("code")
         XCTAssertTrue(loginViewModel.isLoading.value)
         
-        applicationObserverDispatcherForStore.accessToken.onNext("accessToken2")
+        applicationObserverDispatcherForStore.dispatch.accessToken.onNext("accessToken2")
         XCTAssertFalse(loginViewModel.isLoading.value)
     }
     

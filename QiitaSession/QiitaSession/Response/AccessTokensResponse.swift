@@ -21,7 +21,6 @@ public struct AccessTokensResponse: Codable {
 }
 
 extension AccessTokensResponse: TestableCompatible {}
-
 extension Testable where Base == AccessTokensResponse.Type {
     public func make(cliendId: String, scopes: [QiitaScope], token: String) -> AccessTokensResponse {
         return AccessTokensResponse(cliendId: cliendId, scopes: scopes, token: token)

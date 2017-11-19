@@ -19,6 +19,7 @@ struct Config: Codable {
     
     static let shared: Config = {
         do {
+            #if TEST
             let url = try Bundle.main.url(forResource: "Config", withExtension: "plist") ?? {
                 throw Error.notFoundFile("Config.plist")
             }()
@@ -30,6 +31,12 @@ struct Config: Codable {
             }()
             let config = try Config(dict: plist)
             try config.validate()
+            #else
+            let config = Config(baseUrl: "https://",
+                                redirectUrl: "https://",
+                                clientId: "client-id",
+                                clientSecret: "client-secret")
+            #endif
             return config
         } catch let e {
             fatalError("\(e)")

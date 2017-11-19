@@ -12,15 +12,15 @@ import RxSwift
 
 class ApplicationStoreCase: XCTestCase {
     var applicationStore: ApplicationStore!
-    var applicationDispatcher: AnyObserverDispatcher<ApplicationDispatcher>!
+    var applicationDispatcher: ApplicationDispatcher!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         let dispatcher = ApplicationDispatcher.testable.make()
-        applicationDispatcher = AnyObserverDispatcher(dispatcher)
-        applicationStore = ApplicationStore(dispatcher: AnyObservableDispatcher(dispatcher))
+        applicationDispatcher = dispatcher
+        applicationStore = ApplicationStore(dispatcher: dispatcher)
     }
     
     override func tearDown() {
@@ -40,7 +40,7 @@ class ApplicationStoreCase: XCTestCase {
                 nonNilAccessTokenExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.accessToken.onNext("accessToken")
+        applicationDispatcher.dispatch.accessToken.onNext("accessToken")
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -56,7 +56,7 @@ class ApplicationStoreCase: XCTestCase {
                 nilAccessTokenExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.accessToken.onNext(nil)
+        applicationDispatcher.dispatch.accessToken.onNext(nil)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -72,7 +72,7 @@ class ApplicationStoreCase: XCTestCase {
                 errorExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.accessTokenError.onNext(NSError(domain: NSCocoaErrorDomain, code: -9999, userInfo: nil))
+        applicationDispatcher.dispatch.accessTokenError.onNext(NSError(domain: NSCocoaErrorDomain, code: -9999, userInfo: nil))
         waitForExpectations(timeout: 0.1, handler: nil)
     }
 }

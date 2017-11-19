@@ -12,15 +12,15 @@ import RxSwift
 
 class RouteActionCase: XCTestCase {
     var routeAction: RouteAction!
-    var routeDispatcher: AnyObservableDispatcher<RouteDispatcher>!
+    var routeDispatcher: RouteDispatcher!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         let dispatcher = RouteDispatcher.testable.make()
-        routeDispatcher = AnyObservableDispatcher(dispatcher)
-        routeAction = RouteAction(dispatcher: AnyObserverDispatcher(dispatcher))
+        routeDispatcher = dispatcher
+        routeAction = RouteAction(dispatcher: dispatcher)
     }
     
     override func tearDown() {
@@ -34,7 +34,7 @@ class RouteActionCase: XCTestCase {
         let loginDisplayTypeExpectation = expectation(description: "loginDisplayType is .root")
         
         let disposeBag = DisposeBag()
-        routeDispatcher.login
+        routeDispatcher.register.login
             .subscribe(onNext: {
                 XCTAssertEqual($0, LoginDisplayType.root)
                 loginDisplayTypeExpectation.fulfill()
@@ -55,7 +55,7 @@ class RouteActionCase: XCTestCase {
         let searchDisplayTypeExpectation = expectation(description: "searchDisplayType is .webView")
         
         let disposeBag = DisposeBag()
-        routeDispatcher.search
+        routeDispatcher.register.search
             .subscribe(onNext: {
                 let url: URL?
                 if case .webView(let value) = $0 {

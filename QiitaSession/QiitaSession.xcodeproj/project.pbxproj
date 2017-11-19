@@ -20,7 +20,6 @@
 		37AF56361EF05085003C8B3D /* QiitaScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AF56351EF05085003C8B3D /* QiitaScope.swift */; };
 		ED3919DA1FBFE2060026E837 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3919D91FBFE2060026E837 /* APIKit.framework */; };
 		ED3919DC1FBFE21E0026E837 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3919DB1FBFE21E0026E837 /* Result.framework */; };
-		ED3919DE1FBFE22C0026E837 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3919DD1FBFE22C0026E837 /* RxSwift.framework */; };
 		ED4E70BD1FC0865E00741304 /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4E70BC1FC0865E00741304 /* Testable.swift */; };
 		EDE3A2A21FBFE34A004381B2 /* QiitaRequestProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE3A2A11FBFE34A004381B2 /* QiitaRequestProxy.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +50,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED3919DE1FBFE22C0026E837 /* RxSwift.framework in Frameworks */,
 				ED3919DC1FBFE21E0026E837 /* Result.framework in Frameworks */,
 				ED3919DA1FBFE2060026E837 /* APIKit.framework in Frameworks */,
 			);
@@ -230,6 +228,90 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		375DDE031FC1FF8E001C210B /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Test;
+		};
+		375DDE041FC1FF8E001C210B /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
+				INFOPLIST_FILE = QiitaSession/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.QiitaSession";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Test;
+		};
 		37AF55FB1EF04E4F003C8B3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -397,6 +479,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37AF55FB1EF04E4F003C8B3D /* Debug */,
+				375DDE031FC1FF8E001C210B /* Test */,
 				37AF55FC1EF04E4F003C8B3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -406,6 +489,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37AF55FE1EF04E4F003C8B3D /* Debug */,
+				375DDE041FC1FF8E001C210B /* Test */,
 				37AF55FF1EF04E4F003C8B3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

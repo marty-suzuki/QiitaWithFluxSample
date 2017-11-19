@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import QiitaSession
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
