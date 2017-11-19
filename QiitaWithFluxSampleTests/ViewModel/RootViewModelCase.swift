@@ -27,13 +27,13 @@ class RootViewModelCase: XCTestCase {
         
         let routeParentDispatcher = RouteDispatcher.testable.make()
         routeObservableDispatcher = routeParentDispatcher
-        routeStore = RouteStore(dispatcher: routeObservableDispatcher)
+        routeStore = RouteStore(registrator: routeObservableDispatcher.registrator)
         routeObserverDispatcher = routeParentDispatcher
-        routeAction = RouteAction(dispatcher: routeObserverDispatcher)
+        routeAction = RouteAction(dispatcher: routeObserverDispatcher.dispatcher)
 
         let applicationParentDispatcher = ApplicationDispatcher.testable.make()
         applicationDispatcher = applicationParentDispatcher
-        applicationStore = ApplicationStore(dispatcher: applicationParentDispatcher)
+        applicationStore = ApplicationStore(registrator: applicationParentDispatcher.registrator)
         rootViewModel = RootViewModel(applicationStore: applicationStore,
                                       routeAction: routeAction,
                                       routeStore: routeStore)
@@ -56,7 +56,7 @@ class RootViewModelCase: XCTestCase {
                 loginDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        routeObserverDispatcher.dispatch.login.onNext(.root)
+        routeObserverDispatcher.dispatcher.login.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -66,13 +66,13 @@ class RootViewModelCase: XCTestCase {
         let loginDisplayTypeExpectation = expectation(description: "loginDisplayType is .root")
         
         let disposeBag = DisposeBag()
-        routeObservableDispatcher.register.login
+        routeObservableDispatcher.registrator.login
             .subscribe(onNext: {
                 XCTAssertEqual($0, LoginDisplayType.root)
                 loginDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.dispatch.accessToken.onNext(nil)
+        applicationDispatcher.dispatcher.accessToken.onNext(nil)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -94,7 +94,7 @@ class RootViewModelCase: XCTestCase {
                 searchDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        routeObserverDispatcher.dispatch.search.onNext(.root)
+        routeObserverDispatcher.dispatcher.search.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -104,7 +104,7 @@ class RootViewModelCase: XCTestCase {
         let searchDisplayTypeExpectation = expectation(description: "searchDisplayType is .root")
         
         let disposeBag = DisposeBag()
-        routeObservableDispatcher.register.search
+        routeObservableDispatcher.registrator.search
             .subscribe(onNext: {
                 let isSearchRoot: Bool
                 if case .root = $0 {
@@ -116,7 +116,7 @@ class RootViewModelCase: XCTestCase {
                 searchDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.dispatch.accessToken.onNext("accessToken")
+        applicationDispatcher.dispatcher.accessToken.onNext("accessToken")
         waitForExpectations(timeout: 0.1, handler: nil)
     }
 }

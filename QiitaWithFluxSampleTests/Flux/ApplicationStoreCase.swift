@@ -20,7 +20,7 @@ class ApplicationStoreCase: XCTestCase {
 
         let dispatcher = ApplicationDispatcher.testable.make()
         applicationDispatcher = dispatcher
-        applicationStore = ApplicationStore(dispatcher: dispatcher)
+        applicationStore = ApplicationStore(registrator: dispatcher.registrator)
     }
     
     override func tearDown() {
@@ -40,7 +40,7 @@ class ApplicationStoreCase: XCTestCase {
                 nonNilAccessTokenExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.dispatch.accessToken.onNext("accessToken")
+        applicationDispatcher.dispatcher.accessToken.onNext("accessToken")
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -56,7 +56,7 @@ class ApplicationStoreCase: XCTestCase {
                 nilAccessTokenExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.dispatch.accessToken.onNext(nil)
+        applicationDispatcher.dispatcher.accessToken.onNext(nil)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -72,7 +72,7 @@ class ApplicationStoreCase: XCTestCase {
                 errorExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        applicationDispatcher.dispatch.accessTokenError.onNext(NSError(domain: NSCocoaErrorDomain, code: -9999, userInfo: nil))
+        applicationDispatcher.dispatcher.accessTokenError.onNext(NSError(domain: NSCocoaErrorDomain, code: -9999, userInfo: nil))
         waitForExpectations(timeout: 0.1, handler: nil)
     }
 }

@@ -21,7 +21,7 @@ final class ApplicationStore {
     
     private let disposeBag = DisposeBag()
     
-    init(dispatcher: ApplicationDispatcher = .shared) {
+    init(registrator: Registrator<ApplicationDispatcher> = ApplicationDispatcher.shared.registrator) {
         #if TEST
         _accessToken = Variable(nil)
         #else
@@ -31,7 +31,7 @@ final class ApplicationStore {
         self.accessToken = Property(_accessToken)
         self.accessTokenError = _accessTokenError
         
-        dispatcher.register.accessToken
+        registrator.accessToken
             .do(onNext: { accessToken in
                 #if !TEST
                 Defaults[.accessToken] = accessToken
@@ -40,7 +40,7 @@ final class ApplicationStore {
             .bind(to: _accessToken)
             .disposed(by: disposeBag)
         
-        dispatcher.register.accessTokenError
+        registrator.accessTokenError
             .bind(to: _accessTokenError)
             .disposed(by: disposeBag)
     }

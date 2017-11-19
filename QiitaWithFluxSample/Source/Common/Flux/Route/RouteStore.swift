@@ -30,15 +30,15 @@ final class RouteStore {
     
     private let disposeBag = DisposeBag()
     
-    init(dispatcher: RouteDispatcher = .shared) {
+    init(registrator: Registrator<RouteDispatcher> = RouteDispatcher.shared.registrator) {
         self.login = _login
         self.search = _search
         
-        dispatcher.register.login
+        registrator.login
             .bind(to: _login)
             .disposed(by: disposeBag)
         
-        dispatcher.register.search
+        registrator.search
             .bind(to: _search)
             .disposed(by: disposeBag)
     }

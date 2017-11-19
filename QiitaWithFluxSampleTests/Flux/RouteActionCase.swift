@@ -20,7 +20,7 @@ class RouteActionCase: XCTestCase {
 
         let dispatcher = RouteDispatcher.testable.make()
         routeDispatcher = dispatcher
-        routeAction = RouteAction(dispatcher: dispatcher)
+        routeAction = RouteAction(dispatcher: dispatcher.dispatcher)
     }
     
     override func tearDown() {
@@ -34,7 +34,7 @@ class RouteActionCase: XCTestCase {
         let loginDisplayTypeExpectation = expectation(description: "loginDisplayType is .root")
         
         let disposeBag = DisposeBag()
-        routeDispatcher.register.login
+        routeDispatcher.registrator.login
             .subscribe(onNext: {
                 XCTAssertEqual($0, LoginDisplayType.root)
                 loginDisplayTypeExpectation.fulfill()
@@ -55,7 +55,7 @@ class RouteActionCase: XCTestCase {
         let searchDisplayTypeExpectation = expectation(description: "searchDisplayType is .webView")
         
         let disposeBag = DisposeBag()
-        routeDispatcher.register.search
+        routeDispatcher.registrator.search
             .subscribe(onNext: {
                 let url: URL?
                 if case .webView(let value) = $0 {

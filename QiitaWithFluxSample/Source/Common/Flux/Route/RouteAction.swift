@@ -11,18 +11,18 @@ import RxSwift
 final class RouteAction {
     static let shared = RouteAction()
     
-    private let dispatcher: RouteDispatcher
+    private let dispatcher: Dispatcher<RouteDispatcher>
     
-    init(dispatcher: RouteDispatcher = .shared) {
+    init(dispatcher: Dispatcher<RouteDispatcher> = RouteDispatcher.shared.dispatcher) {
         self.dispatcher = dispatcher
     }
     
     func show(loginDisplayType: LoginDisplayType) {
-        dispatcher.dispatch.login.onNext(loginDisplayType)
+        dispatcher.login.onNext(loginDisplayType)
     }
     
     func show(searchDisplayType: SearchDisplayType) {
-        dispatcher.dispatch.search.onNext(searchDisplayType)
+        dispatcher.search.onNext(searchDisplayType)
     }
 }
 

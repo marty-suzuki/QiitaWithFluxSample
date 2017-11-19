@@ -39,13 +39,13 @@ class SearchTopViewModelCase: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
-        routeAction = RouteAction(dispatcher: RouteDispatcher.testable.make())
+        routeAction = RouteAction(dispatcher: RouteDispatcher.testable.make().dispatcher)
         mockSession = SearchMockSession()
         let config = Config(baseUrl: "https://github.com",
                             redirectUrl: "https://github.com",
                             clientId: "clientId",
                             clientSecret: "secret")
-        applicationAction = ApplicationAction(dispatcher: ApplicationDispatcher.testable.make(),
+        applicationAction = ApplicationAction(dispatcher: ApplicationDispatcher.testable.make().dispatcher,
                                               routeAction: routeAction,
                                               session: mockSession,
                                               config: config)

@@ -27,6 +27,7 @@
 		375DDE061FC20069001C210B /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375DDE051FC20069001C210B /* Dispatcher.swift */; };
 		376071A81EA7B1D900C4DA10 /* LoginTopViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376071A71EA7B1D900C4DA10 /* LoginTopViewModelCase.swift */; };
 		376071AB1EA7B5C500C4DA10 /* LoginViewModelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */; };
+		376208DB1FC209C600138585 /* Registrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376208DA1FC209C600138585 /* Registrator.swift */; };
 		37AF563F1EF054C1003C8B3D /* Item.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AF563E1EF054C1003C8B3D /* Item.extension.swift */; };
 		37C681A41E9D4BF900DABE71 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C681A31E9D4BF900DABE71 /* WebKit.framework */; };
 		37C6822E1EA1F15900DABE71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37C681FA1EA1F15800DABE71 /* Assets.xcassets */; };
@@ -136,6 +137,7 @@
 		375DDE051FC20069001C210B /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		376071A71EA7B1D900C4DA10 /* LoginTopViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTopViewModelCase.swift; sourceTree = "<group>"; };
 		376071AA1EA7B5C500C4DA10 /* LoginViewModelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModelCase.swift; sourceTree = "<group>"; };
+		376208DA1FC209C600138585 /* Registrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registrator.swift; sourceTree = "<group>"; };
 		37AF563E1EF054C1003C8B3D /* Item.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.extension.swift; sourceTree = "<group>"; };
 		37C681A31E9D4BF900DABE71 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		37C681FA1EA1F15800DABE71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				375DDE051FC20069001C210B /* Dispatcher.swift */,
+				376208DA1FC209C600138585 /* Registrator.swift */,
 				37C682061EA1F15800DABE71 /* RxProperty.swift */,
 				3742504B1EAD0694008F47F4 /* ObservableType.filterNil.swift */,
 			);
@@ -681,6 +684,7 @@
 				3734DD491EA3451E00DC30C7 /* SearchTopViewCell.swift in Sources */,
 				37C682381EA1F15900DABE71 /* RouteStore.swift in Sources */,
 				9DF6C40D1EA4858E00E5CC27 /* RootViewModel.swift in Sources */,
+				376208DB1FC209C600138585 /* Registrator.swift in Sources */,
 				9DF6C4111EA4965C00E5CC27 /* LoginViewModel.swift in Sources */,
 				37AF563F1EF054C1003C8B3D /* Item.extension.swift in Sources */,
 				ED6F5DBE1FBFEAC300DC3E4D /* QiitaSession.shared.swift in Sources */,

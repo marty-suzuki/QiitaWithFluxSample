@@ -29,14 +29,14 @@ class ApplicationActionCase: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         let dispatcher = ApplicationDispatcher.testable.make()
-        let routeAction = RouteAction(dispatcher: RouteDispatcher.testable.make())
+        let routeAction = RouteAction(dispatcher: RouteDispatcher.testable.make().dispatcher)
         let mockSession = RequestAccessTokenMockSession()
         let config = Config(baseUrl: "https://github.com",
                             redirectUrl: "https://github.com",
                             clientId: "clientId",
                             clientSecret: "secret")
         applicationDispatcher = dispatcher
-        applicationAction = ApplicationAction(dispatcher: dispatcher,
+        applicationAction = ApplicationAction(dispatcher: dispatcher.dispatcher,
                                               routeAction: routeAction,
                                               session: mockSession,
                                               config: config)
@@ -53,7 +53,7 @@ class ApplicationActionCase: XCTestCase {
         let requestAccessTokenExpectation = expectation(description: "accessToken is accessToken")
         
         let disposeBag = DisposeBag()
-        applicationDispatcher.register.accessToken
+        applicationDispatcher.registrator.accessToken
             .subscribe(onNext: {
                 XCTAssertEqual($0, "accessToken")
                 requestAccessTokenExpectation.fulfill()
@@ -69,7 +69,7 @@ class ApplicationActionCase: XCTestCase {
         let removeAccessTokenExpectation = expectation(description: "accessToken is nil")
         
         let disposeBag = DisposeBag()
-        applicationDispatcher.register.accessToken
+        applicationDispatcher.registrator.accessToken
             .subscribe(onNext: {
                 XCTAssertNil($0)
                 removeAccessTokenExpectation.fulfill()

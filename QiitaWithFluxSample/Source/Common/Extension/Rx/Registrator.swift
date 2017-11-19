@@ -1,5 +1,5 @@
 //
-//  Dispatcher.swift
+//  Registrator.swift
 //  QiitaWithFluxSample
 //
 //  Created by marty-suzuki on 2017/11/20.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol DispatchCompatible {
-    var dispatcher: Dispatcher<Self> { get }
+protocol RegisterCompatible {
+    var registrator: Registrator<Self> { get }
 }
 
-extension DispatchCompatible {
-    var dispatcher: Dispatcher<Self> {
-        return Dispatcher(self)
+extension RegisterCompatible {
+    var registrator: Registrator<Self> {
+        return Registrator(self)
     }
 }
 
-struct Dispatcher<Base: DispatchCompatible> {
+struct Registrator<Base: RegisterCompatible> {
     let base: Base
     
     fileprivate init(_ dispatcher: Base) {

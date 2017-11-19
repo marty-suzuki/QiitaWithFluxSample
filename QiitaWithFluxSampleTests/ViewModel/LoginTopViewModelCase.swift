@@ -23,7 +23,7 @@ class LoginTopViewModelCase: XCTestCase {
 
         let routeParentDispatcher = RouteDispatcher.testable.make()
         routeDispatcher = routeParentDispatcher
-        routeAction = RouteAction(dispatcher: routeParentDispatcher)
+        routeAction = RouteAction(dispatcher: routeParentDispatcher.dispatcher)
         let loginButtonSubject = PublishSubject<Void>()
         loginButtonTap = loginButtonSubject.asObserver()
         loginTopViewModel = LoginTopViewModel(loginButtonTap: ControlEvent<Void>(events: loginButtonSubject),
@@ -41,7 +41,7 @@ class LoginTopViewModelCase: XCTestCase {
         let loginDisplayTypeExpectation = expectation(description: "loginDisplayType is .webview")
         
         let disposeBag = DisposeBag()
-        routeDispatcher.register.login
+        routeDispatcher.registrator.login
             .subscribe(onNext: {
                 XCTAssertEqual($0, LoginDisplayType.webView)
                 loginDisplayTypeExpectation.fulfill()

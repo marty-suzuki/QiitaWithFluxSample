@@ -35,21 +35,21 @@ class LoginViewModelCase: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
-        let routeAction = RouteAction(dispatcher: RouteDispatcher.testable.make())
+        let routeAction = RouteAction(dispatcher: RouteDispatcher.testable.make().dispatcher)
         let mockSession = RequestAccessTokenMockSession()
         let config = Config(baseUrl: "https://github.com",
                             redirectUrl: "https://github.com",
                             clientId: "clientId",
                             clientSecret: "secret")
         applicationObserverDispatcherForAction = ApplicationDispatcher.testable.make()
-        applicationAction = ApplicationAction(dispatcher: applicationObserverDispatcherForAction,
+        applicationAction = ApplicationAction(dispatcher: applicationObserverDispatcherForAction.dispatcher,
                                               routeAction: routeAction,
                                               session: mockSession,
                                               config: config)
         let applicationDispatcher = ApplicationDispatcher.testable.make()
         applicationObserverDispatcherForStore = applicationDispatcher
         applicationObservableDispatcherForStore = applicationDispatcher
-        applicationStore = ApplicationStore(dispatcher: applicationObservableDispatcherForStore)
+        applicationStore = ApplicationStore(registrator: applicationObservableDispatcherForStore.registrator)
         requestAccessTokenWithCode = PublishSubject<String>()
         loginViewModel = LoginViewModel(applicationStore: applicationStore,
                                         applicationAction: applicationAction,
@@ -69,7 +69,7 @@ class LoginViewModelCase: XCTestCase {
         requestAccessTokenWithCode.onNext("code")
         XCTAssertTrue(loginViewModel.isLoading.value)
         
-        applicationObserverDispatcherForStore.dispatch.accessToken.onNext("accessToken2")
+        applicationObserverDispatcherForStore.dispatcher.accessToken.onNext("accessToken2")
         XCTAssertFalse(loginViewModel.isLoading.value)
     }
     

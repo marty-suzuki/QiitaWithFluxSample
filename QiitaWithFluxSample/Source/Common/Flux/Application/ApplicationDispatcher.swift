@@ -18,22 +18,22 @@ final class ApplicationDispatcher {
 }
 
 extension ApplicationDispatcher: DispatchCompatible {}
-extension Dispatch where Dispatcher: ApplicationDispatcher {
+extension Dispatcher where Base: ApplicationDispatcher {
     var accessToken: AnyObserver<String?> {
-        return dispatcher.accessToken.asObserver()
+        return base.accessToken.asObserver()
     }
     var accessTokenError: AnyObserver<Error> {
-        return dispatcher.accessTokenError.asObserver()
+        return base.accessTokenError.asObserver()
     }
 }
 
 extension ApplicationDispatcher: RegisterCompatible {}
-extension Register where Dispatcher: ApplicationDispatcher {
+extension Registrator where Base: ApplicationDispatcher {
     var accessToken: Observable<String?> {
-        return dispatcher.accessToken
+        return base.accessToken
     }
     var accessTokenError: Observable<Error> {
-        return dispatcher.accessTokenError
+        return base.accessTokenError
     }
 }
 

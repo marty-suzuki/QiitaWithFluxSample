@@ -20,7 +20,7 @@ class RouteStoreCase: XCTestCase {
 
         let dispatcher = RouteDispatcher.testable.make()
         routeDispatcher = dispatcher
-        routeStore = RouteStore(dispatcher: dispatcher)
+        routeStore = RouteStore(registrator: dispatcher.registrator)
     }
     
     override func tearDown() {
@@ -40,7 +40,7 @@ class RouteStoreCase: XCTestCase {
                 loginDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        routeDispatcher.dispatch.login.onNext(.root)
+        routeDispatcher.dispatcher.login.onNext(.root)
         waitForExpectations(timeout: 0.1, handler: nil)
     }
     
@@ -68,7 +68,7 @@ class RouteStoreCase: XCTestCase {
                 searchDisplayTypeExpectation.fulfill()
             })
             .disposed(by: disposeBag)
-        routeDispatcher.dispatch.search.onNext(.webView(url))
+        routeDispatcher.dispatcher.search.onNext(.webView(url))
         waitForExpectations(timeout: 0.1, handler: nil)
     }
 }

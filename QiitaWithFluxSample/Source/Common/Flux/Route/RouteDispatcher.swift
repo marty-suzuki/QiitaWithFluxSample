@@ -18,24 +18,24 @@ final class RouteDispatcher {
 }
 
 extension RouteDispatcher: DispatchCompatible {}
-extension Dispatch where Dispatcher: RouteDispatcher {
+extension Dispatcher where Base: RouteDispatcher {
     var login: AnyObserver<LoginDisplayType> {
-        return dispatcher.login.asObserver()
+        return base.login.asObserver()
     }
     
     var search: AnyObserver<SearchDisplayType> {
-        return dispatcher.search.asObserver()
+        return base.search.asObserver()
     }
 }
 
 extension RouteDispatcher: RegisterCompatible {}
-extension Register where Dispatcher: RouteDispatcher {
+extension Registrator where Base: RouteDispatcher {
     var login: Observable<LoginDisplayType> {
-        return dispatcher.login
+        return base.login
     }
     
     var search: Observable<SearchDisplayType> {
-        return dispatcher.search
+        return base.search
     }
 }
 
