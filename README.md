@@ -40,8 +40,8 @@ This is a sample project that uses **Flux** and **MVVM** features.
 
 ## Requirements
 
-- Swift 3.2
-- Xcode 9
+- Swift 4
+- Xcode 9.1
 - iOS 10.0
 - Carthage 0.25.0
 
@@ -52,12 +52,17 @@ After that, fill **redirectUrl**, **clientId** and **clientSecret** in Config.sw
 
 ## Libraries
 
-- [Action](https://github.com/RxSwiftCommunity/Action) 3.2.0
-- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.6.1
+- [Action](https://github.com/RxSwiftCommunity/Action) 3.4.1
+- [RxSwift](https://github.com/ReactiveX/RxSwift) 4.0.0
 - [APIKit](https://github.com/ishkawa/APIKit) 3.1.2
-- [Himotoki](https://github.com/ikesyo/Himotoki) 3.1.0
 - [Nuke](https://github.com/kean/Nuke) 5.2
 - [SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults) 3.0.1
+
+## Playground
+
+You can try **QiitaSession** with [playground](./QiitaSession/QiitaSession.playground)!
+
+![](./Images/playground.png)
 
 ## Special Thanks
 
@@ -69,4 +74,4 @@ marty-suzuki, s1180183@gmail.com
 
 ## License
 
-ReverseExtension is available under the MIT license. See the LICENSE file for more info.
+QiitaWithFluxSample is available under the MIT license. See the LICENSE file for more info.
