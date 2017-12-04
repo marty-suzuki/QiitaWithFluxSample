@@ -10,7 +10,8 @@ import UIKit
 import Nuke
 import QiitaSession
 
-final class SearchTopViewCell: UITableViewCell, Nibable {
+final class SearchTopViewCell: UITableViewCell, ReusableViewProtocol {
+    typealias RegisterType = RegisterNib
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!

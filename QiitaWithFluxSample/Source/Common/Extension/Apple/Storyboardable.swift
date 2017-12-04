@@ -8,12 +8,15 @@
 
 import UIKit
 
-protocol Storyboardable: NSObjectProtocol {
-}
+protocol Storyboardable {}
 
-extension Storyboardable {
+extension Storyboardable where Self: UIViewController {
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
     static func instantiate() -> Self {
-        return UIStoryboard(name: className, bundle: nil)
-                .instantiateViewController(withIdentifier: className) as! Self
+        return UIStoryboard(name: identifier, bundle: nil)
+                .instantiateViewController(withIdentifier: identifier) as! Self
     }
 }

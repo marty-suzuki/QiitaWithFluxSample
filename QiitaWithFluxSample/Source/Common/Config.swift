@@ -32,7 +32,7 @@ struct Config: Codable {
             let config = try Config(dict: plist)
             try config.validate()
             #else
-            let config = Config(baseUrl: "https://",
+            let config = Config(baseUrl: "https://qiita.com/api",
                                 redirectUrl: "https://",
                                 clientId: "client-id",
                                 clientSecret: "client-secret")
